@@ -53,7 +53,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Scripts\Scripts.cs" />
+    <Compile Include="Sql\ProductScripts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Databases\ArrboraAccessDatabase.accdb">

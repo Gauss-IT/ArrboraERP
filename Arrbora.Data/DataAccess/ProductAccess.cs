@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using Arrbora.Data.DataModel;
-using Arrbora.Data.Scripts;
+using Arrbora.Data.Sql;
 
 namespace Arrbora.Data.DataAccess
 {
@@ -35,7 +35,7 @@ namespace Arrbora.Data.DataAccess
                 oleDbDataAdapter.SelectCommand.CommandType = CommandType.Text;
 
                 // Assign the SQL to the command object
-                oleDbDataAdapter.SelectCommand.CommandText = Scripts.Scripts.SqlGetAllProducts;
+                oleDbDataAdapter.SelectCommand.CommandText = ProductScripts.sqlGetAllProducts;
 
                 // Fill the datatable from adapter
                 oleDbDataAdapter.Fill(dataTable);
@@ -49,31 +49,93 @@ namespace Arrbora.Data.DataAccess
         /// </summary>
         public bool AddProduct(ProductDataModel product)
         {
+            using (OleDbCommand oleDbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbCommand.CommandType = CommandType.Text;
+                oleDbCommand.CommandText = ProductScripts.sqlInsertProduct;
+
+                // Add the input parameters to the parameter collection
+                oleDbCommand.Parameters.AddWithValue("@Name", product.);
+                oleDbCommand.Parameters.AddWithValue("@DateOfBirth", clubMember.DateOfBirth.ToShortDateString());
+                oleDbCommand.Parameters.AddWithValue("@Occupation", (int)clubMember.Occupation);
+                oleDbCommand.Parameters.AddWithValue("@MaritalStatus", (int)clubMember.MaritalStatus);
+                oleDbCommand.Parameters.AddWithValue("@HealthStatus", (int)clubMember.HealthStatus);
+                oleDbCommand.Parameters.AddWithValue("@Salary", clubMember.Salary);
+                oleDbCommand.Parameters.AddWithValue("@NumberOfChildren", clubMember.NumberOfChildren);
+
+                // Open the connection, execute the query and close the connection
+                oleDbCommand.Connection.Open();
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                oleDbCommand.Connection.Close();
+
+                return rowsAffected > 0;
+            }
+        }
+
+        /// <summary>
+        /// Method to delete a single product by ProductID
+        /// </summary>
+        public bool DeleteProductByID(int ProductID)
+        {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Method to delete a single product by ID
+        /// Method to get a product by ProductID
         /// </summary>
-        public bool DeleteProductByID(int id)
+        public DataRow GetProductById(int ProductID)
         {
-            throw new NotImplementedException();
-        }        
+            DataTable dataTable = new DataTable();
+            DataRow dataRow;
 
-        /// <summary>
-        /// Method to get a product by ID
-        /// </summary>
-        public DataRow GetProductById(int Id)
-        {
-            throw new NotImplementedException();
+            using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter())
+            {
+                // Create the command and set its properties
+                dataAdapter.SelectCommand = new OleDbCommand();
+                dataAdapter.SelectCommand.Connection = new OleDbConnection(this.ConnectionString);
+                dataAdapter.SelectCommand.CommandType = CommandType.Text;
+                dataAdapter.SelectCommand.CommandText = ProductScripts.sqlGetProductById;
+
+                // Add the parameter to the parameter collection
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@ProductID", ProductID);
+
+                // Fill the datatable From adapter
+                dataAdapter.Fill(dataTable);
+
+                // Get the datarow from the table
+                dataRow = dataTable.Rows.Count > 0 ? dataTable.Rows[0] : null;   
+            }
+            return dataRow;
         }
 
         /// <summary>
         /// Method to make a search in products
         /// </summary>
-        public DataTable SearchProducts()
+        public DataTable SearchProducts(object brand, object model)
         {
-            throw new NotImplementedException();
+            DataTable dataTable = new DataTable();
+
+            using (OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter())
+            {
+                // Create the command and set its properties
+                oleDbDataAdapter.SelectCommand = new OleDbCommand();
+                oleDbDataAdapter.SelectCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbDataAdapter.SelectCommand.CommandType = CommandType.Text;
+
+                // Assign the SQL to the command object
+                oleDbDataAdapter.SelectCommand.CommandText = ProductScripts.sqlSearchProducts;
+
+                // Add the input parameters to the parameter collection
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Brand", brand == null ? DBNull.Value : brand);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Model", model == null ? DBNull.Value : model);
+
+                // Fill the table from adapter
+                oleDbDataAdapter.Fill(dataTable);
+            }
+
+            return dataTable;
         }
 
         /// <summary>
