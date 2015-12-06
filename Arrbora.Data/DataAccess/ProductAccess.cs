@@ -57,7 +57,7 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = ProductScripts.sqlInsertProduct;
 
                 // Add the input parameters to the parameter collection
-                oleDbCommand.Parameters.AddWithValue("@Name", product.);
+                oleDbCommand.Parameters.AddWithValue("@Name", product.Price);
                 oleDbCommand.Parameters.AddWithValue("@DateOfBirth", clubMember.DateOfBirth.ToShortDateString());
                 oleDbCommand.Parameters.AddWithValue("@Occupation", (int)clubMember.Occupation);
                 oleDbCommand.Parameters.AddWithValue("@MaritalStatus", (int)clubMember.MaritalStatus);
