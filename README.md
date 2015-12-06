@@ -1,2 +1,5 @@
-# OleDB-desktop-application
-Application for a client to migrate from Access to .NET
+# Arrbora ERP
+A database management system for the company Arrbora DOO. The application is build in three layers Data - Logic - User Interface. 
+The Data layer is built with a MS Access database, which is accessed through the OleDb Object. The data is retrieved through SQL statements, and using OleDB adapters it is filled into data tables. Their content is given over to the Logical or Business layer through interfaces.
+The Logical layer holds the data processing and organization logic, as well as user administration rights and privileges. It also holds information on the activities of users which will be persisted in the database. There will be logic and support to import and export data from Excel and PDF Files, which will be processed according to the requirements of the customer.
+The User Interface layer is build with simple WinForms. It is constructed as a MDI - Multiple Document Interface application, where each larger unit is placed in a form and the smaller steps are organized into tabs. 
