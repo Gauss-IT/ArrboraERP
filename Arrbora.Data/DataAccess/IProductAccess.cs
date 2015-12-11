@@ -28,7 +28,7 @@ namespace Arrbora.Data.DataAccess
         /// Method to search club products by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable SearchProducts();
+        DataTable SearchProducts(object brand, object model);
 
         /// <summary>
         /// Method to create new product

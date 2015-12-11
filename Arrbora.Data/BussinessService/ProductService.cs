@@ -45,9 +45,9 @@ namespace Arrbora.Data.BussinessService
         /// Method to search club products by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        public DataTable SearchProducts()
+        public DataTable SearchProducts(object brand, object model)
         {
-            return productAccess.SearchProducts();
+            return productAccess.SearchProducts(brand,model);
         }
 
         /// <summary>

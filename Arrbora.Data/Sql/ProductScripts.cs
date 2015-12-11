@@ -14,7 +14,7 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlGetProductById = "SELECT" +
             " ProductID, Brand, Model, VIN, EnteriourColour, ExteriourColour, ModelYear," +
-            " DLPNetto, DLPBrutto, FileName, SoldNotSold, Seller,Buyer" +
+            " DLPNetto, DLPBrutto, Seller,Buyer" +
             " FROM Products WHERE ProductID = @ProductID";
 
         /// <summary>
@@ -22,39 +22,39 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlGetAllProducts = "SELECT" +
             " ProductID, Brand, Model, VIN, EnteriourColour,ExteriourColour,ModelYear," +
-            " DLPNetto, DLPBrutto, FileName, SoldNotSold, Seller,Buyer" +
+            " DLPNetto, DLPBrutto, Seller,Buyer" +
             " FROM Products";
 
         /// <summary>
         /// sql to insert a product detail
         /// </summary>
         public static readonly string sqlInsertProduct = "INSERT INTO" +
-            " Products(ProductID, Brand, Model, VIN, EnteriourColour,ExteriourColour,ModelYear," +
-            " DLPNetto, DLPBrutto, FileName, SoldNotSold, Seller,Buyer)" +
-            " Values(@ProductID, @Brand, @Model, @VIN, @EnteriourColour,@ExteriourColour,@ModelYear," +
-            " @DLPNetto, @DLPBrutto, @FileName, @SoldNotSold, @Seller,@Buyer)";
+            " Products(Brand, Model, VIN, EnteriourColour,ExteriourColour,ModelYear," +
+            " DLPNetto, DLPBrutto, Seller,Buyer)" +
+            " Values(@Brand, @Model, @VIN, @EnteriourColour,@ExteriourColour,@ModelYear," +
+            " @DLPNetto, @DLPBrutto, @Seller,@Buyer)";
 
         /// <summary>
         /// sql to search for products
         /// </summary>
         public static readonly string sqlSearchProducts = "SELECT " +
             " Products(ProductID, Brand, Model, VIN, EnteriourColour,ExteriourColour,ModelYear," +
-            " DLPNetto, DLPBrutto, FileName, SoldNotSold, Seller,Buyer)" +
+            " DLPNetto, DLPBrutto, Seller,Buyer)" +
             " FROM Products WHERE (@Brand Is NULL OR @Brand = Brand) OR" +
             " (@Model Is NULL OR @Model = Model)";
 
         /// <summary>
         /// sql to update product details
         /// </summary>
-        public static readonly string sqlUpdateProduct = "UPDATE ClubMembers " +
+        public static readonly string sqlUpdateProduct = "UPDATE Products " +
             " Set [Brand] = @Brand, [Model] = @Model, [VIN] = @VIN, [EnteriourColour] = @EnteriourColour, " +
             " [ExteriourColour] = @ExteriourColour, [ModelYear] = @ModelYear, [DLPNetto] = @DLPNetto "+
-            " [DLPBrutto] = @DLPBrutto, [FileName] = @FileName, [SoldNotSold] = @SoldNotSold, [Seller] = @Seller, [Buyer] = @Buyer  " +
+            " [DLPBrutto] = @DLPBrutto, [Seller] = @Seller, [Buyer] = @Buyer  " +
             " Where ([ProductID] = @ProductID)";
 
         /// <summary>
         /// sql to delete a club member record
         /// </summary>
-        public static readonly string sqlDeleteClubMember = "Delete From ClubMember Where (Id = @Id)";
+        public static readonly string sqlDeleteProduct = "Delete From Products Where (ProductID = @ProductID)";
     }
 }

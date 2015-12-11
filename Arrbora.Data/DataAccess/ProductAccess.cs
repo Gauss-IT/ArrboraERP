@@ -57,13 +57,17 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = ProductScripts.sqlInsertProduct;
 
                 // Add the input parameters to the parameter collection
-                oleDbCommand.Parameters.AddWithValue("@Name", product.Price);
-                oleDbCommand.Parameters.AddWithValue("@DateOfBirth", clubMember.DateOfBirth.ToShortDateString());
-                oleDbCommand.Parameters.AddWithValue("@Occupation", (int)clubMember.Occupation);
-                oleDbCommand.Parameters.AddWithValue("@MaritalStatus", (int)clubMember.MaritalStatus);
-                oleDbCommand.Parameters.AddWithValue("@HealthStatus", (int)clubMember.HealthStatus);
-                oleDbCommand.Parameters.AddWithValue("@Salary", clubMember.Salary);
-                oleDbCommand.Parameters.AddWithValue("@NumberOfChildren", clubMember.NumberOfChildren);
+                //oleDbCommand.Parameters.AddWithValue("@ProductID", product.ProductID);
+                oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand);
+                oleDbCommand.Parameters.AddWithValue("@Model", product.Model);
+                oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN);
+                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriourColour);
+                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriourColour);
+                oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear);
+                oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto);
+                oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto);
+                oleDbCommand.Parameters.AddWithValue("@Seller", product.Seller);
+                oleDbCommand.Parameters.AddWithValue("@Buyer", product.Buyer);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
@@ -72,6 +76,7 @@ namespace Arrbora.Data.DataAccess
 
                 return rowsAffected > 0;
             }
+            return true;
         }
 
         /// <summary>
