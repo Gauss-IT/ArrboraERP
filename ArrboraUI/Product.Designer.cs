@@ -45,11 +45,11 @@
             this.txtDLPNetto = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtDLPBrutto = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.lblProductIDShow = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +91,7 @@
             this.txtModel.Location = new System.Drawing.Point(128, 100);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(135, 20);
-            this.txtModel.TabIndex = 1;
+            this.txtModel.TabIndex = 2;
             // 
             // label4
             // 
@@ -107,7 +107,7 @@
             this.txtVIN.Location = new System.Drawing.Point(127, 133);
             this.txtVIN.Name = "txtVIN";
             this.txtVIN.Size = new System.Drawing.Size(135, 20);
-            this.txtVIN.TabIndex = 1;
+            this.txtVIN.TabIndex = 3;
             // 
             // label5
             // 
@@ -123,12 +123,12 @@
             this.txtEnteriorColour.Location = new System.Drawing.Point(128, 166);
             this.txtEnteriorColour.Name = "txtEnteriorColour";
             this.txtEnteriorColour.Size = new System.Drawing.Size(135, 20);
-            this.txtEnteriorColour.TabIndex = 1;
+            this.txtEnteriorColour.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 202);
+            this.label6.Location = new System.Drawing.Point(291, 66);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 0;
@@ -136,15 +136,15 @@
             // 
             // txtExteriorColour
             // 
-            this.txtExteriorColour.Location = new System.Drawing.Point(128, 199);
+            this.txtExteriorColour.Location = new System.Drawing.Point(382, 63);
             this.txtExteriorColour.Name = "txtExteriorColour";
             this.txtExteriorColour.Size = new System.Drawing.Size(135, 20);
-            this.txtExteriorColour.TabIndex = 1;
+            this.txtExteriorColour.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 235);
+            this.label7.Location = new System.Drawing.Point(291, 99);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 0;
@@ -152,15 +152,15 @@
             // 
             // txtModelYear
             // 
-            this.txtModelYear.Location = new System.Drawing.Point(128, 232);
+            this.txtModelYear.Location = new System.Drawing.Point(382, 96);
             this.txtModelYear.Name = "txtModelYear";
             this.txtModelYear.Size = new System.Drawing.Size(135, 20);
-            this.txtModelYear.TabIndex = 1;
+            this.txtModelYear.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(291, 37);
+            this.label8.Location = new System.Drawing.Point(291, 132);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 13);
             this.label8.TabIndex = 0;
@@ -168,15 +168,15 @@
             // 
             // txtDLPNetto
             // 
-            this.txtDLPNetto.Location = new System.Drawing.Point(382, 34);
+            this.txtDLPNetto.Location = new System.Drawing.Point(382, 129);
             this.txtDLPNetto.Name = "txtDLPNetto";
             this.txtDLPNetto.Size = new System.Drawing.Size(135, 20);
-            this.txtDLPNetto.TabIndex = 1;
+            this.txtDLPNetto.TabIndex = 7;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(291, 70);
+            this.label9.Location = new System.Drawing.Point(291, 165);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 13);
             this.label9.TabIndex = 0;
@@ -184,47 +184,30 @@
             // 
             // txtDLPBrutto
             // 
-            this.txtDLPBrutto.Location = new System.Drawing.Point(382, 67);
+            this.txtDLPBrutto.Location = new System.Drawing.Point(382, 162);
             this.txtDLPBrutto.Name = "txtDLPBrutto";
             this.txtDLPBrutto.Size = new System.Drawing.Size(135, 20);
-            this.txtDLPBrutto.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(379, 107);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Seller ";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(379, 137);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(34, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Buyer";
+            this.txtDLPBrutto.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(349, 291);
+            this.button1.Location = new System.Drawing.Point(336, 213);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "OK";
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(442, 291);
+            this.button2.Location = new System.Drawing.Point(442, 213);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
+            this.button2.TabIndex = 0;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lblProductIDShow
             // 
@@ -234,12 +217,34 @@
             this.lblProductIDShow.Size = new System.Drawing.Size(138, 20);
             this.lblProductIDShow.TabIndex = 0;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(232, 213);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Delete";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(128, 213);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "New";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 326);
+            this.ClientSize = new System.Drawing.Size(571, 253);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtDLPBrutto);
             this.Controls.Add(this.txtDLPNetto);
@@ -247,8 +252,6 @@
             this.Controls.Add(this.txtExteriorColour);
             this.Controls.Add(this.txtEnteriorColour);
             this.Controls.Add(this.txtVIN);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtModel);
@@ -287,11 +290,11 @@
         private System.Windows.Forms.TextBox txtDLPNetto;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtDLPBrutto;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblProductIDShow;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

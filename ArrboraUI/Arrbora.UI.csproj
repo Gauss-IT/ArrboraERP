@@ -7,8 +7,8 @@
     <ProjectGuid>{E61B3413-71DC-4267-8B5A-7B185A5A8545}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArrboraUI</RootNamespace>
-    <AssemblyName>ArrboraUI</AssemblyName>
+    <RootNamespace>Arrbora.UI</RootNamespace>
+    <AssemblyName>Arrbora.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IValidateInput.cs" />
     <Compile Include="Payments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +105,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="PurchasePrice.resx">
       <DependentUpon>PurchasePrice.cs</DependentUpon>

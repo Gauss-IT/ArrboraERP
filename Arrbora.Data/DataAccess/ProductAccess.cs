@@ -66,8 +66,6 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear);
                 oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto);
                 oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto);
-                oleDbCommand.Parameters.AddWithValue("@Seller", product.Seller);
-                oleDbCommand.Parameters.AddWithValue("@Buyer", product.Buyer);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();

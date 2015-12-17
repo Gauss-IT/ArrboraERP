@@ -14,7 +14,7 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlGetProductById = "SELECT" +
             " ProductID, Brand, Model, VIN, EnteriourColour, ExteriourColour, ModelYear," +
-            " DLPNetto, DLPBrutto, Seller,Buyer" +
+            " DLPNetto, DLPBrutto" +
             " FROM Products WHERE ProductID = @ProductID";
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlGetAllProducts = "SELECT" +
             " ProductID, Brand, Model, VIN, EnteriourColour,ExteriourColour,ModelYear," +
-            " DLPNetto, DLPBrutto, Seller,Buyer" +
+            " DLPNetto, DLPBrutto" +
             " FROM Products";
 
         /// <summary>
@@ -30,16 +30,16 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlInsertProduct = "INSERT INTO" +
             " Products(Brand, Model, VIN, EnteriourColour,ExteriourColour,ModelYear," +
-            " DLPNetto, DLPBrutto, Seller,Buyer)" +
+            " DLPNetto, DLPBrutto)" +
             " Values(@Brand, @Model, @VIN, @EnteriourColour,@ExteriourColour,@ModelYear," +
-            " @DLPNetto, @DLPBrutto, @Seller,@Buyer)";
+            " @DLPNetto, @DLPBrutto)";
 
         /// <summary>
         /// sql to search for products
         /// </summary>
         public static readonly string sqlSearchProducts = "SELECT " +
             " Products(ProductID, Brand, Model, VIN, EnteriourColour,ExteriourColour,ModelYear," +
-            " DLPNetto, DLPBrutto, Seller,Buyer)" +
+            " DLPNetto, DLPBrutto)" +
             " FROM Products WHERE (@Brand Is NULL OR @Brand = Brand) OR" +
             " (@Model Is NULL OR @Model = Model)";
 
@@ -49,8 +49,8 @@ namespace Arrbora.Data.Sql
         public static readonly string sqlUpdateProduct = "UPDATE Products " +
             " Set [Brand] = @Brand, [Model] = @Model, [VIN] = @VIN, [EnteriourColour] = @EnteriourColour, " +
             " [ExteriourColour] = @ExteriourColour, [ModelYear] = @ModelYear, [DLPNetto] = @DLPNetto "+
-            " [DLPBrutto] = @DLPBrutto, [Seller] = @Seller, [Buyer] = @Buyer  " +
-            " Where ([ProductID] = @ProductID)";
+            " [DLPBrutto] = @DLPBrutto  " +
+            " WHERE ([ProductID] = @ProductID)";
 
         /// <summary>
         /// sql to delete a club member record
