@@ -42,18 +42,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BussinessService\IProductService.cs" />
+    <Compile Include="BussinessService\IProductOverviewService.cs" />
+    <Compile Include="BussinessService\ProductOverviewService.cs" />
     <Compile Include="BussinessService\ProductService.cs" />
     <Compile Include="DataAccess\ConnectionAccess.cs" />
+    <Compile Include="DataAccess\IPaymentUnitAccess.cs" />
     <Compile Include="DataAccess\IProductAccess.cs" />
+    <Compile Include="DataAccess\IProductOverviewAccess.cs" />
+    <Compile Include="DataAccess\PaymentUnitAccess.cs" />
     <Compile Include="DataAccess\ProductAccess.cs" />
+    <Compile Include="DataAccess\ProductOverviewAccess.cs" />
+    <Compile Include="DataModel\PaymentUnitDataModel.cs" />
     <Compile Include="DataModel\ProductDataModel.cs" />
-    <Compile Include="DataModel\ProductOverview.cs" />
+    <Compile Include="DataModel\ProductOverviewDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Sql\PaymentUnitScripts.cs" />
+    <Compile Include="Sql\ProductOverviewScripts.cs" />
     <Compile Include="Sql\ProductScripts.cs" />
   </ItemGroup>
   <ItemGroup>

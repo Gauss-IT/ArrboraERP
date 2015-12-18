@@ -3,8 +3,6 @@
 /// </summary>
 /// 
 using System.Data.OleDb;
-using System.Configuration;
-using System;
 
 namespace Arrbora.Data
 {
