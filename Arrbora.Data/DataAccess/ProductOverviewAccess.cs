@@ -7,6 +7,7 @@ using System.Data;
 using Arrbora.Data.DataModel;
 using System.Data.OleDb;
 using Arrbora.Data.Sql;
+using Arrbora.Data.DataAccess.Interfaces;
 
 namespace Arrbora.Data.DataAccess
 {
@@ -25,9 +26,9 @@ namespace Arrbora.Data.DataAccess
         /// <summary>
         /// Method to delete a product overview by ID
         /// </summary>
-        /// <param name="productManagementID">Product ManagementID</param>
+        /// <param name="SalesManagementID">Product ManagementID</param>
         /// <returns>true / false</returns>
-        public bool DeleteProductByID(int productManagementID)
+        public bool DeleteProductOverviewByID(int SalesManagementID)
         {
             throw new NotImplementedException();
         }
@@ -62,7 +63,7 @@ namespace Arrbora.Data.DataAccess
         /// Method to get a single product overview
         /// </summary>
         /// <returns>Data row</returns>
-        public DataRow GetProductOverviewById(int productManagementID)
+        public DataRow GetProductOverviewById(int SalesManagementID)
         {
             throw new NotImplementedException();
         }
@@ -71,7 +72,7 @@ namespace Arrbora.Data.DataAccess
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        public DataTable SearchProductOverview(object productManagementID, object brand, object model)
+        public DataTable SearchProductOverview(object SalesManagementID, object brand, object model)
         {
             throw new NotImplementedException();
         }

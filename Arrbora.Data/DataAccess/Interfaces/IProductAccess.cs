@@ -5,7 +5,7 @@
 using System.Data;
 using Arrbora.Data.DataModel;
 
-namespace Arrbora.Data.DataAccess
+namespace Arrbora.Data.DataAccess.Interfaces
 {
     /// <summary>
     /// Interface IClubMemberAccess

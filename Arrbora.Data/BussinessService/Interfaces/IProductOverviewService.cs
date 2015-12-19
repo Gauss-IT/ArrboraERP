@@ -5,15 +5,15 @@
 using Arrbora.Data.DataModel;
 using System.Data;
 
-namespace Arrbora.Data.DataAccess
+namespace Arrbora.Data.BussinessService.Interfaces
 {
-    public interface IProductOverviewAccess
+    public interface IProductOverviewService
     {
         /// <summary>
         /// Method to get a single product overview
         /// </summary>
         /// <returns>Data row</returns>
-        DataRow GetProductOverviewById(int productManagementID);
+        DataRow GetProductOverviewById(int SalesManagementID);
 
         /// <summary>
         /// Method to get all products overview
@@ -25,7 +25,7 @@ namespace Arrbora.Data.DataAccess
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable SearchProductOverview(object productManagementID, object brand, object model);
+        DataTable SearchProductOverview(object SalesManagementID, object brand, object model);
 
         /// <summary>
         /// Method to create new product overview
@@ -37,8 +37,9 @@ namespace Arrbora.Data.DataAccess
         /// <summary>
         /// Method to delete a product overview by ID
         /// </summary>
-        /// <param name="productManagementID">Product ManagementID</param>
+        /// <param name="SalesManagementID">Product ManagementID</param>
         /// <returns>true / false</returns>
-        bool DeleteProductByID(int productManagementID);
+        bool DeleteProductByID(int SalesManagementID);
+
     }
 }

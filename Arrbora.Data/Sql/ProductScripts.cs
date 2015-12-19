@@ -53,6 +53,6 @@ namespace Arrbora.Data.Sql
         /// <summary>
         /// sql to delete a club member record
         /// </summary>
-        public static readonly string sqlDeleteProduct = "Delete From Products Where (ProductID = @ProductID)";
+        public static readonly string sqlDeleteProduct = "DELETE FROM Products WHERE (ProductID = @ProductID)";
     }
 }

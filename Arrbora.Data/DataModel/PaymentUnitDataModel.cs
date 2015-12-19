@@ -34,6 +34,11 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets amount
         /// </summary>
+        public string PaymentType { get; set; }
+
+        /// <summary>
+        /// Gets or sets amount
+        /// </summary>
         public string PayedBy { get; set; }
 
         /// <summary>

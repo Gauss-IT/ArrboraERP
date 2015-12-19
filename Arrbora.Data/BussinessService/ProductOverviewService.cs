@@ -1,9 +1,10 @@
-﻿using Arrbora.Data.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/// <summary>
+/// Copyright Arrbora DOO
+/// </summary>
+
+using Arrbora.Data.BussinessService.Interfaces;
+using Arrbora.Data.DataAccess;
+using Arrbora.Data.DataAccess.Interfaces;
 using Arrbora.Data.DataModel;
 using System.Data;
 
@@ -29,9 +30,9 @@ namespace Arrbora.Data.BussinessService
             return productOverviewAccess.AddProductOverview(productOverview);
         }
 
-        public bool DeleteProductByID(int productManagementID)
+        public bool DeleteProductByID(int SalesManagementID)
         {
-            return productOverviewAccess.DeleteProductByID(productManagementID);
+            return productOverviewAccess.DeleteProductOverviewByID(SalesManagementID);
         }
 
         public DataTable GetAllProductOverview()
@@ -39,14 +40,14 @@ namespace Arrbora.Data.BussinessService
             return productOverviewAccess.GetAllProductOverview();
         }
 
-        public DataRow GetProductOverviewById(int productManagementID)
+        public DataRow GetProductOverviewById(int SalesManagementID)
         {
-            return productOverviewAccess.GetProductOverviewById(productManagementID);
+            return productOverviewAccess.GetProductOverviewById(SalesManagementID);
         }
 
-        public DataTable SearchProductOverview(object productManagementID, object brand, object model)
+        public DataTable SearchProductOverview(object SalesManagementID, object brand, object model)
         {
-            return productOverviewAccess.SearchProductOverview(productManagementID, brand, model);
+            return productOverviewAccess.SearchProductOverview(SalesManagementID, brand, model);
         }
     }
 }

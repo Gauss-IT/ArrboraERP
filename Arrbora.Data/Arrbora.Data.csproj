@@ -41,19 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BussinessService\IProductService.cs" />
-    <Compile Include="BussinessService\IProductOverviewService.cs" />
+    <Compile Include="BussinessService\Interfaces\IPaymentUnitService.cs" />
+    <Compile Include="BussinessService\Interfaces\IProductService.cs" />
+    <Compile Include="BussinessService\Interfaces\IProductOverviewService.cs" />
+    <Compile Include="BussinessService\Interfaces\ISalesManagementService.cs" />
+    <Compile Include="BussinessService\PaymentUnitService.cs" />
     <Compile Include="BussinessService\ProductOverviewService.cs" />
     <Compile Include="BussinessService\ProductService.cs" />
+    <Compile Include="BussinessService\SalesManagementService.cs" />
     <Compile Include="DataAccess\ConnectionAccess.cs" />
-    <Compile Include="DataAccess\IPaymentUnitAccess.cs" />
-    <Compile Include="DataAccess\IProductAccess.cs" />
-    <Compile Include="DataAccess\IProductOverviewAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\ISalesManagementAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\IPaymentUnitAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\IProductAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\IProductOverviewAccess.cs" />
     <Compile Include="DataAccess\PaymentUnitAccess.cs" />
     <Compile Include="DataAccess\ProductAccess.cs" />
+    <Compile Include="DataAccess\SalesManagementAccess.cs" />
     <Compile Include="DataAccess\ProductOverviewAccess.cs" />
     <Compile Include="DataModel\PaymentUnitDataModel.cs" />
     <Compile Include="DataModel\ProductDataModel.cs" />
+    <Compile Include="DataModel\SalesManagementDataModel.cs" />
     <Compile Include="DataModel\ProductOverviewDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -62,6 +69,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Sql\PaymentUnitScripts.cs" />
+    <Compile Include="Sql\SalesManagementScripts.cs" />
     <Compile Include="Sql\ProductOverviewScripts.cs" />
     <Compile Include="Sql\ProductScripts.cs" />
   </ItemGroup>

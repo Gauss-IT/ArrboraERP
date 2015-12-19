@@ -9,7 +9,7 @@
         /// <summary>
         /// Gets product management ID
         /// </summary>
-        public int ProductManagementID { get;}
+        public int SalesManagementID { get;}
 
         /// <summary>
         /// Gets Brand

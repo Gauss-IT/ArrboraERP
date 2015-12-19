@@ -5,6 +5,8 @@
 using System.Data;
 using Arrbora.Data.DataModel;
 using Arrbora.Data.DataAccess;
+using Arrbora.Data.DataAccess.Interfaces;
+using Arrbora.Data.BussinessService.Interfaces;
 
 namespace Arrbora.Data.BussinessService
 {
@@ -22,6 +24,7 @@ namespace Arrbora.Data.BussinessService
         {
             productAccess = new ProductAccess();
         }
+
         /// <summary>
         /// Method to get a single product
         /// </summary>

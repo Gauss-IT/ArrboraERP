@@ -1,54 +1,54 @@
-﻿
-using Arrbora.Data.DataModel;
-/// <summary>
+﻿/// <summary>
 /// Copyright Arrbora DOO
 /// </summary>
+
+using Arrbora.Data.DataModel;
 using System.Data;
 
-namespace Arrbora.Data.DataAccess
+namespace Arrbora.Data.BussinessService.Interfaces
 {
     /// <summary>
-    /// Interface for the payment unit table
+    /// Interface for the product service
     /// </summary>
-    public interface IPaymentUnitAccess
+    public interface IProductService
     {
         /// <summary>
-        /// Method to get a single payment unit
+        /// Method to get a single product
         /// </summary>
         /// <returns>Data row</returns>
-        DataRow GetPaymentUnitById(int PaymentUnitID);
+        DataRow GetProductById(int Id);
 
         /// <summary>
-        /// Method to get all payment units
+        /// Method to get all products
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable GetAllPaymentUnits();
+        DataTable GetAllProducts();
 
         /// <summary>
-        /// Method to get all payment units that belong to one payment
+        /// Method to search club products by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable GetAllPaymentUnitsForPayment(int paymentID);
+        DataTable SearchProducts(object brand, object model);
 
         /// <summary>
-        /// Method to create new payment unit
+        /// Method to create new product
         /// </summary>
         /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
-        bool AddPaymentUnit(PaymentUnitDataModel paymentUnit);
+        bool AddProduct(ProductDataModel product);
 
         /// <summary>
         /// Method to updateproduct details
         /// </summary>
         /// <param name="product">club member</param>
         /// <returns></returns>
-        bool UpdatePaymentUnit(PaymentUnitDataModel paymentUnit);
+        bool UpdateProduct(ProductDataModel product);
 
         /// <summary>
         /// Method to delete a club member
         /// </summary>
         /// <param name="id">member id</param>
         /// <returns>true / false</returns>
-        bool DeletePaymentUnitByID(int paymentUnitID);
+        bool DeleteProductByID(int id);
     }
 }

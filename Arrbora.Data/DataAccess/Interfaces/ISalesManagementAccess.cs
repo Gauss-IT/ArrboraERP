@@ -1,50 +1,56 @@
-﻿using Arrbora.Data.DataModel;
+﻿/// <summary>
+/// Copyright Arrbora DOO
+/// </summary>
+
+using Arrbora.Data.DataModel;
 using System.Data;
 
-namespace Arrbora.Data.BussinessService
+namespace Arrbora.Data.DataAccess.Interfaces
 {
     /// <summary>
-    /// Interface for the product service
+    /// Interface ISalesManagementDataAccess
     /// </summary>
-    public interface IProductService
+    public interface ISalesManagementAccess
     {
         /// <summary>
-        /// Method to get a single product
+        /// Method to get a single product management row by ID
         /// </summary>
         /// <returns>Data row</returns>
-        DataRow GetProductById(int Id);
-
+        DataRow GetSalesManagementById(int salesManagementID);
+        
         /// <summary>
         /// Method to get all products
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable GetAllProducts();
+        DataTable GetAllSalesManagement();
 
         /// <summary>
         /// Method to search club products by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable SearchProducts(object brand, object model);
+        DataTable SearchSalesManagement(object productID, object productDeliveryInfoID, 
+                                    object paymentID, object purchasePriceID);
 
         /// <summary>
         /// Method to create new product
         /// </summary>
         /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
-        bool AddProduct(ProductDataModel product);
+        bool AddSalesManagement(SalesManagementDataModel salesManagement);
 
         /// <summary>
         /// Method to updateproduct details
         /// </summary>
         /// <param name="product">club member</param>
         /// <returns></returns>
-        bool UpdateProduct(ProductDataModel product);
+        bool UpdateSalesManagement(SalesManagementDataModel salesManagement);
 
         /// <summary>
         /// Method to delete a club member
         /// </summary>
         /// <param name="id">member id</param>
         /// <returns>true / false</returns>
-        bool DeleteProductByID(int id);
+        bool DeleteSalesManagementByID(int salesManagementID);
+
     }
 }

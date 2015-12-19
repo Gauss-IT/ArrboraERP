@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.OleDb;
 using Arrbora.Data.DataModel;
 using Arrbora.Data.Sql;
+using Arrbora.Data.DataAccess.Interfaces;
 
 namespace Arrbora.Data.DataAccess
 {
@@ -52,8 +53,7 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandType = CommandType.Text;
                 oleDbCommand.CommandText = ProductScripts.sqlInsertProduct;
 
-                // Add the input parameters to the parameter collection
-                //oleDbCommand.Parameters.AddWithValue("@ProductID", product.ProductID);
+                // Add the input parameters to the parameter collection                
                 oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand);
                 oleDbCommand.Parameters.AddWithValue("@Model", product.Model);
                 oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN);
@@ -70,7 +70,6 @@ namespace Arrbora.Data.DataAccess
 
                 return rowsAffected > 0;
             }
-            return true;
         }
 
         /// <summary>
@@ -78,7 +77,23 @@ namespace Arrbora.Data.DataAccess
         /// </summary>
         public bool DeleteProductByID(int ProductID)
         {
-            throw new NotImplementedException();
+            using (OleDbCommand dbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                dbCommand.Connection = new OleDbConnection(this.ConnectionString);
+                dbCommand.CommandType = CommandType.Text;
+                dbCommand.CommandText = ProductScripts.sqlDeleteProduct;
+
+                // Add the input parameter to the parameter collection
+                dbCommand.Parameters.AddWithValue("@ProductID", ProductID);
+
+                // Open the connection, execute the query and close the connection
+                dbCommand.Connection.Open();
+                var rowsAffected = dbCommand.ExecuteNonQuery();
+                dbCommand.Connection.Close();
+
+                return rowsAffected > 0;
+            }
         }
 
         /// <summary>
@@ -142,7 +157,30 @@ namespace Arrbora.Data.DataAccess
         /// </summary>
         public bool UpdateProduct(ProductDataModel product)
         {
-            throw new NotImplementedException();
+            using (OleDbCommand oleDbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbCommand.CommandType = CommandType.Text;
+                oleDbCommand.CommandText = ProductScripts.sqlUpdateProduct;
+
+                // Add the input parameters to the parameter collection
+                oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand);
+                oleDbCommand.Parameters.AddWithValue("@Model", product.Model);
+                oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN);
+                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriourColour);
+                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriourColour);
+                oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear);
+                oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto);
+                oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto);
+
+                // Open the connection, execute the query and close the connection
+                oleDbCommand.Connection.Open();
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                oleDbCommand.Connection.Close();
+
+                return rowsAffected > 0;
+            }
         }
     }
 }

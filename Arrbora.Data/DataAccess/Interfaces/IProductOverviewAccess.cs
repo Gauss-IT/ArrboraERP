@@ -1,20 +1,19 @@
-﻿using Arrbora.Data.DataModel;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/// <summary>
+/// Copyright Arrbora DOO
+/// </summary>
 
-namespace Arrbora.Data.BussinessService
+using Arrbora.Data.DataModel;
+using System.Data;
+
+namespace Arrbora.Data.DataAccess.Interfaces
 {
-    public interface IProductOverviewService
+    public interface IProductOverviewAccess
     {
         /// <summary>
         /// Method to get a single product overview
         /// </summary>
         /// <returns>Data row</returns>
-        DataRow GetProductOverviewById(int productManagementID);
+        DataRow GetProductOverviewById(int SalesManagementID);
 
         /// <summary>
         /// Method to get all products overview
@@ -26,7 +25,7 @@ namespace Arrbora.Data.BussinessService
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable SearchProductOverview(object productManagementID, object brand, object model);
+        DataTable SearchProductOverview(object SalesManagementID, object brand, object model);
 
         /// <summary>
         /// Method to create new product overview
@@ -38,9 +37,8 @@ namespace Arrbora.Data.BussinessService
         /// <summary>
         /// Method to delete a product overview by ID
         /// </summary>
-        /// <param name="productManagementID">Product ManagementID</param>
+        /// <param name="SalesManagementID">Product ManagementID</param>
         /// <returns>true / false</returns>
-        bool DeleteProductByID(int productManagementID);
-
+        bool DeleteProductOverviewByID(int SalesManagementID);
     }
 }

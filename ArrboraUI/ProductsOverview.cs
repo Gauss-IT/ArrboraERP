@@ -69,5 +69,15 @@ namespace Arrbora.UI
             var frm = new frmProduct(product);
             frm.Show();
         }
+
+        private void addProductOverviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var productOverviewService = new ProductOverviewService();
+            var productOverview = new ProductOverviewDataModel(); 
+            productOverviewService.AddProductOverview(productOverview);
+
+            DataTable data = productOverviewService.GetAllProductOverview();
+            LoadDataGridView(data);
+        }
     }
 }
