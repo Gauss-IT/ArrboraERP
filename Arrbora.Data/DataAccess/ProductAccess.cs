@@ -65,10 +65,49 @@ namespace Arrbora.Data.DataAccess
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
-                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();                
                 oleDbCommand.Connection.Close();
 
                 return rowsAffected > 0;
+            }
+        }
+
+        /// <summary>
+        /// Method to create new empty product
+        /// </summary>
+        /// <returns>ProductID of the inserted row</returns>
+        public int AddEmptyProduct()
+        {
+            var result = 0;
+            using (OleDbCommand oleDbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbCommand.CommandType = CommandType.Text;
+                oleDbCommand.CommandText = ProductScripts.sqlInsertProduct;
+
+                // Add the input parameters to the parameter collection                
+                oleDbCommand.Parameters.AddWithValue("@Brand", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Model", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@VIN", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@ModelYear", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DLPNetto", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DLPBrutto", DBNull.Value);
+
+                // Open the connection, execute the query and close the connection
+                oleDbCommand.Connection.Open();
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                if (rowsAffected == 0) result = -1;
+                else
+                {
+                    oleDbCommand.CommandText = GeneralScripts.sqlGetIdentityOfInsertedRow;
+                    result = (int)oleDbCommand.ExecuteScalar();
+                }
+                oleDbCommand.Connection.Close();
+
+                return result;
             }
         }
 

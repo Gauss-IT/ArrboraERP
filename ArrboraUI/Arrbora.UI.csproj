@@ -79,6 +79,12 @@
     <Compile Include="PurchasePrice.Designer.cs">
       <DependentUpon>PurchasePrice.cs</DependentUpon>
     </Compile>
+    <Compile Include="SalesManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesManagement.Designer.cs">
+      <DependentUpon>SalesManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="SellingPrice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     <EmbeddedResource Include="PurchasePrice.resx">
       <DependentUpon>PurchasePrice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SalesManagement.resx">
+      <DependentUpon>SalesManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SellingPrice.resx">
       <DependentUpon>SellingPrice.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +136,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arrbora.BusinessLogic\Arrbora.BusinessLogic.csproj">
+      <Project>{1b576ccc-3942-4e3e-82c0-a15a233dd166}</Project>
+      <Name>Arrbora.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Arrbora.Data\Arrbora.Data.csproj">
       <Project>{3c42c765-1248-469d-8103-a8268d9b50e0}</Project>
       <Name>Arrbora.Data</Name>

@@ -72,12 +72,20 @@ namespace Arrbora.UI
 
         private void addProductOverviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var productOverviewService = new ProductOverviewService();
-            var productOverview = new ProductOverviewDataModel(); 
-            productOverviewService.AddProductOverview(productOverview);
+            var salesManagementService = new SalesManagementService();
+            var salesManagement = new SalesManagementDataModel();
+            salesManagementService.AddSalesManagement(salesManagement);
 
+            var productOverviewService = new ProductOverviewService();
             DataTable data = productOverviewService.GetAllProductOverview();
             LoadDataGridView(data);
+        }
+
+        private void dataGridViewProductOverview_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var salesManagement = new SalesManagementDataModel();
+            var frmSalesManagement = new frmSalesManagement(salesManagement);
+            frmSalesManagement.Show();
         }
     }
 }

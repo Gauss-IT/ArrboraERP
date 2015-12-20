@@ -2,15 +2,15 @@
 /// Copyright Arrbora DOO
 /// </summary>
 
-using System.Data;
 using Arrbora.Data.DataModel;
+using System.Data;
 
-namespace Arrbora.Data.DataAccess.Interfaces
+namespace Arrbora.Data.BussinessService.Interfaces
 {
     /// <summary>
-    /// Interface IClubMemberAccess
+    /// Interface for the product service
     /// </summary>
-    public interface IProductAccess
+    public interface IProductService
     {
         /// <summary>
         /// Method to get a single product
@@ -36,12 +36,6 @@ namespace Arrbora.Data.DataAccess.Interfaces
         /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
         bool AddProduct(ProductDataModel product);
-
-        /// <summary>
-        /// Method to create new empty product
-        /// </summary>
-        /// <returns>ProductID of the inserted row</returns>
-        int AddEmptyProduct();
 
         /// <summary>
         /// Method to updateproduct details

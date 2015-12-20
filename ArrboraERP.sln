@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrbora.UI", "ArrboraUI\Arr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrbora.Data", "Arrbora.Data\Arrbora.Data.csproj", "{3C42C765-1248-469D-8103-A8268D9B50E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrbora.BusinessLogic", "Arrbora.BusinessLogic\Arrbora.BusinessLogic.csproj", "{1B576CCC-3942-4E3E-82C0-A15A233DD166}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,18 @@ Global
 		{3C42C765-1248-469D-8103-A8268D9B50E0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3C42C765-1248-469D-8103-A8268D9B50E0}.Release|x86.ActiveCfg = Release|Any CPU
 		{3C42C765-1248-469D-8103-A8268D9B50E0}.Release|x86.Build.0 = Release|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Debug|x86.Build.0 = Debug|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Release|x86.ActiveCfg = Release|Any CPU
+		{1B576CCC-3942-4E3E-82C0-A15A233DD166}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
