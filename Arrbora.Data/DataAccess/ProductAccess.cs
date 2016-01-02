@@ -28,7 +28,6 @@ namespace Arrbora.Data.DataAccess
                 oleDbDataAdapter.SelectCommand = new OleDbCommand();
                 oleDbDataAdapter.SelectCommand.Connection = new OleDbConnection(ConnectionString);
                 var state = oleDbDataAdapter.SelectCommand.Connection.State;
-                //oleDbDataAdapter.SelectCommand.Connection.Open();
                 oleDbDataAdapter.SelectCommand.CommandType = CommandType.Text;
 
                 // Assign the SQL to the command object
@@ -78,7 +77,7 @@ namespace Arrbora.Data.DataAccess
         /// <returns>ProductID of the inserted row</returns>
         public int AddEmptyProduct()
         {
-            var result = 0;
+            var result = -1;
             using (OleDbCommand oleDbCommand = new OleDbCommand())
             {
                 // Set the command object properties
@@ -220,6 +219,28 @@ namespace Arrbora.Data.DataAccess
 
                 return rowsAffected > 0;
             }
+        }
+
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="productRow"></param>
+        /// <returns></returns>
+        public ProductDataModel ConvertToDataModel(DataRow productRow)
+        {
+            var result = new ProductDataModel();
+
+            result.ProductID = productRow.Field<int>("ProductID");
+            result.Brand = productRow.Field<string>("Brand");
+            result.Model = productRow.Field<string>("Model");
+            result.VIN = productRow.Field<decimal>("VIN");
+            result.EnteriourColour = productRow.Field<string>("EnteriourColour");
+            result.ExteriourColour = productRow.Field<string>("ExteriourColour");
+            result.ModelYear = productRow.Field<int>("ModelYear");
+            result.DLPNetto = productRow.Field<decimal>("DLPNetto");
+            result.DLPBrutto = productRow.Field<decimal>("DLPBrutto");
+
+            return result;
         }
     }
 }

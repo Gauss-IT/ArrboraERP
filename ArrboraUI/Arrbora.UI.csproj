@@ -47,24 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IValidateInput.cs" />
-    <Compile Include="Payments.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Payments.Designer.cs">
-      <DependentUpon>Payments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentUnit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PaymentUnit.Designer.cs">
-      <DependentUpon>PaymentUnit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductsOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,33 +55,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchasePrice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchasePrice.Designer.cs">
-      <DependentUpon>PurchasePrice.cs</DependentUpon>
-    </Compile>
     <Compile Include="SalesManagement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SalesManagement.Designer.cs">
       <DependentUpon>SalesManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="SellingPrice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SellingPrice.Designer.cs">
-      <DependentUpon>SellingPrice.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Payments.resx">
-      <DependentUpon>Payments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PaymentUnit.resx">
-      <DependentUpon>PaymentUnit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Product.resx">
-      <DependentUpon>Product.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductsOverview.resx">
       <DependentUpon>ProductsOverview.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,14 +74,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="PurchasePrice.resx">
-      <DependentUpon>PurchasePrice.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SalesManagement.resx">
       <DependentUpon>SalesManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SellingPrice.resx">
-      <DependentUpon>SellingPrice.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

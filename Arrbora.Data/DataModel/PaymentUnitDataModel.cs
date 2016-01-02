@@ -29,7 +29,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets amount
         /// </summary>
-        public float Amount { get; set; }
+        public decimal Amount { get; set; }
 
         /// <summary>
         /// Gets or sets amount

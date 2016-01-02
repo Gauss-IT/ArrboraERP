@@ -24,21 +24,21 @@
         /// <summary>
         /// Gets VIN number
         /// </summary>
-        public int VIN { get; }
+        public decimal VIN { get; }
 
         /// <summary>
         /// Gets purchase price
         /// </summary>
-        public int PurchasePrice { get; }
+        public decimal PurchasePrice { get; }
 
         /// <summary>
         /// Gets selling price
         /// </summary>
-        public int SellingPrice { get; }
+        public decimal SellingPrice { get; }
 
         /// <summary>
         /// Gets total payment
         /// </summary>
-        public int TotalPayment { get; }
+        public decimal TotalPayment { get; }
     }
 }

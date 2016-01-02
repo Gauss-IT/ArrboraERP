@@ -83,7 +83,6 @@ namespace Arrbora.Data.DataAccess
                 oleDbDataAdapter.SelectCommand = new OleDbCommand();
                 oleDbDataAdapter.SelectCommand.Connection = new OleDbConnection(ConnectionString);
                 var state = oleDbDataAdapter.SelectCommand.Connection.State;
-                //oleDbDataAdapter.SelectCommand.Connection.Open();
                 oleDbDataAdapter.SelectCommand.CommandType = CommandType.Text;
 
                 // Assign the SQL to the command object
@@ -167,7 +166,7 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandType = CommandType.Text;
                 oleDbCommand.CommandText = PaymentUnitScripts.sqlUpdatePaymentUnit;
 
-                // Add the input parameters to the parameter collection               
+                // Add the input parameters to the parameter collection   
                 oleDbCommand.Parameters.AddWithValue("@PaymentUnitID", paymentUnit.PaymentUnitID);
                 oleDbCommand.Parameters.AddWithValue("@PaymentID", paymentUnit.PaymentID);
                 oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", paymentUnit.PaymentUnitDate);
@@ -183,6 +182,24 @@ namespace Arrbora.Data.DataAccess
 
                 return rowsAffected > 0;
             }
+        }
+
+
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="salesManagementRow"></param>
+        /// <returns></returns>
+        public PaymentUnitDataModel ConvertToDataModel(DataRow paymentUnitRow)
+        {
+            var result = new PaymentUnitDataModel();
+            result.PaymentID= paymentUnitRow.Field<int>("PaymentID");
+            result.PaymentUnitDate = paymentUnitRow.Field<DateTime>("PaymentUnitDate");
+            result.Amount = paymentUnitRow.Field<decimal>("Amount");
+            result.PaymentType = paymentUnitRow.Field<string>("PaymentType");
+            result.PayedBy = paymentUnitRow.Field<string>("PayedBy");
+            result.Note = paymentUnitRow.Field<string>("Note");
+            return result;
         }
     }
 }

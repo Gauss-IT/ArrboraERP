@@ -13,20 +13,31 @@ namespace Arrbora.UI
 {
     public partial class ProductsOverview : Form
     {
+        //An instance of a product overview class
+        private ProductOverviewService _productOverviewService;
+
+        //An instance of a sales management class
+        private SalesManagementService _salesManagementService;
+
+        //An instance of a sales management class
+        private DataTable _dataGridTable;
+
         /// <summary>
         /// Constructor
         /// </summary>
         public ProductsOverview()
         {
-            InitializeComponent();
-            Show();
-            var productService = new ProductService();
-            productService.GetAllProducts();
+            InitializeComponent();           
 
             var productOverviewService = new ProductOverviewService();
-            DataTable data = productOverviewService.GetAllProductOverview();
+            _salesManagementService = new SalesManagementService();
+            _productOverviewService = new ProductOverviewService();
+
+            _dataGridTable = productOverviewService.GetAllProductOverview();
             InitilizeDataGridViewStyle();
-            LoadDataGridView(data);
+            LoadDataGridView(_dataGridTable);
+
+            Show();
         }
 
         /// <summary>
@@ -58,34 +69,42 @@ namespace Arrbora.UI
             dataGridViewProductOverview.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-        /// <summary>
-        /// Event handler for a new product
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button6_Click(object sender, EventArgs e)
-        {
-            var product = new ProductDataModel();
-            var frm = new frmProduct(product);
-            frm.Show();
-        }
 
         private void addProductOverviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var salesManagementService = new SalesManagementService();
-            var salesManagement = new SalesManagementDataModel();
-            salesManagementService.AddSalesManagement(salesManagement);
+            //_dataGridTable;
+            //var salesManagementService = new SalesManagementService();
+            //var salesManagement = new SalesManagementDataModel();
+            //salesManagementService.AddSalesManagement(salesManagement);
 
             var productOverviewService = new ProductOverviewService();
             DataTable data = productOverviewService.GetAllProductOverview();
+            //var data = new DataTable();
             LoadDataGridView(data);
         }
 
-        private void dataGridViewProductOverview_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void dataGridViewProductOverview_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var salesManagement = new SalesManagementDataModel();
-            var frmSalesManagement = new frmSalesManagement(salesManagement);
+            var selectedColumn = _dataGridTable.Columns[e.ColumnIndex].ColumnName.ToString();
+            var activeTab = SelectActiveTabFromColumn(selectedColumn);
+
+            var selectedRowID
+                = _dataGridTable.Rows[e.RowIndex].Field<int>("SalesManagementID");
+            var selectedSalesManagement = _salesManagementService.GetSalesManagementById(selectedRowID);
+
+            var salesManagementDataModel = _salesManagementService.ConvertToDataModel(selectedSalesManagement);
+            var frmSalesManagement = new frmSalesManagement(salesManagementDataModel);
             frmSalesManagement.Show();
+        }
+
+        private void dataGridViewProductOverview_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+           
+        }
+
+        private string SelectActiveTabFromColumn(string columnName)
+        {
+            return string.Empty;
         }
     }
 }

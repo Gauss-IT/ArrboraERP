@@ -52,5 +52,12 @@ namespace Arrbora.Data.DataAccess.Interfaces
         /// <returns>true / false</returns>
         bool DeleteSalesManagementByID(int salesManagementID);
 
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="salesManagementRow"></param>
+        /// <returns></returns>
+        SalesManagementDataModel ConvertToDataModel(DataRow salesManagementRow);
+
     }
 }

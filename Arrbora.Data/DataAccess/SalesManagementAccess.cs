@@ -166,6 +166,11 @@ namespace Arrbora.Data.DataAccess
             
         }
 
+        /// <summary>
+        /// Update a row in the sales management table
+        /// </summary>
+        /// <param name="salesManagement"></param>
+        /// <returns></returns>
         public bool UpdateSalesManagement(SalesManagementDataModel salesManagement)
         {
             using (OleDbCommand oleDbCommand = new OleDbCommand())
@@ -188,6 +193,25 @@ namespace Arrbora.Data.DataAccess
 
                 return rowsAffected > 0;
             }
+        }
+
+
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="salesManagementRow"></param>
+        /// <returns></returns>
+        public SalesManagementDataModel ConvertToDataModel(DataRow salesManagementRow)
+        {
+            var result = new SalesManagementDataModel();
+
+            result.SalesManagementID = salesManagementRow.Field<int>("SalesManagementID");
+            result.ProductID = salesManagementRow.Field<int>("ProductID");
+            result.ProductDeliveryInfoID = salesManagementRow.Field<int>("ProductDeliveryInfoID");
+            result.PaymentID = salesManagementRow.Field<int>("PaymentID");
+            result.PurchasePriceID = salesManagementRow.Field<int>("PurchasePriceID");
+
+            return result;
         }
     }
 }

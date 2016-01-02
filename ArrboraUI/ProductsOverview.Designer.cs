@@ -41,7 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,18 +52,18 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importFromExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productsOverviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detailedReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paymentsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductOverview)).BeginInit();
             this.productOverviewContextMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -87,7 +86,8 @@
             this.dataGridViewProductOverview.RowTemplate.ContextMenuStrip = this.productOverviewContextMenuStrip;
             this.dataGridViewProductOverview.Size = new System.Drawing.Size(962, 306);
             this.dataGridViewProductOverview.TabIndex = 0;
-            this.dataGridViewProductOverview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewProductOverview_MouseDoubleClick);
+            this.dataGridViewProductOverview.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewProductOverview_CellContextMenuStripNeeded);
+            this.dataGridViewProductOverview.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProductOverview_CellDoubleClick);
             // 
             // productOverviewContextMenuStrip
             // 
@@ -179,17 +179,6 @@
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 3;
             this.label12.Text = "Reference nr.";
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(1112, 310);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(86, 23);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "New Product ";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // comboBox1
             // 
@@ -297,6 +286,12 @@
             this.saveDatabaseToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.saveDatabaseToolStripMenuItem.Text = "Save Database";
             // 
+            // importFromDatabaseToolStripMenuItem
+            // 
+            this.importFromDatabaseToolStripMenuItem.Name = "importFromDatabaseToolStripMenuItem";
+            this.importFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.importFromDatabaseToolStripMenuItem.Text = "Import From Database";
+            // 
             // saveToExcelToolStripMenuItem
             // 
             this.saveToExcelToolStripMenuItem.Name = "saveToExcelToolStripMenuItem";
@@ -320,26 +315,6 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // importFromDatabaseToolStripMenuItem
-            // 
-            this.importFromDatabaseToolStripMenuItem.Name = "importFromDatabaseToolStripMenuItem";
-            this.importFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.importFromDatabaseToolStripMenuItem.Text = "Import From Database";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem.Text = "About...";
             // 
             // reportsToolStripMenuItem
             // 
@@ -376,6 +351,20 @@
             this.paymentsReportToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.paymentsReportToolStripMenuItem.Text = "Payments Report";
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.aboutToolStripMenuItem.Text = "About...";
+            // 
             // ProductsOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,7 +376,6 @@
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -418,7 +406,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ContextMenuStrip productOverviewContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem addProductOverviewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteProductOverviewToolStripMenuItem;

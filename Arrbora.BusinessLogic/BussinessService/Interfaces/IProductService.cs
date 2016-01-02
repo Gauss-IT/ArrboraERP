@@ -50,5 +50,12 @@ namespace Arrbora.Data.BussinessService.Interfaces
         /// <param name="id">member id</param>
         /// <returns>true / false</returns>
         bool DeleteProductByID(int id);
+
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="paymentUnitRow"></param>
+        /// <returns></returns>
+        ProductDataModel ConvertToDataModel(DataRow paymentUnitRow);
     }
 }

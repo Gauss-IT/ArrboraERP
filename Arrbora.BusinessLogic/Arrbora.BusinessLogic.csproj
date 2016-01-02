@@ -48,7 +48,6 @@
     <Compile Include="BussinessService\ProductOverviewService.cs" />
     <Compile Include="BussinessService\ProductService.cs" />
     <Compile Include="BussinessService\SalesManagementService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

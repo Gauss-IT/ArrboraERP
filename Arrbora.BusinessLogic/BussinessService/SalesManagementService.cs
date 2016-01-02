@@ -88,5 +88,15 @@ namespace Arrbora.Data.BussinessService
         {
             return salesManagementAccess.UpdateSalesManagement(salesManagement);
         }
+
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="salesManagementRow"></param>
+        /// <returns></returns>
+        public SalesManagementDataModel ConvertToDataModel(DataRow salesManagementRow)
+        {
+            return salesManagementAccess.ConvertToDataModel(salesManagementRow);
+        }
     }
 }

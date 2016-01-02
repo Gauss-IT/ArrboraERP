@@ -55,5 +55,15 @@ namespace Arrbora.Data.BussinessService
         {
             return paymentUnitAccess.UpdatePaymentUnit(paymentUnit);
         }
+
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="salesManagementRow"></param>
+        /// <returns></returns>
+        public PaymentUnitDataModel ConvertToDataModel(DataRow paymentUnitRow)
+        {
+            return paymentUnitAccess.ConvertToDataModel(paymentUnitRow);
+        }
     }
 }

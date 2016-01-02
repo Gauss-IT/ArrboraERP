@@ -81,5 +81,15 @@ namespace Arrbora.Data.BussinessService
         {
             return productAccess.DeleteProductByID(id);
         }
+
+        /// <summary>
+        /// Converts a Data row from the database table to sales management model
+        /// </summary>
+        /// <param name="paymentUnitRow"></param>
+        /// <returns></returns>
+        public ProductDataModel ConvertToDataModel(DataRow productRow)
+        {
+            return productAccess.ConvertToDataModel(productRow);
+        }
     }
 }

@@ -8,21 +8,21 @@ using System.Data;
 namespace Arrbora.Data.DataAccess.Interfaces
 {
     /// <summary>
-    /// Interface for the payment unit table
+    /// Interface for the payment table
     /// </summary>
-    public interface IPaymentUnitAccess
+    public interface IPaymentAccess
     {
         /// <summary>
         /// Method to get a single payment unit
         /// </summary>
         /// <returns>Data row</returns>
-        DataRow GetPaymentUnitById(int paymentUnitID);
+        DataRow GetPaymentById(int paymentID);
 
         /// <summary>
-        /// Method to get all payment units
+        /// Method to get all payments
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable GetAllPaymentUnits();
+        DataTable GetAllPayments();
 
         /// <summary>
         /// Method to get all payment units that belong to one payment
@@ -31,32 +31,31 @@ namespace Arrbora.Data.DataAccess.Interfaces
         DataTable GetAllPaymentUnitsForPayment(int paymentID);
 
         /// <summary>
-        /// Method to create new payment unit
+        /// Method to create new payment
         /// </summary>
-        /// <param name="paymentUnit">payment unit model</param>
+        /// <param name="payment">payment data model</param>
         /// <returns>true or false</returns>
-        bool AddPaymentUnit(PaymentUnitDataModel paymentUnit);
+        bool AddPayment(PaymentDataModel payment);
 
         /// <summary>
         /// Method to update payment unit details
         /// </summary>
-        /// <param name="paymentUnit">payment unit model</param>
+        /// <param name="payment">payment model</param>
         /// <returns></returns>
-        bool UpdatePaymentUnit(PaymentUnitDataModel paymentUnit);
+        bool UpdatePayment(PaymentDataModel payment);
 
         /// <summary>
-        /// Method to delete a payment unit
+        /// Method to delete a payment
         /// </summary>
-        /// <param name="paymentUnitID">member id</param>
+        /// <param name="paymentID">payment id</param>
         /// <returns>true / false</returns>
-        bool DeletePaymentUnitByID(int paymentUnitID);
-
+        bool DeletePaymentByID(int paymentID);
 
         /// <summary>
-        /// Converts a Data row from the database table to payment unit model
+        /// Converts a Data row from the database table to payment model
         /// </summary>
         /// <param name="salesManagementRow"></param>
         /// <returns></returns>
-        PaymentUnitDataModel ConvertToDataModel(DataRow paymentUnitRow);
+        PaymentDataModel ConvertToDataModel(DataRow paymentUnitRow);
     }
 }
