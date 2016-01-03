@@ -28,7 +28,7 @@ namespace Arrbora.Data.BussinessService.Interfaces
         /// Method to search sales management by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable SearchSalesManagement(object productID, object productDeliveryInfoID,
+        DataTable SearchSalesManagement(object productID, object productDeliveryID,
                                     object paymentID, object purchasePriceID);
 
         /// <summary>

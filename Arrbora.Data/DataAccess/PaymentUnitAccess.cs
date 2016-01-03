@@ -11,6 +11,9 @@ using Arrbora.Data.DataAccess.Interfaces;
 
 namespace Arrbora.Data.DataAccess
 {
+    /// <summary>
+    /// Class for the payment unit table
+    /// </summary>
     public class PaymentUnitAccess : ConnectionAccess, IPaymentUnitAccess
     {
         /// <summary>

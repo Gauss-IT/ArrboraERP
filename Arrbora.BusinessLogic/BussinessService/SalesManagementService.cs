@@ -69,14 +69,14 @@ namespace Arrbora.Data.BussinessService
         /// Retrieve a search query from the sales management table
         /// </summary>
         /// <param name="productID"></param>
-        /// <param name="productDeliveryInfoID"></param>
+        /// <param name="productDeliveryID"></param>
         /// <param name="paymentID"></param>
         /// <param name="purchasePriceID"></param>
         /// <returns></returns>
-        public DataTable SearchSalesManagement(object productID, object productDeliveryInfoID, object paymentID, object purchasePriceID)
+        public DataTable SearchSalesManagement(object productID, object productDeliveryID, object paymentID, object purchasePriceID)
         {
             return salesManagementAccess.SearchSalesManagement
-                    (productID, productDeliveryInfoID, paymentID, purchasePriceID);
+                    (productID, productDeliveryID, paymentID, purchasePriceID);
         }
 
         /// <summary>

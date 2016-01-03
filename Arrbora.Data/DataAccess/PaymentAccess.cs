@@ -11,6 +11,9 @@ using Arrbora.Data.DataModel;
 
 namespace Arrbora.Data.DataAccess
 {
+    /// <summary>
+    /// Class for the payment table
+    /// </summary>
     public class PaymentAccess : ConnectionAccess, IPaymentAccess
     {
         public bool AddPayment(PaymentDataModel payment)

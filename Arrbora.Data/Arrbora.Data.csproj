@@ -43,20 +43,25 @@
   <ItemGroup>
     <Compile Include="DataAccess\ConnectionAccess.cs" />
     <Compile Include="DataAccess\Interfaces\IPaymentAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\IPurchasePriceAccess.cs" />
     <Compile Include="DataAccess\Interfaces\ISalesManagementAccess.cs" />
     <Compile Include="DataAccess\Interfaces\IPaymentUnitAccess.cs" />
     <Compile Include="DataAccess\Interfaces\IProductAccess.cs" />
     <Compile Include="DataAccess\Interfaces\IProductOverviewAccess.cs" />
     <Compile Include="DataAccess\Interfaces\ISellingPriceAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\IProductDeliveryAccess.cs" />
     <Compile Include="DataAccess\PaymentAccess.cs" />
     <Compile Include="DataAccess\PaymentUnitAccess.cs" />
     <Compile Include="DataAccess\ProductAccess.cs" />
+    <Compile Include="DataAccess\ProductDeliveryAccess.cs" />
+    <Compile Include="DataAccess\PurchasePriceAccess.cs" />
     <Compile Include="DataAccess\SalesManagementAccess.cs" />
     <Compile Include="DataAccess\ProductOverviewAccess.cs" />
     <Compile Include="DataAccess\SellingPriceAccess.cs" />
     <Compile Include="DataModel\PaymentDataModel.cs" />
     <Compile Include="DataModel\PaymentUnitDataModel.cs" />
     <Compile Include="DataModel\ProductDataModel.cs" />
+    <Compile Include="DataModel\ProductDeliveryDataModel.cs" />
     <Compile Include="DataModel\PurchasePriceDataModel.cs" />
     <Compile Include="DataModel\SalesManagementDataModel.cs" />
     <Compile Include="DataModel\ProductOverviewDataModel.cs" />
@@ -70,16 +75,12 @@
     <Compile Include="Sql\GeneralScripts.cs" />
     <Compile Include="Sql\PaymentScripts.cs" />
     <Compile Include="Sql\PaymentUnitScripts.cs" />
+    <Compile Include="Sql\ProductDeliveryScripts.cs" />
     <Compile Include="Sql\PurchasePriceScripts.cs" />
     <Compile Include="Sql\SalesManagementScripts.cs" />
     <Compile Include="Sql\ProductOverviewScripts.cs" />
     <Compile Include="Sql\ProductScripts.cs" />
     <Compile Include="Sql\SellingPriceScripts.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Databases\ArrboraAccessDatabase.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

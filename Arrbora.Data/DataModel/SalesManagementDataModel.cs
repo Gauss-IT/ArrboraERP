@@ -19,7 +19,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets product delivery info id
         /// </summary>
-        public int ProductDeliveryInfoID { get; set; }
+        public int ProductDeliveryID { get; set; }
 
         /// <summary>
         /// Gets or sets product delivery info id

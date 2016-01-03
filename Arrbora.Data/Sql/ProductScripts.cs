@@ -8,8 +8,7 @@ namespace Arrbora.Data.Sql
     /// A class that holds Sql scripts for the Products table
     /// </summary>
     public static class ProductScripts
-    {
-        
+    {        
         /// <summary>
         /// Sql to get a products detail by Id
         /// </summary>
