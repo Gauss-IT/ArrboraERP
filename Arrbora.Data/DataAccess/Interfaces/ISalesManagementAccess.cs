@@ -36,7 +36,7 @@ namespace Arrbora.Data.DataAccess.Interfaces
         /// </summary>
         /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
-        bool AddSalesManagement(SalesManagementDataModel salesManagement);
+        int AddSalesManagement(SalesManagementDataModel salesManagement);
 
         /// <summary>
         /// Method to updateproduct details

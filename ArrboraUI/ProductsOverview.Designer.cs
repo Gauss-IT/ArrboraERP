@@ -98,8 +98,9 @@
             this.editProductOverviewToolStripMenuItem,
             this.deleteProductOverviewToolStripMenuItem});
             this.productOverviewContextMenuStrip.Name = "productOverviewContextMenuStrip";
-            this.productOverviewContextMenuStrip.Size = new System.Drawing.Size(171, 101);
+            this.productOverviewContextMenuStrip.Size = new System.Drawing.Size(171, 123);
             this.productOverviewContextMenuStrip.Text = "Product Overview";
+            this.productOverviewContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.productOverviewContextMenuStrip_ItemClicked);
             // 
             // toolStripTextBox1
             // 

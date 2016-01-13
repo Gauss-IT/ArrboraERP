@@ -18,8 +18,9 @@ namespace Arrbora.Data.DataAccess
         /// </summary>
         /// <param name="salesManagement"></param>
         /// <returns></returns>
-        public bool AddSalesManagement(SalesManagementDataModel salesManagement)
+        public int AddSalesManagement(SalesManagementDataModel salesManagement)
         {
+            var result = -1;
             using (OleDbCommand oleDbCommand = new OleDbCommand())
             {
                 // Set the command object properties
@@ -28,17 +29,25 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = SalesManagementScripts.sqlInsertSalesManagement;
 
                 // Add the input parameters to the parameter collection                
-                oleDbCommand.Parameters.AddWithValue("@ProductID", salesManagement.PaymentID);
+                oleDbCommand.Parameters.AddWithValue("@ProductID", salesManagement.ProductID);
                 oleDbCommand.Parameters.AddWithValue("@ProductDeliveryID", salesManagement.ProductDeliveryID);
+                oleDbCommand.Parameters.AddWithValue("@SellingPriceID", salesManagement.SellingPriceID);
                 oleDbCommand.Parameters.AddWithValue("@PaymentID", salesManagement.PaymentID);
                 oleDbCommand.Parameters.AddWithValue("@PurchasePriceID", salesManagement.PurchasePriceID);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
+
                 var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                if (rowsAffected == 0) result = -1;
+                else
+                {
+                    oleDbCommand.CommandText = GeneralScripts.sqlGetIdentityOfInsertedRow;
+                    result = (int)oleDbCommand.ExecuteScalar();
+                }
                 oleDbCommand.Connection.Close();
 
-                return rowsAffected > 0;
+                return result;
             }
         }
 
@@ -154,6 +163,8 @@ namespace Arrbora.Data.DataAccess
                 oleDbDataAdapter.SelectCommand.Parameters.AddWithValue
                     ("@ProductDeliveryID", productDeliveryID == null ? DBNull.Value : productDeliveryID);
                 oleDbDataAdapter.SelectCommand.Parameters.AddWithValue
+                    ("@SellingPriceID", paymentID == null ? DBNull.Value : paymentID);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue
                     ("@PaymentID", paymentID == null ? DBNull.Value : paymentID);
                 oleDbDataAdapter.SelectCommand.Parameters.AddWithValue
                     ("@PurchasePriceID", purchasePriceID == null ? DBNull.Value : purchasePriceID);
@@ -183,6 +194,7 @@ namespace Arrbora.Data.DataAccess
                 // Add the input parameters to the parameter collection                
                 oleDbCommand.Parameters.AddWithValue("@ProductID", salesManagement.PaymentID);
                 oleDbCommand.Parameters.AddWithValue("@ProductDeliveryID", salesManagement.ProductDeliveryID);
+                oleDbCommand.Parameters.AddWithValue("@SellingPriceID", salesManagement.SellingPriceID);
                 oleDbCommand.Parameters.AddWithValue("@PaymentID", salesManagement.PaymentID);
                 oleDbCommand.Parameters.AddWithValue("@PurchasePriceID", salesManagement.PurchasePriceID);
 
@@ -207,7 +219,8 @@ namespace Arrbora.Data.DataAccess
 
             result.SalesManagementID = salesManagementRow.Field<int>("SalesManagementID");
             result.ProductID = salesManagementRow.Field<int>("ProductID");
-            result.ProductDeliveryID = salesManagementRow.Field<int>("ProductDeliveryID");
+            result.ProductDeliveryID = salesManagementRow.Field<int>("ProductDeliveryID"); 
+            result.SellingPriceID = salesManagementRow.Field<int>("SellingPriceID");
             result.PaymentID = salesManagementRow.Field<int>("PaymentID");
             result.PurchasePriceID = salesManagementRow.Field<int>("PurchasePriceID");
 

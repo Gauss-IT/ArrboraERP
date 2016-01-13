@@ -8,6 +8,7 @@ using System.Data.OleDb;
 using Arrbora.Data.Sql;
 using Arrbora.Data.DataAccess.Interfaces;
 using Arrbora.Data.DataModel;
+using System;
 
 namespace Arrbora.Data.DataAccess
 {
@@ -16,6 +17,35 @@ namespace Arrbora.Data.DataAccess
     /// </summary>
     public class PaymentAccess : ConnectionAccess, IPaymentAccess
     {
+        public int AddEmptyPayment()
+        {
+            var result = -1;
+            using (OleDbCommand oleDbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                oleDbCommand.Connection = new OleDbConnection(ConnectionString);
+                oleDbCommand.CommandType = CommandType.Text;
+                oleDbCommand.CommandText = PaymentScripts.sqlInsertPayment;
+
+                // Add the input parameters to the parameter collection                
+                oleDbCommand.Parameters.AddWithValue("@PaymentTotal", DBNull.Value);
+
+                // Open the connection, execute the query and close the connection
+                oleDbCommand.Connection.Open();
+
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                if (rowsAffected == 0) result = -1;
+                else
+                {
+                    oleDbCommand.CommandText = GeneralScripts.sqlGetIdentityOfInsertedRow;
+                    result = (int)oleDbCommand.ExecuteScalar();
+                }
+                oleDbCommand.Connection.Close();
+
+                return result;
+            }
+        }
+
         public bool AddPayment(PaymentDataModel payment)
         {
             using (OleDbCommand oleDbCommand = new OleDbCommand())

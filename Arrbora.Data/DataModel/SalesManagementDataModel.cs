@@ -22,13 +22,18 @@ namespace Arrbora.Data.DataModel
         public int ProductDeliveryID { get; set; }
 
         /// <summary>
-        /// Gets or sets product delivery info id
+        /// Gets or sets payment id
         /// </summary>
         public int PaymentID { get; set; }
 
         /// <summary>
-        /// Gets or sets product delivery info id
+        /// Gets or sets purchase price id
         /// </summary>
         public int PurchasePriceID { get; set; }
+
+        /// <summary>
+        /// Gets or sets purchase price id
+        /// </summary>
+        public int SellingPriceID { get; set; }
     }
 }

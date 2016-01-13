@@ -38,12 +38,12 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets enteriour colour
         /// </summary>
-        public string EnteriourColour { get; set; }
+        public string EnteriorColour { get; set; }
        
         /// <summary>
         /// Gets or sets exterior colour
         /// </summary>
-        public string ExteriourColour { get; set; }
+        public string ExteriorColour { get; set; }
         
         /// <summary>
         /// Gets or sets model year

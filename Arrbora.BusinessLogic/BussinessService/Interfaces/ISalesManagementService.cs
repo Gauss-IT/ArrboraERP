@@ -36,7 +36,14 @@ namespace Arrbora.Data.BussinessService.Interfaces
         /// </summary>
         /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
-        bool AddSalesManagement(SalesManagementDataModel salesManagement);
+        SalesManagementDataModel AddEmptySalesManagement();
+
+        /// <summary>
+        /// Method to create new sales management entry
+        /// </summary>
+        /// <param name="product">club member model</param>
+        /// <returns>true or false</returns>
+        int AddSalesManagement(SalesManagementDataModel salesManagement);
 
         /// <summary>
         /// Method to update sales management details

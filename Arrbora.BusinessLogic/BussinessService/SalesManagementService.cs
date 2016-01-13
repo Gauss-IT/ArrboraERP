@@ -18,20 +18,52 @@ namespace Arrbora.Data.BussinessService
         /// </summary>
         private ISalesManagementAccess salesManagementAccess;
 
+        public SalesManagementDataModel salesManagementDataModel;
+
+        private PaymentAccess _paymentAccess;
+        private PaymentUnitAccess _paymentUnitAccess;
+        private ProductAccess _productAccess;
+        private ProductDeliveryAccess _productDeliveryAccess;
+        private PurchasePriceAccess _purchasePriceAccess;
+        private SellingPriceAccess _sellingPriceAccess;
+
         /// <summary>
         /// Instantiate an instance of the class
         /// </summary>
         public SalesManagementService()
         {
             salesManagementAccess = new SalesManagementAccess();
-        }
+            salesManagementDataModel = new SalesManagementDataModel();
 
+            _paymentAccess = new PaymentAccess();
+            _paymentUnitAccess = new PaymentUnitAccess();
+            _productAccess = new ProductAccess();
+            _productDeliveryAccess = new ProductDeliveryAccess();
+            _purchasePriceAccess = new PurchasePriceAccess();
+            _sellingPriceAccess = new SellingPriceAccess();
+        }
+        /// <summary>
+        /// Method to create new sales management entry
+        /// </summary>
+        /// <param name="product">club member model</param>
+        /// <returns>true or false</returns>
+        public SalesManagementDataModel AddEmptySalesManagement()
+        {
+            salesManagementDataModel.PaymentID = _paymentAccess.AddEmptyPayment();
+            salesManagementDataModel.ProductDeliveryID = _productDeliveryAccess.AddEmptyProductDelivery();
+            salesManagementDataModel.ProductID = _productAccess.AddEmptyProduct();
+            salesManagementDataModel.PurchasePriceID = _purchasePriceAccess.AddEmptyPurchasePrice();
+            salesManagementDataModel.SellingPriceID = _sellingPriceAccess.AddEmptySellingPrice();
+
+            salesManagementDataModel.SalesManagementID = salesManagementAccess.AddSalesManagement(salesManagementDataModel);
+            return salesManagementDataModel;
+        }
         /// <summary>
         /// Add a sales management instance to the table
         /// </summary>
         /// <param name="salesManagement"></param>
         /// <returns></returns>
-        public bool AddSalesManagement(SalesManagementDataModel salesManagement)
+        public int AddSalesManagement(SalesManagementDataModel salesManagement)
         {
             return salesManagementAccess.AddSalesManagement(salesManagement);
         }

@@ -2,12 +2,14 @@
 /// Copyright Arrbora DOO
 /// </summary>
 
-using Arrbora.Data.BussinessService;
-using Arrbora.Data.DataModel;
+
 using System.Data;
 using System.Windows.Forms;
 using System;
 using System.Drawing;
+using System.Collections.Generic;
+using Arrbora.Data.BussinessService;
+using Arrbora.Data.DataModel;
 
 namespace Arrbora.UI
 {
@@ -22,6 +24,9 @@ namespace Arrbora.UI
         //An instance of a sales management class
         private DataTable _dataGridTable;
 
+        int _selectedRowID;
+        private Dictionary<string, int> _columnNameToTabIndex;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -34,7 +39,8 @@ namespace Arrbora.UI
             _productOverviewService = new ProductOverviewService();
 
             _dataGridTable = productOverviewService.GetAllProductOverview();
-            InitilizeDataGridViewStyle();
+            InitializeDataGridViewStyle();
+            InitializeColumsToTabsMapping();
             LoadDataGridView(_dataGridTable);
 
             Show();
@@ -43,7 +49,7 @@ namespace Arrbora.UI
         /// <summary>
         /// Initializes data grid view style
         /// </summary>
-        private void InitilizeDataGridViewStyle()
+        private void InitializeDataGridViewStyle()
         {
             // Setting the style of the DataGridView control
             dataGridViewProductOverview.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold, GraphicsUnit.Point);
@@ -68,6 +74,32 @@ namespace Arrbora.UI
             dataGridViewProductOverview.DataMember = data.TableName;
             dataGridViewProductOverview.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+        
+        /// <summary>
+        /// Load data into the Grid view
+        /// </summary>
+        /// <param name="data"></param>
+        private void UpdateDataGridView()
+        {
+            var data = _productOverviewService.GetAllProductOverview();
+            // Data grid view column setting            
+            dataGridViewProductOverview.DataSource = data;
+            dataGridViewProductOverview.DataMember = data.TableName;
+            dataGridViewProductOverview.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+        private void InitializeColumsToTabsMapping()
+        {
+            _columnNameToTabIndex = new Dictionary<string, int>();
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[0].ColumnName,0);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[1].ColumnName, 0);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[2].ColumnName, 0);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[3].ColumnName, 0);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[4].ColumnName, 1);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[5].ColumnName, 1);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[6].ColumnName, 2);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[7].ColumnName, 3);
+            _columnNameToTabIndex.Add(_dataGridTable.Columns[8].ColumnName, 4);
+        }
 
 
         private void addProductOverviewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -76,7 +108,7 @@ namespace Arrbora.UI
             //var salesManagementService = new SalesManagementService();
             //var salesManagement = new SalesManagementDataModel();
             //salesManagementService.AddSalesManagement(salesManagement);
-
+            
             var productOverviewService = new ProductOverviewService();
             DataTable data = productOverviewService.GetAllProductOverview();
             //var data = new DataTable();
@@ -85,26 +117,38 @@ namespace Arrbora.UI
 
         private void dataGridViewProductOverview_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedColumn = _dataGridTable.Columns[e.ColumnIndex].ColumnName.ToString();
-            var activeTab = SelectActiveTabFromColumn(selectedColumn);
+            if (e.RowIndex == -1 || e.ColumnIndex == -1) return;
+            var selectedColumn = _dataGridTable.Columns[e.ColumnIndex].ColumnName;
+            var activeTab = _columnNameToTabIndex[selectedColumn];
 
-            var selectedRowID
+            _selectedRowID
                 = _dataGridTable.Rows[e.RowIndex].Field<int>("SalesManagementID");
-            var selectedSalesManagement = _salesManagementService.GetSalesManagementById(selectedRowID);
+            var selectedSalesManagement = _salesManagementService.GetSalesManagementById(_selectedRowID);
 
             var salesManagementDataModel = _salesManagementService.ConvertToDataModel(selectedSalesManagement);
-            var frmSalesManagement = new frmSalesManagement(salesManagementDataModel);
+            var frmSalesManagement = new frmSalesManagement(salesManagementDataModel, activeTab);
             frmSalesManagement.Show();
         }
 
         private void dataGridViewProductOverview_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
-           
+            _selectedRowID = _dataGridTable.Rows[e.RowIndex].Field<int>("SalesManagementID");
         }
 
-        private string SelectActiveTabFromColumn(string columnName)
+        private void productOverviewContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            return string.Empty;
+            var salesManagementDataModel = _salesManagementService.GetSalesManagementById(_selectedRowID);
+            switch (e.ClickedItem.Name)
+            {
+                case "addProductOverviewToolStripMenuItem":
+                    var salesManagementID = _salesManagementService.AddEmptySalesManagement();
+                    UpdateDataGridView();
+                    break;
+                case "editProductOverviewToolStripMenuItem":
+                    break;
+                case "deleteProductOverviewToolStripMenuItem ":
+                    break;
+            } 
         }
     }
 }

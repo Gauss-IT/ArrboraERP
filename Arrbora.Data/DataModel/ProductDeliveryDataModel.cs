@@ -59,7 +59,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets product website
         /// </summary>
-        public HttpStyleUriParser ProductWebsite { get; set; }
+        public string ProductWebsite { get; set; }
 
         /// <summary>
         /// Gets or sets buyer

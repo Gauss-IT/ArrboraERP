@@ -56,8 +56,8 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand);
                 oleDbCommand.Parameters.AddWithValue("@Model", product.Model);
                 oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN);
-                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriourColour);
-                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriourColour);
+                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriorColour);
+                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriorColour);
                 oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear);
                 oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto);
                 oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto);
@@ -206,8 +206,8 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand);
                 oleDbCommand.Parameters.AddWithValue("@Model", product.Model);
                 oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN);
-                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriourColour);
-                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriourColour);
+                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriorColour);
+                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriorColour);
                 oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear);
                 oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto);
                 oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto);
@@ -234,8 +234,8 @@ namespace Arrbora.Data.DataAccess
             result.Brand = productRow.Field<string>("Brand");
             result.Model = productRow.Field<string>("Model");
             result.VIN = productRow.Field<decimal>("VIN");
-            result.EnteriourColour = productRow.Field<string>("EnteriourColour");
-            result.ExteriourColour = productRow.Field<string>("ExteriourColour");
+            result.EnteriorColour = productRow.Field<string>("EnteriourColour");
+            result.ExteriorColour = productRow.Field<string>("ExteriourColour");
             result.ModelYear = productRow.Field<int>("ModelYear");
             result.DLPNetto = productRow.Field<decimal>("DLPNetto");
             result.DLPBrutto = productRow.Field<decimal>("DLPBrutto");

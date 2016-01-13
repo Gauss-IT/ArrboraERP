@@ -21,6 +21,45 @@ namespace Arrbora.Data.DataAccess
         /// </summary>
         /// <param name="purchasePrice">Purchase Price model</param>
         /// <returns>true or false</returns>
+        public int AddEmptyPurchasePrice()
+        {
+            var result = -1;
+            using (OleDbCommand oleDbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbCommand.CommandType = CommandType.Text;
+                oleDbCommand.CommandText = PurchasePriceScripts.sqlInsertPurchasePrice;
+
+                // Add the input parameters to the parameter collection                
+                oleDbCommand.Parameters.AddWithValue("@DistributorPrice", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Transport", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@InternalTransport", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@KosovoCosts", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other1", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other2", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@TotalPurchase", DBNull.Value);
+
+                // Open the connection, execute the query and close the connection
+                oleDbCommand.Connection.Open();
+
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                if (rowsAffected == 0) result = -1;
+                else
+                {
+                    oleDbCommand.CommandText = GeneralScripts.sqlGetIdentityOfInsertedRow;
+                    result = (int)oleDbCommand.ExecuteScalar();
+                }
+                oleDbCommand.Connection.Close();
+
+                return result;
+            }
+        }
+        /// <summary>
+        /// Method to create new payment unit
+        /// </summary>
+        /// <param name="purchasePrice">Purchase Price model</param>
+        /// <returns>true or false</returns>
         public bool AddPurchasePrice(PurchasePriceDataModel purchasePrice)
         {
             using (OleDbCommand oleDbCommand = new OleDbCommand())

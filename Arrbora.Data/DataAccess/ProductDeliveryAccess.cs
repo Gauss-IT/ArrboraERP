@@ -110,7 +110,7 @@ namespace Arrbora.Data.DataAccess
             result.ProductStatus = productDeliveryRow.Field<bool>("ProductStatus");
             result.Seller = productDeliveryRow.Field<string>("Seller");
             result.Buyer = productDeliveryRow.Field<string>("Buyer");
-            result.ProductWebsite = productDeliveryRow.Field<HttpStyleUriParser>("ProductWebsite");
+            result.ProductWebsite = productDeliveryRow.Field<string>("ProductWebsite");
             result.ProductAttachment = productDeliveryRow.Field<string>("ProductAttachment");
 
             return result;
