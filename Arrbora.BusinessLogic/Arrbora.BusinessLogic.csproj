@@ -40,14 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BussinessService\Interfaces\IPaymentService.cs" />
     <Compile Include="BussinessService\Interfaces\IPaymentUnitService.cs" />
+    <Compile Include="BussinessService\Interfaces\IProductDeliveryService.cs" />
     <Compile Include="BussinessService\Interfaces\IProductOverviewService.cs" />
     <Compile Include="BussinessService\Interfaces\IProductService.cs" />
+    <Compile Include="BussinessService\Interfaces\IPurchasePriceService.cs" />
     <Compile Include="BussinessService\Interfaces\ISalesManagementService.cs" />
+    <Compile Include="BussinessService\Interfaces\ISellingPriceService.cs" />
+    <Compile Include="BussinessService\PaymentService.cs" />
     <Compile Include="BussinessService\PaymentUnitService.cs" />
+    <Compile Include="BussinessService\ProductDeliveryService.cs" />
     <Compile Include="BussinessService\ProductOverviewService.cs" />
     <Compile Include="BussinessService\ProductService.cs" />
+    <Compile Include="BussinessService\PurchasePriceService.cs" />
     <Compile Include="BussinessService\SalesManagementService.cs" />
+    <Compile Include="BussinessService\SellingPriceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

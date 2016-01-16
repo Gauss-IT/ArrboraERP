@@ -5,57 +5,57 @@
 using Arrbora.Data.DataModel;
 using System.Data;
 
-namespace Arrbora.Data.DataAccess.Interfaces
+namespace Arrbora.BusinessLogic.BussinessService.Interfaces
 {
     /// <summary>
-    /// Interface for Product Delivery Access
+    /// Interface ISellingPriceAccess
     /// </summary>
-    public interface IProductDeliveryAccess
+    public interface ISellingPriceService
     {
         /// <summary>
-        /// Method to get a product Delivery
+        /// Method to get a selling price
         /// </summary>
         /// <returns>Data row</returns>
-        DataRow GetProductDeliveryById(int Id);
+        DataRow GetSellingPriceById(int Id);
 
         /// <summary>
         /// Method to get all selling prices
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable GetAllProductDeliveries();
+        DataTable GetAllSellingPrices();
 
         /// <summary>
         /// Method to create new selling price
         /// </summary>
-        /// <param name="productDelivery">club member model</param>
+        /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
-        bool AddProductDelivery(ProductDeliveryDataModel productDelivery);
+        bool AddSellingPrice(SellingPriceDataModel sellingPrice);
 
         /// <summary>
         /// Method to create new empty selling price
         /// </summary>
-        /// <returns>productDeliveryID of the inserted row</returns>
-        int AddEmptyProductDelivery();
+        /// <returns>SellingPriceID of the inserted row</returns>
+        int AddEmptySellingPrice();
 
         /// <summary>
         /// Method to update selling price details
         /// </summary>
-        /// <param name="productDelivery">Selling Price</param>
+        /// <param name="sellingPrice">Selling Price</param>
         /// <returns></returns>
-        bool UpdateProductDelivery(ProductDeliveryDataModel productDelivery);
+        bool UpdateSellingPrice(SellingPriceDataModel sellingPrice);
 
         /// <summary>
         /// Method to delete a selling price
         /// </summary>
-        /// <param name="productDeliveryID">selling price id</param>
+        /// <param name="id">selling price id</param>
         /// <returns>true / false</returns>
-        bool DeleteProductDeliveryByID(int productDeliveryID);
+        bool DeleteSellingPriceByID(int id);
 
         /// <summary>
         /// Converts a Data row from the database table to selling price model
         /// </summary>
-        /// <param name="productDeliveryRow"></param>
+        /// <param name="sellingPriceRow"></param>
         /// <returns></returns>
-        ProductDeliveryDataModel ConvertToDataModel(DataRow productDeliveryRow);
+        SellingPriceDataModel ConvertToDataModel(DataRow sellingPriceRow);
     }
 }

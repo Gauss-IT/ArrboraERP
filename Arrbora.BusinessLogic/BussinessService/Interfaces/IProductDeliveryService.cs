@@ -5,12 +5,12 @@
 using Arrbora.Data.DataModel;
 using System.Data;
 
-namespace Arrbora.Data.DataAccess.Interfaces
+namespace Arrbora.BusinessLogic.BussinessService.Interfaces
 {
     /// <summary>
-    /// Interface for Product Delivery Access
+    /// Interface for Product Delivery Service
     /// </summary>
-    public interface IProductDeliveryAccess
+    public interface IProductDeliveryService
     {
         /// <summary>
         /// Method to get a product Delivery
