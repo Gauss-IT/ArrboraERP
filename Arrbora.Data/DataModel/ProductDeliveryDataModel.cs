@@ -19,7 +19,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets date of purchase
         /// </summary>
-        public DateTime DateOfPurchase { get; set; }
+        public DateTime? DateOfPurchase { get; set; }
 
         /// <summary>
         /// Gets or sets land of origin
@@ -34,7 +34,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets date of sale
         /// </summary>
-        public DateTime DateOfSale { get; set; }
+        public DateTime? DateOfSale { get; set; }
 
         /// <summary>
         /// Gets or sets land of destination
@@ -44,7 +44,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets product status
         /// </summary>
-        public bool ProductStatus { get; set; }
+        public bool? ProductStatus { get; set; }
 
         /// <summary>
         /// Gets or sets seller

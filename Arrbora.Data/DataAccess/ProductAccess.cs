@@ -233,12 +233,12 @@ namespace Arrbora.Data.DataAccess
             result.ProductID = productRow.Field<int>("ProductID");
             result.Brand = productRow.Field<string>("Brand");
             result.Model = productRow.Field<string>("Model");
-            result.VIN = productRow.Field<decimal>("VIN");
+            result.VIN = productRow.Field<decimal?>("VIN");
             result.EnteriorColour = productRow.Field<string>("EnteriourColour");
             result.ExteriorColour = productRow.Field<string>("ExteriourColour");
-            result.ModelYear = productRow.Field<int>("ModelYear");
-            result.DLPNetto = productRow.Field<decimal>("DLPNetto");
-            result.DLPBrutto = productRow.Field<decimal>("DLPBrutto");
+            result.ModelYear = productRow.Field<int?>("ModelYear");
+            result.DLPNetto = productRow.Field<decimal?>("DLPNetto");
+            result.DLPBrutto = productRow.Field<decimal?>("DLPBrutto");
 
             return result;
         }

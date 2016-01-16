@@ -97,13 +97,13 @@ namespace Arrbora.Data.DataAccess
             var result = new PurchasePriceDataModel();
 
             result.PurchasePriceID = purchasePriceRow.Field<int>("PurchasePriceID");
-            result.DistributorPrice = purchasePriceRow.Field<decimal>("DistributorPrice");
-            result.Transport = purchasePriceRow.Field<decimal>("Transport");
-            result.InternalTransport = purchasePriceRow.Field<decimal>("InternalTransport");
-            result.KosovoCosts = purchasePriceRow.Field<decimal>("KosovoCosts");
-            result.Other1 = purchasePriceRow.Field<decimal>("Other1");
-            result.Other2 = purchasePriceRow.Field<decimal>("Other2");
-            result.TotalPurchase = purchasePriceRow.Field<decimal>("TotalPurchase");
+            result.DistributorPrice = purchasePriceRow.Field<decimal?>("DistributorPrice");
+            result.Transport = purchasePriceRow.Field<decimal?>("Transport");
+            result.InternalTransport = purchasePriceRow.Field<decimal?>("InternalTransport");
+            result.KosovoCosts = purchasePriceRow.Field<decimal?>("KosovoCosts");
+            result.Other1 = purchasePriceRow.Field<decimal?>("Other1");
+            result.Other2 = purchasePriceRow.Field<decimal?>("Other2");
+            result.TotalPurchase = purchasePriceRow.Field<decimal?>("TotalPurchase");
 
             return result;
         }

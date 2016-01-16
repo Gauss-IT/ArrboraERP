@@ -102,12 +102,12 @@ namespace Arrbora.Data.DataAccess
             var result = new ProductDeliveryDataModel();
 
             result.ProductDeliveryID = productDeliveryRow.Field<int>("ProductDeliveryID");
-            result.DateOfPurchase = productDeliveryRow.Field<DateTime>("DateOfPurchase");
+            result.DateOfPurchase = productDeliveryRow.Field<DateTime?>("DateOfPurchase");
             result.LandOfOrigin = productDeliveryRow.Field<string>("LandOfOrigin");
             result.CurrentLocation = productDeliveryRow.Field<string>("CurrentLocation");
-            result.DateOfSale = productDeliveryRow.Field<DateTime>("DateOfSale");
+            result.DateOfSale = productDeliveryRow.Field<DateTime?>("DateOfSale");
             result.LandOfDestination = productDeliveryRow.Field<string>("LandOfDestination");
-            result.ProductStatus = productDeliveryRow.Field<bool>("ProductStatus");
+            result.ProductStatus = productDeliveryRow.Field<bool?>("ProductStatus");
             result.Seller = productDeliveryRow.Field<string>("Seller");
             result.Buyer = productDeliveryRow.Field<string>("Buyer");
             result.ProductWebsite = productDeliveryRow.Field<string>("ProductWebsite");

@@ -197,8 +197,8 @@ namespace Arrbora.Data.DataAccess
         {
             var result = new PaymentUnitDataModel();
             result.PaymentID= paymentUnitRow.Field<int>("PaymentID");
-            result.PaymentUnitDate = paymentUnitRow.Field<DateTime>("PaymentUnitDate");
-            result.Amount = paymentUnitRow.Field<decimal>("Amount");
+            result.PaymentUnitDate = paymentUnitRow.Field<DateTime?>("PaymentUnitDate");
+            result.Amount = paymentUnitRow.Field<decimal?>("Amount");
             result.PaymentType = paymentUnitRow.Field<string>("PaymentType");
             result.PayedBy = paymentUnitRow.Field<string>("PayedBy");
             result.Note = paymentUnitRow.Field<string>("Note");

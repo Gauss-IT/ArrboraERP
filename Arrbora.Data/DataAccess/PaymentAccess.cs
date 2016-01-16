@@ -71,7 +71,7 @@ namespace Arrbora.Data.DataAccess
         {
             var result = new PaymentDataModel();
             result.PaymentID = paymentRow.Field<int>("PaymentID");
-            result.PaymentTotal = paymentRow.Field<decimal>("PaymentTotal");
+            result.PaymentTotal = paymentRow.Field<decimal?>("PaymentTotal");
             return result;
         }
 

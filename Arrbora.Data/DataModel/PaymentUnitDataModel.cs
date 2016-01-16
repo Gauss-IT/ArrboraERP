@@ -19,17 +19,17 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets payment ID
         /// </summary>
-        public int PaymentID { get; set; }
+        public int? PaymentID { get; set; }
 
         /// <summary>
         /// Gets or sets payment unit date
         /// </summary>
-        public DateTime PaymentUnitDate { get; set; }
+        public DateTime? PaymentUnitDate { get; set; }
 
         /// <summary>
         /// Gets or sets amount
         /// </summary>
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Gets or sets amount

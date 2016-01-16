@@ -95,11 +95,11 @@ namespace Arrbora.Data.DataAccess
         {
             var result = new SellingPriceDataModel();
 
-            result.Price = sellingPriceRow.Field<decimal>("Price");
-            result.Transport = sellingPriceRow.Field<decimal>("Transport");
-            result.Other1 = sellingPriceRow.Field<decimal>("Other1");
-            result.Other2 = sellingPriceRow.Field<decimal>("Other2");
-            result.TotalSelling = sellingPriceRow.Field<decimal>("TotalSelling");          
+            result.Price = sellingPriceRow.Field<decimal?>("Price");
+            result.Transport = sellingPriceRow.Field<decimal?>("Transport");
+            result.Other1 = sellingPriceRow.Field<decimal?>("Other1");
+            result.Other2 = sellingPriceRow.Field<decimal?>("Other2");
+            result.TotalSelling = sellingPriceRow.Field<decimal?>("TotalSelling");          
 
             return result;
         }

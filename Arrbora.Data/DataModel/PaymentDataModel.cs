@@ -17,6 +17,6 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets amount
         /// </summary>
-        public decimal PaymentTotal { get; set; }
+        public decimal? PaymentTotal { get; set; }
     }
 }

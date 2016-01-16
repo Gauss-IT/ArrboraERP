@@ -77,7 +77,7 @@ namespace Arrbora.UI
         {
             lblBrand.Text = _productDataModel.Brand;
             lblModel.Text = _productDataModel.Model;
-            lblPurchaseDate.Text = _productDeliveryDataModel.DateOfPurchase.ToShortDateString();
+            lblPurchaseDate.Text = _productDeliveryDataModel.DateOfPurchase.GetValueOrDefault().ToShortDateString();
             lblSalesPrice.Text = _sellingPriceDataModel.TotalSelling.ToString();
 
             InitializeProductTabPage();
@@ -100,20 +100,20 @@ namespace Arrbora.UI
         }
         private void InitializeProductDeliveryTabPage()
         {
-            txtDateOfPurchase.Text = _productDeliveryDataModel.DateOfPurchase.ToShortDateString();
+            txtDateOfPurchase.Text = _productDeliveryDataModel.DateOfPurchase.GetValueOrDefault().ToShortDateString();
             txtCurentLocation.Text = _productDeliveryDataModel.CurrentLocation;
             txtLandOfDestination.Text = _productDeliveryDataModel.LandOfDestination;
             txtSeller.Text = _productDeliveryDataModel.Seller;
             txtWebsite.Text = _productDeliveryDataModel.ProductWebsite;
             txtLandOfOrigin.Text = _productDeliveryDataModel.LandOfOrigin;
-            txtDateOfSale.Text = _productDeliveryDataModel.DateOfSale.Date.ToShortDateString();
+            txtDateOfSale.Text = _productDeliveryDataModel.DateOfSale.GetValueOrDefault().ToShortDateString();
             txtBuyer.Text = _productDeliveryDataModel.Buyer;
             txtAttachment.Text = _productDeliveryDataModel.ProductAttachment;
 
         }
         private void InitializePurchasePriceTabPage()
         {
-            txtDistributorPrice.Text = _purchasePriceDataModel.DistributorPrice.ToString(CultureInfo.CreateSpecificCulture("us-US"));
+            txtDistributorPrice.Text = _purchasePriceDataModel.DistributorPrice.GetValueOrDefault().ToString(CultureInfo.CreateSpecificCulture("us-US"));
             txtTransport.Text = _purchasePriceDataModel.Transport.ToString();
             txtInternalTransport.Text = _purchasePriceDataModel.InternalTransport.ToString();
             txtKosovoCosts.Text = _purchasePriceDataModel.KosovoCosts.ToString();

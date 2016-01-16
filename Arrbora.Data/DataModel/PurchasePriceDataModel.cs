@@ -18,36 +18,36 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets distributor price
         /// </summary>
-        public decimal DistributorPrice { get; set; }
+        public decimal? DistributorPrice { get; set; }
 
         /// <summary>
         /// Gets or sets transport costs
         /// </summary>
-        public decimal Transport { get; set; }
+        public decimal? Transport { get; set; }
 
         /// <summary>
         /// Gets or sets internal transport costs
         /// </summary>
-        public decimal InternalTransport { get; set; }
+        public decimal? InternalTransport { get; set; }
         
         /// <summary>
         /// Gets or sets kosovo company costs
         /// </summary>
-        public decimal KosovoCosts { get; set; }
+        public decimal? KosovoCosts { get; set; }
 
         /// <summary>
         /// Gets or sets other costs 1
         /// </summary>
-        public decimal Other1 { get; set; }
+        public decimal? Other1 { get; set; }
 
         /// <summary>
         /// Gets or sets other costs 2
         /// </summary>
-        public decimal Other2 { get; set; }
+        public decimal? Other2 { get; set; }
 
         /// <summary>
         /// Gets or sets total purchase price
         /// </summary>
-        public decimal TotalPurchase { get; set; }
+        public decimal? TotalPurchase { get; set; }
     }
 }

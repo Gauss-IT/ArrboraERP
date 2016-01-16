@@ -33,7 +33,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets the VIN number
         /// </summary>
-        public decimal VIN { get; set; }
+        public decimal? VIN { get; set; }
 
         /// <summary>
         /// Gets or sets enteriour colour
@@ -48,17 +48,17 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets model year
         /// </summary>
-        public int ModelYear { get; set; }
+        public int? ModelYear { get; set; }
         
         /// <summary>
         /// Gets or sets netto price
         /// </summary>
-        public decimal DLPNetto { get; set; }        
+        public decimal? DLPNetto { get; set; }        
         
          /// <summary>
         /// Gets or sets brutto price
         /// </summary>
-        public decimal DLPBrutto { get; set; }
+        public decimal? DLPBrutto { get; set; }
 
     }
 }
