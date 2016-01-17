@@ -52,6 +52,16 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// </summary>
         /// <param name="purchasePrice">payment unit model</param>
         /// <returns>true or false</returns>
+        public int AddEmptyPurchasePrice()
+        {
+            return purchasePriceAccess.AddEmptyPurchasePrice();
+        }
+
+        /// <summary>
+        /// Method to create new payment unit
+        /// </summary>
+        /// <param name="purchasePrice">payment unit model</param>
+        /// <returns>true or false</returns>
         public bool AddPurchasePrice(PurchasePriceDataModel purchasePrice)
         {
             return purchasePriceAccess.AddPurchasePrice(purchasePrice);

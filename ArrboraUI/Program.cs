@@ -13,7 +13,7 @@ namespace Arrbora.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProductsOverview());
+            Application.Run(new frmProductsOverview());
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// Method to get a product Delivery
         /// </summary>
         /// <returns>Data row</returns>
-        DataRow GetProductDeliveryById(int Id)
+        public DataRow GetProductDeliveryById(int Id)
         {
             return productDeliveryAccess.GetProductDeliveryById(Id);
         }
@@ -41,7 +41,7 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// Method to get all selling prices
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable GetAllProductDeliveries()
+        public DataTable GetAllProductDeliveries()
         {
             return productDeliveryAccess.GetAllProductDeliveries();
         }
@@ -51,7 +51,7 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// </summary>
         /// <param name="productDelivery">club member model</param>
         /// <returns>true or false</returns>
-        bool AddProductDelivery(ProductDeliveryDataModel productDelivery)
+        public bool AddProductDelivery(ProductDeliveryDataModel productDelivery)
         {
             return productDeliveryAccess.AddProductDelivery(productDelivery);
         }
@@ -60,7 +60,7 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// Method to create new empty selling price
         /// </summary>
         /// <returns>productDeliveryID of the inserted row</returns>
-        int AddEmptyProductDelivery()
+        public int AddEmptyProductDelivery()
         {
             return productDeliveryAccess.AddEmptyProductDelivery();
         }
@@ -70,7 +70,7 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// </summary>
         /// <param name="productDelivery">Selling Price</param>
         /// <returns></returns>
-        bool UpdateProductDelivery(ProductDeliveryDataModel productDelivery)
+        public bool UpdateProductDelivery(ProductDeliveryDataModel productDelivery)
         {
             return productDeliveryAccess.UpdateProductDelivery(productDelivery);
         }
@@ -80,7 +80,7 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// </summary>
         /// <param name="productDeliveryID">selling price id</param>
         /// <returns>true / false</returns>
-        bool DeleteProductDeliveryByID(int productDeliveryID)
+        public bool DeleteProductDeliveryByID(int productDeliveryID)
         {
             return productDeliveryAccess.DeleteProductDeliveryByID(productDeliveryID);
         }
@@ -90,7 +90,7 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// </summary>
         /// <param name="productDeliveryRow"></param>
         /// <returns></returns>
-        ProductDeliveryDataModel ConvertToDataModel(DataRow productDeliveryRow)
+        public ProductDeliveryDataModel ConvertToDataModel(DataRow productDeliveryRow)
         {
             return productDeliveryAccess.ConvertToDataModel(productDeliveryRow);
         }

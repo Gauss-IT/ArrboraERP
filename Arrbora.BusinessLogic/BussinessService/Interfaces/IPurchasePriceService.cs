@@ -29,6 +29,13 @@ namespace Arrbora.BusinessLogic.BussinessService.Interfaces
         /// </summary>
         /// <param name="purchasePrice">payment unit model</param>
         /// <returns>true or false</returns>
+        int AddEmptyPurchasePrice();
+
+        /// <summary>
+        /// Method to create new payment unit
+        /// </summary>
+        /// <param name="purchasePrice">payment unit model</param>
+        /// <returns>true or false</returns>
         bool AddPurchasePrice(PurchasePriceDataModel purchasePrice);
 
         /// <summary>

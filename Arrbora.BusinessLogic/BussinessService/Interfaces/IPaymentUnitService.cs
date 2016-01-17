@@ -32,6 +32,13 @@ namespace Arrbora.Data.BussinessService.Interfaces
         /// </summary>
         /// <param name="paymentUnit">club member model</param>
         /// <returns>true or false</returns>
+        int AddEmptyPaymentUnit(int paymentID);
+
+        /// <summary>
+        /// Method to create new payment unit
+        /// </summary>
+        /// <param name="paymentUnit">club member model</param>
+        /// <returns>true or false</returns>
         bool AddPaymentUnit(PaymentUnitDataModel paymentUnit);
 
         /// <summary>

@@ -35,6 +35,13 @@ namespace Arrbora.Data.DataAccess.Interfaces
         /// </summary>
         /// <param name="paymentUnit">payment unit model</param>
         /// <returns>true or false</returns>
+        int AddEmptyPaymentUnit(int paymentID);
+
+        /// <summary>
+        /// Method to create new payment unit
+        /// </summary>
+        /// <param name="paymentUnit">payment unit model</param>
+        /// <returns>true or false</returns>
         bool AddPaymentUnit(PaymentUnitDataModel paymentUnit);
 
         /// <summary>

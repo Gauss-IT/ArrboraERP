@@ -35,6 +35,13 @@ namespace Arrbora.BusinessLogic.BussinessService.Interfaces
         /// </summary>
         /// <param name="payment">payment data model</param>
         /// <returns>true or false</returns>
+        int AddEmptyPayment();
+
+        /// <summary>
+        /// Method to create new payment
+        /// </summary>
+        /// <param name="payment">payment data model</param>
+        /// <returns>true or false</returns>
         bool AddPayment(PaymentDataModel payment);
 
         /// <summary>

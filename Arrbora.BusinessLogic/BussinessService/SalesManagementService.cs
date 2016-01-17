@@ -8,40 +8,74 @@ using Arrbora.Data.DataAccess;
 using Arrbora.Data.DataAccess.Interfaces;
 using Arrbora.Data.BussinessService.Interfaces;
 using System;
+using Arrbora.BusinessLogic.BussinessService;
 
 namespace Arrbora.Data.BussinessService
 {
     public class SalesManagementService : ISalesManagementService
     {
         /// <summary>
-        /// Interface of Product Access
+        /// Interface of sales management Access
         /// </summary>
-        private ISalesManagementAccess salesManagementAccess;
+        private ISalesManagementAccess _salesManagementAccess;
+        
+        /// <summary>
+        /// Initialize services
+        /// </summary>
+        private PaymentService _paymentService;
+        private PaymentUnitService _paymentUnitService;
+        private ProductService _productService;
+        private ProductDeliveryService _productDeliveryService;
+        private PurchasePriceService _purchasePriceService;
+        private SellingPriceService _sellingPriceService;
 
-        public SalesManagementDataModel salesManagementDataModel;
-
-        private PaymentAccess _paymentAccess;
-        private PaymentUnitAccess _paymentUnitAccess;
-        private ProductAccess _productAccess;
-        private ProductDeliveryAccess _productDeliveryAccess;
-        private PurchasePriceAccess _purchasePriceAccess;
-        private SellingPriceAccess _sellingPriceAccess;
+        /// <summary>
+        /// Data models
+        /// </summary>
+        public SalesManagementDataModel SalesManagementDataModel { get; set; }
+        public PaymentDataModel PaymentDataModel { get; set; }
+        public PaymentUnitDataModel PaymentUnitDataModel { get; set; }
+        public ProductDataModel ProductDataModel { get; set; }
+        public ProductDeliveryDataModel ProductDeliveryDataModel { get; set; }
+        public PurchasePriceDataModel PurchasePriceDataModel { get; set; }
+        public SellingPriceDataModel SellingPriceDataModel { get; set; }
+        public DataTable PaymentUnitsTable { get; set; }
 
         /// <summary>
         /// Instantiate an instance of the class
         /// </summary>
         public SalesManagementService()
         {
-            salesManagementAccess = new SalesManagementAccess();
-            salesManagementDataModel = new SalesManagementDataModel();
+            _salesManagementAccess = new SalesManagementAccess();
+            SalesManagementDataModel = new SalesManagementDataModel();
 
-            _paymentAccess = new PaymentAccess();
-            _paymentUnitAccess = new PaymentUnitAccess();
-            _productAccess = new ProductAccess();
-            _productDeliveryAccess = new ProductDeliveryAccess();
-            _purchasePriceAccess = new PurchasePriceAccess();
-            _sellingPriceAccess = new SellingPriceAccess();
+            _paymentService = new PaymentService();
+            _paymentUnitService = new PaymentUnitService();
+            _productService = new ProductService();
+            _productDeliveryService = new ProductDeliveryService();
+            _purchasePriceService = new PurchasePriceService();
+            _sellingPriceService = new SellingPriceService();
         }
+
+        /// <summary>
+        /// Instantiate an instance of the class
+        /// </summary>
+        public SalesManagementService(SalesManagementDataModel salesManagementDataModel)
+        {
+            _salesManagementAccess = new SalesManagementAccess();
+            SalesManagementDataModel = salesManagementDataModel;
+
+            _paymentService = new PaymentService();
+            _paymentUnitService = new PaymentUnitService();
+            _productService = new ProductService();
+            _productDeliveryService = new ProductDeliveryService();
+            _purchasePriceService = new PurchasePriceService();
+            _sellingPriceService = new SellingPriceService();
+
+            PopulateDataModels();
+        }
+
+
         /// <summary>
         /// Method to create new sales management entry
         /// </summary>
@@ -49,15 +83,18 @@ namespace Arrbora.Data.BussinessService
         /// <returns>true or false</returns>
         public SalesManagementDataModel AddEmptySalesManagement()
         {
-            salesManagementDataModel.PaymentID = _paymentAccess.AddEmptyPayment();
-            salesManagementDataModel.ProductDeliveryID = _productDeliveryAccess.AddEmptyProductDelivery();
-            salesManagementDataModel.ProductID = _productAccess.AddEmptyProduct();
-            salesManagementDataModel.PurchasePriceID = _purchasePriceAccess.AddEmptyPurchasePrice();
-            salesManagementDataModel.SellingPriceID = _sellingPriceAccess.AddEmptySellingPrice();
+            SalesManagementDataModel.PaymentID = _paymentService.AddEmptyPayment();
+            SalesManagementDataModel.ProductDeliveryID = _productDeliveryService.AddEmptyProductDelivery();
+            SalesManagementDataModel.ProductID = _productService.AddEmptyProduct();
+            SalesManagementDataModel.PurchasePriceID = _purchasePriceService.AddEmptyPurchasePrice();
+            SalesManagementDataModel.SellingPriceID = _sellingPriceService.AddEmptySellingPrice();
 
-            salesManagementDataModel.SalesManagementID = salesManagementAccess.AddSalesManagement(salesManagementDataModel);
-            return salesManagementDataModel;
+            PopulateDataModels();
+
+            SalesManagementDataModel.SalesManagementID = _salesManagementAccess.AddSalesManagement(SalesManagementDataModel);
+            return SalesManagementDataModel;
         }
+
         /// <summary>
         /// Add a sales management instance to the table
         /// </summary>
@@ -65,7 +102,8 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public int AddSalesManagement(SalesManagementDataModel salesManagement)
         {
-            return salesManagementAccess.AddSalesManagement(salesManagement);
+            //TODO:implement necessary logic
+            return _salesManagementAccess.AddSalesManagement(salesManagement);
         }
 
         /// <summary>
@@ -75,7 +113,16 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public bool DeleteSalesManagementByID(int salesManagementID)
         {
-            return salesManagementAccess.DeleteSalesManagementByID(salesManagementID);
+            //TODO : implement necessary logic
+            var success = true;
+            SalesManagementDataModel = ConvertToDataModel( GetSalesManagementById(salesManagementID));
+            success = success && _paymentService.DeletePaymentByID(SalesManagementDataModel.PaymentID);
+            success = success && _productDeliveryService.DeleteProductDeliveryByID(SalesManagementDataModel.ProductDeliveryID);
+            success = success && _productService.DeleteProductByID(SalesManagementDataModel.ProductID);
+            success = success && _purchasePriceService.DeletePurchasePriceByID(SalesManagementDataModel.PurchasePriceID);
+            success = success && _sellingPriceService.DeleteSellingPriceByID(SalesManagementDataModel.SellingPriceID);
+            success = success && _salesManagementAccess.DeleteSalesManagementByID(salesManagementID);
+            return success;
         }
 
         /// <summary>
@@ -84,7 +131,7 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public DataTable GetAllSalesManagement()
         {
-            return salesManagementAccess.GetAllSalesManagement();
+            return _salesManagementAccess.GetAllSalesManagement();
         }
 
         /// <summary>
@@ -94,7 +141,7 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public DataRow GetSalesManagementById(int salesManagementID)
         {
-            return salesManagementAccess.GetSalesManagementById(salesManagementID);
+            return _salesManagementAccess.GetSalesManagementById(salesManagementID);
         }
 
         /// <summary>
@@ -107,7 +154,7 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public DataTable SearchSalesManagement(object productID, object productDeliveryID, object paymentID, object purchasePriceID)
         {
-            return salesManagementAccess.SearchSalesManagement
+            return _salesManagementAccess.SearchSalesManagement
                     (productID, productDeliveryID, paymentID, purchasePriceID);
         }
 
@@ -118,7 +165,7 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public bool UpdateSalesManagement(SalesManagementDataModel salesManagement)
         {
-            return salesManagementAccess.UpdateSalesManagement(salesManagement);
+            return _salesManagementAccess.UpdateSalesManagement(salesManagement);
         }
 
         /// <summary>
@@ -128,7 +175,28 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public SalesManagementDataModel ConvertToDataModel(DataRow salesManagementRow)
         {
-            return salesManagementAccess.ConvertToDataModel(salesManagementRow);
+            return _salesManagementAccess.ConvertToDataModel(salesManagementRow);
+        }
+
+        private void PopulateDataModels()
+        {
+            PaymentDataModel = _paymentService.ConvertToDataModel(
+                                _paymentService.GetPaymentById(
+                                    SalesManagementDataModel.PaymentID));
+            ProductDataModel = _productService.ConvertToDataModel(
+                                _productService.GetProductById(
+                                    SalesManagementDataModel.ProductID));
+            ProductDeliveryDataModel = _productDeliveryService.ConvertToDataModel(
+                                _productDeliveryService.GetProductDeliveryById(
+                                    SalesManagementDataModel.ProductDeliveryID));
+            PurchasePriceDataModel = _purchasePriceService.ConvertToDataModel(
+                                _purchasePriceService.GetPurchasePriceById(
+                                    SalesManagementDataModel.PurchasePriceID));
+            SellingPriceDataModel = _sellingPriceService.ConvertToDataModel(
+                                _sellingPriceService.GetSellingPriceById(
+                                    SalesManagementDataModel.SellingPriceID));
+            PaymentUnitsTable = _paymentUnitService.GetAllPaymentUnitsForPayment(
+                                    PaymentDataModel.PaymentID);
         }
     }
 }

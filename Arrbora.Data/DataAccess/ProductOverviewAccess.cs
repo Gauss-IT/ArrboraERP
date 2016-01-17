@@ -14,26 +14,6 @@ namespace Arrbora.Data.DataAccess
     public class ProductOverviewAccess : ConnectionAccess, IProductOverviewAccess
     {
         /// <summary>
-        /// Method to create new product overview
-        /// </summary>
-        /// <param name="product">club member model</param>
-        /// <returns>true or false</returns>
-        public bool AddProductOverview(ProductOverviewDataModel productOverview)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Method to delete a product overview by ID
-        /// </summary>
-        /// <param name="SalesManagementID">Product ManagementID</param>
-        /// <returns>true / false</returns>
-        public bool DeleteProductOverviewByID(int SalesManagementID)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Method to get all products overview
         /// </summary>
         /// <returns>Data table</returns>
@@ -60,21 +40,32 @@ namespace Arrbora.Data.DataAccess
         }
 
         /// <summary>
-        /// Method to get a single product overview
-        /// </summary>
-        /// <returns>Data row</returns>
-        public DataRow GetProductOverviewById(int SalesManagementID)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
         public DataTable SearchProductOverview(object SalesManagementID, object brand, object model)
         {
-            throw new NotImplementedException();
+            DataTable dataTable = new DataTable();
+
+            using (OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter())
+            {
+                // Create the command and set its properties
+                oleDbDataAdapter.SelectCommand = new OleDbCommand();
+                oleDbDataAdapter.SelectCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbDataAdapter.SelectCommand.CommandType = CommandType.Text;
+
+                // Assign the SQL to the command object
+                oleDbDataAdapter.SelectCommand.CommandText = ProductOverviewScripts.sqlSearchProductOverview;
+
+                // Add the input parameters to the parameter collection
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Brand", brand == null ? DBNull.Value : brand);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Model", model == null ? DBNull.Value : model);
+
+                // Fill the table from adapter
+                oleDbDataAdapter.Fill(dataTable);
+            }
+
+            return dataTable; ;
         }
     }
 }

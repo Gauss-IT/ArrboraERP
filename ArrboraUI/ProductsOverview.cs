@@ -13,8 +13,8 @@ using Arrbora.Data.DataModel;
 
 namespace Arrbora.UI
 {
-    public partial class ProductsOverview : Form
-    {
+    public partial class frmProductsOverview : Form
+    {       
         //An instance of a product overview class
         private ProductOverviewService _productOverviewService;
 
@@ -25,12 +25,13 @@ namespace Arrbora.UI
         private DataTable _dataGridTable;
 
         int _selectedRowID;
+        string _selectedColumnName;
         private Dictionary<string, int> _columnNameToTabIndex;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public ProductsOverview()
+        public frmProductsOverview()
         {
             InitializeComponent();           
 
@@ -79,7 +80,7 @@ namespace Arrbora.UI
         /// Load data into the Grid view
         /// </summary>
         /// <param name="data"></param>
-        private void UpdateDataGridView()
+        public void UpdateDataGridView()
         {
             var data = _productOverviewService.GetAllProductOverview();
             // Data grid view column setting            
@@ -122,31 +123,39 @@ namespace Arrbora.UI
             var activeTab = _columnNameToTabIndex[selectedColumn];
 
             _selectedRowID
-                = _dataGridTable.Rows[e.RowIndex].Field<int>("SalesManagementID");
+                = (int)dataGridViewProductOverview.Rows[e.RowIndex].Cells["SalesManagementID"].Value;
             var selectedSalesManagement = _salesManagementService.GetSalesManagementById(_selectedRowID);
 
             var salesManagementDataModel = _salesManagementService.ConvertToDataModel(selectedSalesManagement);
-            var frmSalesManagement = new frmSalesManagement(salesManagementDataModel, activeTab);
+            var frmSalesManagement = new frmSalesManagement(this,salesManagementDataModel, activeTab);
             frmSalesManagement.Show();
         }
 
         private void dataGridViewProductOverview_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
-            _selectedRowID = _dataGridTable.Rows[e.RowIndex].Field<int>("SalesManagementID");
+            _selectedRowID = (int) dataGridViewProductOverview.Rows[e.RowIndex].Cells["SalesManagementID"].Value;
+            _selectedColumnName = dataGridViewProductOverview.Columns[e.ColumnIndex].HeaderText;
         }
 
         private void productOverviewContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            var salesManagementDataModel = _salesManagementService.GetSalesManagementById(_selectedRowID);
+            if (_selectedRowID == -1) return;
+            var salesManagementDataRow = _salesManagementService.GetSalesManagementById(_selectedRowID);
+            var salesManagementDataModel = _salesManagementService.ConvertToDataModel(salesManagementDataRow);
             switch (e.ClickedItem.Name)
             {
                 case "addProductOverviewToolStripMenuItem":
                     var salesManagementID = _salesManagementService.AddEmptySalesManagement();
                     UpdateDataGridView();
                     break;
-                case "editProductOverviewToolStripMenuItem":
+                case "editProductOverviewToolStripMenuItem":                    
+                    var activeTab = _columnNameToTabIndex[_selectedColumnName];
+                    var frmSalesManagement = new frmSalesManagement(this,salesManagementDataModel, activeTab);
+                    frmSalesManagement.Show();
                     break;
-                case "deleteProductOverviewToolStripMenuItem ":
+                case "deleteProductOverviewToolStripMenuItem":
+                    _salesManagementService.DeleteSalesManagementByID(_selectedRowID);
+                    UpdateDataGridView();
                     break;
             } 
         }

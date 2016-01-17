@@ -1,6 +1,6 @@
 ﻿namespace Arrbora.UI
 {
-    partial class ProductsOverview
+    partial class frmProductsOverview
     {
         /// <summary>
         /// Required designer variable.
@@ -64,6 +64,7 @@
             this.paymentsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductOverview)).BeginInit();
             this.productOverviewContextMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -98,7 +99,7 @@
             this.editProductOverviewToolStripMenuItem,
             this.deleteProductOverviewToolStripMenuItem});
             this.productOverviewContextMenuStrip.Name = "productOverviewContextMenuStrip";
-            this.productOverviewContextMenuStrip.Size = new System.Drawing.Size(171, 123);
+            this.productOverviewContextMenuStrip.Size = new System.Drawing.Size(171, 101);
             this.productOverviewContextMenuStrip.Text = "Product Overview";
             this.productOverviewContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.productOverviewContextMenuStrip_ItemClicked);
             // 
@@ -147,7 +148,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1015, 65);
+            this.label1.Location = new System.Drawing.Point(1012, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
@@ -157,7 +158,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1015, 123);
+            this.label2.Location = new System.Drawing.Point(1012, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 3;
@@ -166,7 +167,7 @@
             // textBox3
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(1015, 32);
+            this.textBox3.Location = new System.Drawing.Point(1015, 52);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(183, 20);
             this.textBox3.TabIndex = 1;
@@ -185,7 +186,7 @@
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1015, 143);
+            this.comboBox1.Location = new System.Drawing.Point(1015, 155);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(183, 21);
             this.comboBox1.TabIndex = 4;
@@ -194,7 +195,7 @@
             // 
             this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1015, 87);
+            this.comboBox2.Location = new System.Drawing.Point(1015, 103);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(183, 21);
             this.comboBox2.TabIndex = 4;
@@ -203,7 +204,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1015, 177);
+            this.label3.Location = new System.Drawing.Point(1012, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 3;
@@ -213,7 +214,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1106, 177);
+            this.label4.Location = new System.Drawing.Point(1109, 191);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(20, 13);
             this.label4.TabIndex = 3;
@@ -223,7 +224,7 @@
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(1015, 199);
+            this.dateTimePicker1.Location = new System.Drawing.Point(1015, 207);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(80, 20);
             this.dateTimePicker1.TabIndex = 5;
@@ -232,7 +233,7 @@
             // 
             this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(1112, 199);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1112, 207);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(86, 20);
             this.dateTimePicker2.TabIndex = 5;
@@ -241,7 +242,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1015, 238);
+            this.label6.Location = new System.Drawing.Point(1012, 243);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 3;
@@ -251,7 +252,7 @@
             // 
             this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(1015, 254);
+            this.comboBox3.Location = new System.Drawing.Point(1015, 258);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(183, 21);
             this.comboBox3.TabIndex = 4;
@@ -366,6 +367,16 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aboutToolStripMenuItem.Text = "About...";
             // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1012, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Search string";
+            // 
             // ProductsOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +393,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label12);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox3);
@@ -436,5 +448,6 @@
         private System.Windows.Forms.ToolStripMenuItem paymentsReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
     }
 }

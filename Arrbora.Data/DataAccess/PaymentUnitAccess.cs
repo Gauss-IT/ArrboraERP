@@ -21,6 +21,43 @@ namespace Arrbora.Data.DataAccess
         /// </summary>
         /// <param name="paymentUnit"></param>
         /// <returns></returns>
+        public int AddEmptyPaymentUnit(int paymentID)
+        {
+            var result = -1;
+            using (OleDbCommand oleDbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbCommand.CommandType = CommandType.Text;
+                oleDbCommand.CommandText = PaymentUnitScripts.sqlInsertPaymentUnit;
+
+                // Add the input parameters to the parameter collection                
+                oleDbCommand.Parameters.AddWithValue("@PaymentID", paymentID);
+                oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Amount", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PaymentType", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PayedBy", DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Note", DBNull.Value);
+
+                // Open the connection, execute the query and close the connection
+                oleDbCommand.Connection.Open();
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                if (rowsAffected == 0) result = -1;
+                else
+                {
+                    oleDbCommand.CommandText = GeneralScripts.sqlGetIdentityOfInsertedRow;
+                    result = (int)oleDbCommand.ExecuteScalar();
+                }
+                oleDbCommand.Connection.Close();
+
+                return result;
+            }
+        }
+        /// <summary>
+        /// Add a payment unit to the table
+        /// </summary>
+        /// <param name="paymentUnit"></param>
+        /// <returns></returns>
         public bool AddPaymentUnit(PaymentUnitDataModel paymentUnit)
         {
             using (OleDbCommand oleDbCommand = new OleDbCommand())

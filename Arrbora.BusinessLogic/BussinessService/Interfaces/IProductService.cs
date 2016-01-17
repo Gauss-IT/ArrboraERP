@@ -35,6 +35,13 @@ namespace Arrbora.Data.BussinessService.Interfaces
         /// </summary>
         /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
+        int AddEmptyProduct();
+
+        /// <summary>
+        /// Method to create new product
+        /// </summary>
+        /// <param name="product">club member model</param>
+        /// <returns>true or false</returns>
         bool AddProduct(ProductDataModel product);
 
         /// <summary>

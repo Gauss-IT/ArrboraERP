@@ -57,6 +57,16 @@ namespace Arrbora.Data.BussinessService
         /// </summary>
         /// <param name="product">club member model</param>
         /// <returns>true or false</returns>
+        public int AddEmptyProduct()
+        {
+            return productAccess.AddEmptyProduct();
+        }
+
+        /// <summary>
+        /// Method to create new product
+        /// </summary>
+        /// <param name="product">club member model</param>
+        /// <returns>true or false</returns>
         public bool AddProduct(ProductDataModel product)
         {
             return productAccess.AddProduct(product);

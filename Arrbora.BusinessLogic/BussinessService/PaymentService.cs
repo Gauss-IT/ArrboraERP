@@ -61,6 +61,16 @@ namespace Arrbora.BusinessLogic.BussinessService
         /// </summary>
         /// <param name="payment">payment data model</param>
         /// <returns>true or false</returns>
+        public int AddEmptyPayment()
+        {
+            return paymentAccess.AddEmptyPayment();
+        }
+
+        /// <summary>
+        /// Method to create new payment
+        /// </summary>
+        /// <param name="payment">payment data model</param>
+        /// <returns>true or false</returns>
         public bool AddPayment(PaymentDataModel payment)
         {
             return paymentAccess.AddPayment(payment);

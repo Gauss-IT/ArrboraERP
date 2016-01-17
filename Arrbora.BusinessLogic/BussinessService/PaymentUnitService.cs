@@ -26,6 +26,11 @@ namespace Arrbora.Data.BussinessService
             paymentUnitAccess = new PaymentUnitAccess();
         }
 
+        public int AddEmptyPaymentUnit(int paymentID)
+        {
+            return paymentUnitAccess.AddEmptyPaymentUnit(paymentID);
+        }
+
         public bool AddPaymentUnit(PaymentUnitDataModel paymentUnit)
         {
             return paymentUnitAccess.AddPaymentUnit(paymentUnit);

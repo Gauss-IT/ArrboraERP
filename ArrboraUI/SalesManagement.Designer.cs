@@ -104,10 +104,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblPaymentsTotal = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.lblBrand = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -165,7 +165,7 @@
             this.productTabPage.Location = new System.Drawing.Point(4, 26);
             this.productTabPage.Name = "productTabPage";
             this.productTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.productTabPage.Size = new System.Drawing.Size(642, 258);
+            this.productTabPage.Size = new System.Drawing.Size(862, 258);
             this.productTabPage.TabIndex = 0;
             this.productTabPage.Text = "Product";
             // 
@@ -343,7 +343,7 @@
             this.productDeliveryTabPage.Location = new System.Drawing.Point(4, 26);
             this.productDeliveryTabPage.Name = "productDeliveryTabPage";
             this.productDeliveryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.productDeliveryTabPage.Size = new System.Drawing.Size(642, 258);
+            this.productDeliveryTabPage.Size = new System.Drawing.Size(862, 258);
             this.productDeliveryTabPage.TabIndex = 1;
             this.productDeliveryTabPage.Text = "Product Delivery";
             // 
@@ -562,7 +562,7 @@
             this.purchasePriceTabPage.Location = new System.Drawing.Point(4, 26);
             this.purchasePriceTabPage.Name = "purchasePriceTabPage";
             this.purchasePriceTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.purchasePriceTabPage.Size = new System.Drawing.Size(642, 258);
+            this.purchasePriceTabPage.Size = new System.Drawing.Size(862, 258);
             this.purchasePriceTabPage.TabIndex = 2;
             this.purchasePriceTabPage.Text = "Purchase Price";
             // 
@@ -695,7 +695,7 @@
             this.sellingPriceTabPage.Location = new System.Drawing.Point(4, 26);
             this.sellingPriceTabPage.Name = "sellingPriceTabPage";
             this.sellingPriceTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.sellingPriceTabPage.Size = new System.Drawing.Size(642, 258);
+            this.sellingPriceTabPage.Size = new System.Drawing.Size(862, 258);
             this.sellingPriceTabPage.TabIndex = 3;
             this.sellingPriceTabPage.Text = "Selling Price";
             // 
@@ -847,45 +847,49 @@
             this.label13.TabIndex = 92;
             this.label13.Text = "Total";
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(808, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(808, 390);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button4
+            // btnNew
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(541, 390);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "New";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNew.Location = new System.Drawing.Point(541, 390);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 23);
+            this.btnNew.TabIndex = 2;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // button3
+            // btnDelete
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(719, 390);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Location = new System.Drawing.Point(719, 390);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(630, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(630, 390);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label28
             // 
@@ -961,8 +965,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(904, 425);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.lblSalesPrice);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.lblPurchaseDate);
@@ -971,8 +975,8 @@
             this.Controls.Add(this.label30);
             this.Controls.Add(this.lblBrand);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.saleManagementTabControl);
             this.Name = "frmSalesManagement";
             this.Text = "Sales Management";
@@ -1019,10 +1023,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblProductIDShow;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView paymenetUnitsDataGridView;
         private System.Windows.Forms.Label lblDueAmount;
         private System.Windows.Forms.Label label11;

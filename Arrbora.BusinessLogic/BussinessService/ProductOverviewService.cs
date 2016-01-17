@@ -25,24 +25,10 @@ namespace Arrbora.Data.BussinessService
             productOverviewAccess = new ProductOverviewAccess();
         }
 
-        public bool AddProductOverview(ProductOverviewDataModel productOverview)
-        {
-            return productOverviewAccess.AddProductOverview(productOverview);
-        }
-
-        public bool DeleteProductByID(int SalesManagementID)
-        {
-            return productOverviewAccess.DeleteProductOverviewByID(SalesManagementID);
-        }
 
         public DataTable GetAllProductOverview()
         {
             return productOverviewAccess.GetAllProductOverview();
-        }
-
-        public DataRow GetProductOverviewById(int SalesManagementID)
-        {
-            return productOverviewAccess.GetProductOverviewById(SalesManagementID);
         }
 
         public DataTable SearchProductOverview(object SalesManagementID, object brand, object model)
