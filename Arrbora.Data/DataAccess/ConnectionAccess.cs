@@ -23,7 +23,7 @@ namespace Arrbora.Data
 
                 // Call the Add method to explicitly add key/value
                 // pairs to the internal collection.
-                builder.Add("Data Source", "C:\\Temp\\ArrboraAccessDatabase.accdb");
+                builder.Add("Data Source", @"|DataDirectory|\Databases\ArrboraAccessDatabase.accdb");
                 //var dir = AppDomain.CurrentDomain..GetData("DataDirectory");
                 //builder.Add("Data Source", @"|DataDirectory|\Databases\ArrboraAccessDatabase.accdb");
                 builder.Add("Provider", "Microsoft.ACE.OLEDB.12.0");
