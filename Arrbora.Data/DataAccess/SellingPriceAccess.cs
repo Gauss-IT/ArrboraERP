@@ -5,10 +5,6 @@
 using Arrbora.Data.DataModel;
 using System.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Arrbora.Data.DataAccess.Interfaces;
 using System.Data.OleDb;
 using Arrbora.Data.Sql;
@@ -71,11 +67,11 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = SellingPriceScripts.sqlInsertSellingPrice;
 
                 // Add the input parameters to the parameter collection                
-                oleDbCommand.Parameters.AddWithValue("@Price", sellingPrice.Price);
-                oleDbCommand.Parameters.AddWithValue("@Transport", sellingPrice.Transport);
-                oleDbCommand.Parameters.AddWithValue("@Other1", sellingPrice.Other1);
-                oleDbCommand.Parameters.AddWithValue("@Other2", sellingPrice.Other2);
-                oleDbCommand.Parameters.AddWithValue("@TotalSelling", sellingPrice.TotalSelling);
+                oleDbCommand.Parameters.AddWithValue("@Price", sellingPrice.Price ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Transport", sellingPrice.Transport ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other1", sellingPrice.Other1 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other2", sellingPrice.Other2 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@TotalSelling", sellingPrice.TotalSelling ?? (object)DBNull.Value);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
@@ -95,6 +91,7 @@ namespace Arrbora.Data.DataAccess
         {
             var result = new SellingPriceDataModel();
 
+            result.SellingPriceID = sellingPriceRow.Field<int>("SellingPriceID");
             result.Price = sellingPriceRow.Field<decimal?>("Price");
             result.Transport = sellingPriceRow.Field<decimal?>("Transport");
             result.Other1 = sellingPriceRow.Field<decimal?>("Other1");
@@ -198,13 +195,13 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandType = CommandType.Text;
                 oleDbCommand.CommandText = SellingPriceScripts.sqlUpdateSellingPrice;
 
-                // Add the input parameters to the parameter collection
+                // Add the input parameters to the parameter collection                
+                oleDbCommand.Parameters.AddWithValue("@Price", sellingPrice.Price ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Transport", sellingPrice.Transport ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other1", sellingPrice.Other1 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other2", sellingPrice.Other2 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@TotalSelling", sellingPrice.TotalSelling ?? (object)DBNull.Value);
                 oleDbCommand.Parameters.AddWithValue("@SellingPriceID", sellingPrice.SellingPriceID);
-                oleDbCommand.Parameters.AddWithValue("@Price", sellingPrice.Price);
-                oleDbCommand.Parameters.AddWithValue("@Transport", sellingPrice.Transport);
-                oleDbCommand.Parameters.AddWithValue("@Other1", sellingPrice.Other1);
-                oleDbCommand.Parameters.AddWithValue("@Other2", sellingPrice.Other2);
-                oleDbCommand.Parameters.AddWithValue("@TotalSelling", sellingPrice.TotalSelling);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();

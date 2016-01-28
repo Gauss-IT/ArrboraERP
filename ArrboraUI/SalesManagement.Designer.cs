@@ -116,6 +116,7 @@
             this.lblPurchaseDate = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.lblSalesPrice = new System.Windows.Forms.Label();
+            this.btnSaveThis = new System.Windows.Forms.Button();
             this.saleManagementTabControl.SuspendLayout();
             this.productTabPage.SuspendLayout();
             this.productDeliveryTabPage.SuspendLayout();
@@ -861,7 +862,7 @@
             // btnNew
             // 
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNew.Location = new System.Drawing.Point(541, 390);
+            this.btnNew.Location = new System.Drawing.Point(448, 390);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 2;
@@ -887,9 +888,9 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Save All";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSaveAll_Click);
             // 
             // label28
             // 
@@ -959,6 +960,17 @@
             this.lblSalesPrice.Size = new System.Drawing.Size(135, 20);
             this.lblSalesPrice.TabIndex = 21;
             // 
+            // btnSaveThis
+            // 
+            this.btnSaveThis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveThis.Location = new System.Drawing.Point(541, 390);
+            this.btnSaveThis.Name = "btnSaveThis";
+            this.btnSaveThis.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveThis.TabIndex = 4;
+            this.btnSaveThis.Text = "Save This";
+            this.btnSaveThis.UseVisualStyleBackColor = true;
+            this.btnSaveThis.Click += new System.EventHandler(this.btnSaveThis_Click);
+            // 
             // frmSalesManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,10 +988,12 @@
             this.Controls.Add(this.lblBrand);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnSaveThis);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.saleManagementTabControl);
             this.Name = "frmSalesManagement";
             this.Text = "Sales Management";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSalesManagement_FormClosed);
             this.saleManagementTabControl.ResumeLayout(false);
             this.productTabPage.ResumeLayout(false);
             this.productTabPage.PerformLayout();
@@ -1087,5 +1101,6 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox txtAttachment;
         private System.Windows.Forms.TextBox txtWebsite;
+        private System.Windows.Forms.Button btnSaveThis;
     }
 }

@@ -8,7 +8,7 @@ using Arrbora.Data.DataAccess.Interfaces;
 using Arrbora.Data.DataModel;
 using System.Data;
 
-namespace Arrbora.Data.BussinessService
+namespace Arrbora.BusinessLogic.BussinessService
 {
     public class ProductOverviewService :IProductOverviewService
     {

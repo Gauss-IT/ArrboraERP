@@ -10,6 +10,7 @@ namespace Arrbora.Data.DataModel
     /// </summary>
     public class PurchasePriceDataModel
     {
+        private decimal? _totalPurchase;
         /// <summary>
         /// Gets or sets purchase price ID
         /// </summary>
@@ -48,6 +49,14 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets total purchase price
         /// </summary>
-        public decimal? TotalPurchase { get; set; }
+        public decimal? TotalPurchase
+        { get
+            {
+                _totalPurchase = (DistributorPrice ?? 0) + (Transport ?? 0) + (InternalTransport ?? 0) +
+                     (KosovoCosts ?? 0) + (Other1 ?? 0) + (Other2 ?? 0);
+                return _totalPurchase;
+            }
+            set { _totalPurchase = value; }
+        }
     }
 }

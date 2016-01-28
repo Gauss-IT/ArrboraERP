@@ -233,6 +233,7 @@ namespace Arrbora.Data.DataAccess
         public PaymentUnitDataModel ConvertToDataModel(DataRow paymentUnitRow)
         {
             var result = new PaymentUnitDataModel();
+            result.PaymentUnitID = paymentUnitRow.Field<int>("PaymentUnitID");
             result.PaymentID= paymentUnitRow.Field<int>("PaymentID");
             result.PaymentUnitDate = paymentUnitRow.Field<DateTime?>("PaymentUnitDate");
             result.Amount = paymentUnitRow.Field<decimal?>("Amount");

@@ -13,14 +13,14 @@ namespace Arrbora.Data.Sql
         /// Sql to get a selling price by Id
         /// </summary>
         public static readonly string sqlGetSellingPricetById = "SELECT" +
-            " Price, Transport, Other1, Other2, TotalSelling" +
+            " SellingPriceID, Price, Transport, Other1, Other2, TotalSelling" +
             " FROM SellingPrice WHERE SellingPriceID = @SellingPriceID";
 
         /// <summary>
         /// Sql command to get all selling prices
         /// </summary>
         public static readonly string sqlGetAllSellingPrices = "SELECT" +
-            " Price, Transport, Other1, Other2, TotalSelling" +
+            " SellingPriceID, Price, Transport, Other1, Other2, TotalSelling" +
             " FROM SellingPrice";
 
         /// <summary>

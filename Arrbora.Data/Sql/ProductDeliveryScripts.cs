@@ -21,7 +21,7 @@ namespace Arrbora.Data.Sql
         /// Sql command to get all products
         /// </summary>
         public static readonly string sqlGetAllProductDeliveries = "SELECT" +
-            " DateOfPurchase, LandOfOrigin, CurrentLocation, DateOfSale, LandOfDestination, ProductStatus, Seller," +
+            " ProductDeliveryID, DateOfPurchase, LandOfOrigin, CurrentLocation, DateOfSale, LandOfDestination, ProductStatus, Seller," +
             " Buyer, ProductWebsite, ProductAttachment" +
             " FROM ProductDelivery";
 
@@ -39,7 +39,7 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlUpdateProductDelivery = "UPDATE ProductDelivery " +
             " Set [DateOfPurchase] = @DateOfPurchase, [LandOfOrigin] = @LandOfOrigin, [CurrentLocation] = @CurrentLocation,"+
-            " [DateOfSale] = @DateOfSale, [LandOfDestination] = @LandOfDestination, [ProductStatus] = @ProductStatus" +
+            " [DateOfSale] = @DateOfSale, [LandOfDestination] = @LandOfDestination, [ProductStatus] = @ProductStatus," +
             " [Seller] = @Seller, [Buyer] = @Buyer, [ProductWebsite] = @ProductWebsite, [ProductAttachment] = @ProductAttachment" +
             " WHERE ([ProductDeliveryID] = @ProductDeliveryID)";
 

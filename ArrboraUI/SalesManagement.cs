@@ -3,10 +3,10 @@
 /// </summary>
 
 using System.Windows.Forms;
-using System.Globalization;
 using System.Data;
 using Arrbora.Data.DataModel;
-using Arrbora.Data.BussinessService;
+using Arrbora.BusinessLogic.BussinessService;
+using System;
 
 namespace Arrbora.UI
 {
@@ -21,7 +21,14 @@ namespace Arrbora.UI
         frmProductsOverview _parentForm;
 
         SalesManagementDataModel _salesManagementDataModel;
+
         SalesManagementService _salesManagementService;
+        PaymentService _paymentService;
+        PaymentUnitService _paymentUnitService;
+        ProductService _productService;
+        ProductDeliveryService _productDeliveryService;
+        PurchasePriceService _purchasePriceService;
+        SellingPriceService _sellingPriceService;
 
         PaymentDataModel _paymentDataModel;
         PaymentUnitDataModel _paymentUnitDataModel;
@@ -31,19 +38,36 @@ namespace Arrbora.UI
         SellingPriceDataModel _sellingPriceDataModel;
         DataTable _paymentUnitsTable;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="parentForm"> A reference to the parent form</param>
+        /// <param name="salesManagementDataModel">A reference to the sales management data model</param>
+        /// <param name="selectedTabIndex">Index of the tab to initialize the form with</param>
         public frmSalesManagement(
             frmProductsOverview parentForm, SalesManagementDataModel salesManagementDataModel,  int selectedTabIndex)
         {
             InitializeComponent();
             _parentForm = parentForm;
             _salesManagementDataModel = salesManagementDataModel;
+
             _salesManagementService = new SalesManagementService(salesManagementDataModel);
+            _paymentService = new PaymentService();
+            _paymentUnitService = new PaymentUnitService();
+            _productService = new ProductService();
+            _productDeliveryService = new ProductDeliveryService();
+            _purchasePriceService = new PurchasePriceService();
+            _sellingPriceService = new SellingPriceService();
+
             UpdateDataModels();
             UpdateSalesManagementTab(DataState.WriteToUI);
 
             saleManagementTabControl.SelectedIndex = selectedTabIndex;
         }
 
+        /// <summary>
+        /// Updates the data models 
+        /// </summary>
         private void UpdateDataModels()
         {
             _paymentDataModel = _salesManagementService.PaymentDataModel;
@@ -54,6 +78,10 @@ namespace Arrbora.UI
             _paymentUnitsTable = _salesManagementService.PaymentUnitsTable;
         }
 
+        /// <summary>
+        /// Updates the tabs of this form 
+        /// </summary>
+        /// <param name="dataState">An enum variable which is used to read data from or write data to form</param>
         private void UpdateSalesManagementTab(DataState dataState)
         {
             lblBrand.Text = _productDataModel.Brand;
@@ -67,6 +95,11 @@ namespace Arrbora.UI
             UpdateSellingPriceTabPage(dataState);
             UpdatePaymentsTabPage(dataState);
         }
+
+        /// <summary>
+        /// Update the products tab
+        /// </summary>
+        /// <param name="dataState">Read data from or write data to form</param>
         private void UpdateProductTabPage(DataState dataState)
         {
             switch (dataState) {
@@ -101,11 +134,31 @@ namespace Arrbora.UI
                     break;
             }
         }
+
+        /// <summary>
+        /// Update product delivery tab
+        /// </summary>
+        /// <param name="dataState">Read data from or write data to form</param>
         private void UpdateProductDeliveryTabPage(DataState dataState)
         {
             switch (dataState)
             {
                 case DataState.ReadFromUI:
+                    DateTime dateTime;
+
+                    _productDeliveryDataModel.DateOfPurchase  = null;
+                    if (DateTime.TryParse(txtDateOfPurchase.Text, out dateTime))
+                        _productDeliveryDataModel.DateOfPurchase = dateTime;
+                    _productDeliveryDataModel.CurrentLocation = txtCurentLocation.Text;
+                    _productDeliveryDataModel.LandOfDestination = txtLandOfDestination.Text;
+                    _productDeliveryDataModel.Seller = txtSeller.Text;
+                    _productDeliveryDataModel.ProductWebsite = txtWebsite.Text;
+                    _productDeliveryDataModel.LandOfOrigin = txtLandOfOrigin.Text;
+                    _productDeliveryDataModel.DateOfSale = null;
+                    if (DateTime.TryParse(txtDateOfSale.Text, out dateTime))
+                        _productDeliveryDataModel.DateOfSale = dateTime;
+                    _productDeliveryDataModel.Buyer = txtBuyer.Text;
+                    _productDeliveryDataModel.ProductAttachment = txtAttachment.Text;
                     break;
                 case DataState.WriteToUI:
                     txtDateOfPurchase.Text = _productDeliveryDataModel.DateOfPurchase.GetValueOrDefault().ToShortDateString();
@@ -119,17 +172,43 @@ namespace Arrbora.UI
                     txtAttachment.Text = _productDeliveryDataModel.ProductAttachment;
                     break;
             }
-
-
         }
+
+        /// <summary>
+        /// Update purchase price tab
+        /// </summary>
+        /// <param name="dataState">Read data from or write data to form</param>
         private void UpdatePurchasePriceTabPage(DataState dataState)
         {
             switch (dataState)
             {
                 case DataState.ReadFromUI:
+                    decimal decimalValue;
+
+                    _purchasePriceDataModel.DistributorPrice = null;
+                    if (decimal.TryParse(txtDistributorPrice.Text, out decimalValue))
+                        _purchasePriceDataModel.DistributorPrice = decimalValue;
+                    _purchasePriceDataModel.Transport = null;
+                    if (decimal.TryParse(txtTransport.Text, out decimalValue))
+                        _purchasePriceDataModel.Transport = decimalValue;
+                    _purchasePriceDataModel.InternalTransport = null;
+                    if (decimal.TryParse(txtInternalTransport.Text, out decimalValue))
+                        _purchasePriceDataModel.InternalTransport = decimalValue;
+                    _purchasePriceDataModel.KosovoCosts = null;
+                    if (decimal.TryParse(txtKosovoCosts.Text, out decimalValue))
+                        _purchasePriceDataModel.KosovoCosts = decimalValue;
+                    _purchasePriceDataModel.Other1 = null;
+                    if (decimal.TryParse(txtPurchaseOther1.Text, out decimalValue))
+                        _purchasePriceDataModel.Other1 = decimalValue;
+                    _purchasePriceDataModel.Other2 = null;
+                    if (decimal.TryParse(txtPurchaseOther2.Text, out decimalValue))
+                        _purchasePriceDataModel.Other2 = decimalValue;
+                    _purchasePriceDataModel.TotalPurchase = null;
+                    if (decimal.TryParse(lblPurchaseTotal.Text, out decimalValue))
+                        _purchasePriceDataModel.TotalPurchase = decimalValue;
                     break;
                 case DataState.WriteToUI:
-                    txtDistributorPrice.Text = _purchasePriceDataModel.DistributorPrice.GetValueOrDefault().ToString(CultureInfo.CreateSpecificCulture("us-US"));
+                    txtDistributorPrice.Text = _purchasePriceDataModel.DistributorPrice.GetValueOrDefault().ToString();
                     txtTransport.Text = _purchasePriceDataModel.Transport.ToString();
                     txtInternalTransport.Text = _purchasePriceDataModel.InternalTransport.ToString();
                     txtKosovoCosts.Text = _purchasePriceDataModel.KosovoCosts.ToString();
@@ -140,11 +219,33 @@ namespace Arrbora.UI
             }
 
         }
+
+        /// <summary>
+        /// Update Selling Price Tab
+        /// </summary>
+        /// <param name="dataState">Read data from or write data to form</param>
         private void UpdateSellingPriceTabPage(DataState dataState)
         {
             switch (dataState)
             {
                 case DataState.ReadFromUI:
+                    decimal decimalValue;
+
+                    _sellingPriceDataModel.Price = null;
+                    if (decimal.TryParse(txtSellingPrice.Text, out decimalValue))
+                        _sellingPriceDataModel.Price = decimalValue;
+                    _sellingPriceDataModel.Transport = null;
+                    if (decimal.TryParse(txtSellingPriceTransport.Text, out decimalValue))
+                        _sellingPriceDataModel.Transport = decimalValue;
+                    _sellingPriceDataModel.Other1 = null;
+                    if (decimal.TryParse(txtPurchaseOther1.Text, out decimalValue))
+                        _sellingPriceDataModel.Other1 = decimalValue;
+                    _sellingPriceDataModel.Other2 = null;
+                    if (decimal.TryParse(txtPurchaseOther2.Text, out decimalValue))
+                        _sellingPriceDataModel.Other2 = decimalValue;
+                    _sellingPriceDataModel.TotalSelling = null;
+                    if (decimal.TryParse(lblSellingTotal.Text, out decimalValue))
+                        _sellingPriceDataModel.TotalSelling = decimalValue;
                     break;
                 case DataState.WriteToUI:
                     txtSellingPrice.Text = _sellingPriceDataModel.Price.ToString();
@@ -154,8 +255,12 @@ namespace Arrbora.UI
                     lblSellingTotal.Text = _sellingPriceDataModel.TotalSelling.ToString();
                     break;
             }
- 
         }
+
+        /// <summary>
+        /// Update payments tab
+        /// </summary>
+        /// <param name="dataState">Read data from or write data to form</param>
         private void UpdatePaymentsTabPage(DataState dataState)
         {
             switch (dataState)
@@ -174,12 +279,29 @@ namespace Arrbora.UI
             }
 
         }
+        private void UpdateSalesManagementDataModels()
+        {
+            _salesManagementService.PaymentDataModel = _paymentDataModel;
+            _salesManagementService.ProductDataModel = _productDataModel;
+            _salesManagementService.ProductDeliveryDataModel = _productDeliveryDataModel;
+            _salesManagementService.PurchasePriceDataModel = _purchasePriceDataModel;
+            _salesManagementService.SellingPriceDataModel = _sellingPriceDataModel;
+            //_salesManagementService.PaymentUnitsTable = _paymentUnitsTable;
 
+        }
+
+        /// <summary>
+        /// Event handler for cancel button click
+        /// </summary>
         private void btnCancel_Click(object sender, System.EventArgs e)
         {
+            _parentForm.UpdateDataGridView();
             Close();
         }
 
+        /// <summary>
+        /// Event handler for delete button click
+        /// </summary>
         private void btnDelete_Click(object sender, System.EventArgs e)
         {
             _salesManagementService.DeleteSalesManagementByID(_salesManagementDataModel.SalesManagementID);
@@ -187,6 +309,9 @@ namespace Arrbora.UI
             Close();
         }
 
+        /// <summary>
+        /// Event handler for new button click
+        /// </summary>
         private void btnNew_Click(object sender, System.EventArgs e)
         {
            _salesManagementDataModel = _salesManagementService.AddEmptySalesManagement();
@@ -195,9 +320,47 @@ namespace Arrbora.UI
             _parentForm.UpdateDataGridView();
         }
 
-        private void btnSave_Click(object sender, System.EventArgs e)
+        /// <summary>
+        /// Event handler for save button click
+        /// </summary>
+        private void btnSaveAll_Click(object sender, System.EventArgs e)
         {
-            UpdateSalesManagementTab(DataState.WriteToUI);
+            UpdateSalesManagementTab(DataState.ReadFromUI);
+            UpdateSalesManagementDataModels();
+            _salesManagementService.UpdateSalesManagement(_salesManagementDataModel);
+            _parentForm.UpdateDataGridView();
+        }
+
+        private void frmSalesManagement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _parentForm.UpdateDataGridView();
+        }
+
+        private void btnSaveThis_Click(object sender, EventArgs e)
+        {
+            switch (saleManagementTabControl.SelectedTab.Name)
+            {
+                case "productTabPage":
+                    UpdateProductTabPage(DataState.ReadFromUI);
+                    _productService.UpdateProduct(_productDataModel);
+                    break;
+                case "productDeliveryTabPage":
+                    UpdateProductDeliveryTabPage(DataState.ReadFromUI);
+                    _productDeliveryService.UpdateProductDelivery(_productDeliveryDataModel);
+                    break;
+                case "purchasePriceTabPage":
+                    UpdatePurchasePriceTabPage(DataState.ReadFromUI);
+                    _purchasePriceService.UpdatePurchasePrice(_purchasePriceDataModel);
+                    break;
+                case "sellingPriceTabPage":
+                    UpdateSellingPriceTabPage(DataState.ReadFromUI);
+                    _sellingPriceService.UpdateSellingPrice(_sellingPriceDataModel);
+                    break;
+                case "paymentsTabPage":
+                    UpdatePaymentsTabPage(DataState.ReadFromUI);
+                    _paymentService.UpdatePayment(_paymentDataModel);
+                    break;
+            }
         }
     }
 }

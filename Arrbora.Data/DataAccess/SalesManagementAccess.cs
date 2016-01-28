@@ -189,7 +189,7 @@ namespace Arrbora.Data.DataAccess
                 // Set the command object properties
                 oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
                 oleDbCommand.CommandType = CommandType.Text;
-                oleDbCommand.CommandText = ProductScripts.sqlUpdateProduct;
+                oleDbCommand.CommandText = SalesManagementScripts.sqlUpdateSalesManagement;
 
                 // Add the input parameters to the parameter collection                
                 oleDbCommand.Parameters.AddWithValue("@ProductID", salesManagement.PaymentID);
@@ -197,6 +197,7 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.Parameters.AddWithValue("@SellingPriceID", salesManagement.SellingPriceID);
                 oleDbCommand.Parameters.AddWithValue("@PaymentID", salesManagement.PaymentID);
                 oleDbCommand.Parameters.AddWithValue("@PurchasePriceID", salesManagement.PurchasePriceID);
+                oleDbCommand.Parameters.AddWithValue("@SalesManagementID", salesManagement.SalesManagementID);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();

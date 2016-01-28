@@ -56,7 +56,7 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = PaymentScripts.sqlInsertPayment;
 
                 // Add the input parameters to the parameter collection                
-                oleDbCommand.Parameters.AddWithValue("@PaymentTotal", payment.PaymentTotal);
+                oleDbCommand.Parameters.AddWithValue("@PaymentTotal", payment.PaymentTotal ?? (object)DBNull.Value);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
@@ -158,8 +158,8 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = PaymentScripts.sqlUpdatePayment;
 
                 // Add the input parameters to the parameter collection                               
+                oleDbCommand.Parameters.AddWithValue("@PaymentTotal", payment.PaymentTotal ?? (object)DBNull.Value);
                 oleDbCommand.Parameters.AddWithValue("@PaymentID", payment.PaymentID);
-                oleDbCommand.Parameters.AddWithValue("@PaymentTotal", payment.PaymentTotal);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();

@@ -53,14 +53,14 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = ProductScripts.sqlInsertProduct;
 
                 // Add the input parameters to the parameter collection                
-                oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand);
-                oleDbCommand.Parameters.AddWithValue("@Model", product.Model);
-                oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN);
-                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriorColour);
-                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriorColour);
-                oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear);
-                oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto);
-                oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto);
+                oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Model", product.Model ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriorColour ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriorColour ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto ?? (object)DBNull.Value);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
@@ -180,8 +180,8 @@ namespace Arrbora.Data.DataAccess
                 oleDbDataAdapter.SelectCommand.CommandText = ProductScripts.sqlSearchProducts;
 
                 // Add the input parameters to the parameter collection
-                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Brand", brand == null ? DBNull.Value : brand);
-                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Model", model == null ? DBNull.Value : model);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Brand", brand ?? (object)DBNull.Value);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Model", model ?? (object)DBNull.Value);
 
                 // Fill the table from adapter
                 oleDbDataAdapter.Fill(dataTable);
@@ -202,15 +202,16 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandType = CommandType.Text;
                 oleDbCommand.CommandText = ProductScripts.sqlUpdateProduct;
 
-                // Add the input parameters to the parameter collection
-                oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand);
-                oleDbCommand.Parameters.AddWithValue("@Model", product.Model);
-                oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN);
-                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriorColour);
-                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriorColour);
-                oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear);
-                oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto);
-                oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto);
+                // Add the input parameters to the parameter collection               
+                oleDbCommand.Parameters.AddWithValue("@Brand", product.Brand ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Model", product.Model ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@VIN", product.VIN ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@EnteriourColour", product.EnteriorColour ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@ExteriourColour", product.ExteriorColour ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@ModelYear", product.ModelYear ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DLPNetto", product.DLPNetto ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DLPBrutto", product.DLPBrutto ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@ProductID", product.ProductID);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();

@@ -10,7 +10,7 @@ using Arrbora.Data.BussinessService.Interfaces;
 using System;
 using Arrbora.BusinessLogic.BussinessService;
 
-namespace Arrbora.Data.BussinessService
+namespace Arrbora.BusinessLogic.BussinessService
 {
     public class SalesManagementService : ISalesManagementService
     {
@@ -116,12 +116,12 @@ namespace Arrbora.Data.BussinessService
             //TODO : implement necessary logic
             var success = true;
             SalesManagementDataModel = ConvertToDataModel( GetSalesManagementById(salesManagementID));
-            success = success && _paymentService.DeletePaymentByID(SalesManagementDataModel.PaymentID);
-            success = success && _productDeliveryService.DeleteProductDeliveryByID(SalesManagementDataModel.ProductDeliveryID);
-            success = success && _productService.DeleteProductByID(SalesManagementDataModel.ProductID);
-            success = success && _purchasePriceService.DeletePurchasePriceByID(SalesManagementDataModel.PurchasePriceID);
-            success = success && _sellingPriceService.DeleteSellingPriceByID(SalesManagementDataModel.SellingPriceID);
-            success = success && _salesManagementAccess.DeleteSalesManagementByID(salesManagementID);
+            success =_paymentService.DeletePaymentByID(SalesManagementDataModel.PaymentID) && success;
+            success =_productDeliveryService.DeleteProductDeliveryByID(SalesManagementDataModel.ProductDeliveryID) && success;
+            success =_productService.DeleteProductByID(SalesManagementDataModel.ProductID) && success;
+            success =_purchasePriceService.DeletePurchasePriceByID(SalesManagementDataModel.PurchasePriceID) && success;
+            success =_sellingPriceService.DeleteSellingPriceByID(SalesManagementDataModel.SellingPriceID) && success;
+            success =_salesManagementAccess.DeleteSalesManagementByID(salesManagementID) && success;
             return success;
         }
 
@@ -165,7 +165,14 @@ namespace Arrbora.Data.BussinessService
         /// <returns></returns>
         public bool UpdateSalesManagement(SalesManagementDataModel salesManagement)
         {
-            return _salesManagementAccess.UpdateSalesManagement(salesManagement);
+            var success = true;
+            success = _paymentService.UpdatePayment(PaymentDataModel) && success;
+            success = _productDeliveryService.UpdateProductDelivery(ProductDeliveryDataModel) && success;
+            success = _productService.UpdateProduct(ProductDataModel) && success;
+            success = _purchasePriceService.UpdatePurchasePrice(PurchasePriceDataModel) && success;
+            success = _sellingPriceService.UpdateSellingPrice(SellingPriceDataModel) && success;
+            //success = _salesManagementAccess.UpdateSalesManagement(SalesManagementDataModel) && success;
+             return success;
         }
 
         /// <summary>

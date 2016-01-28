@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System;
 using System.Drawing;
 using System.Collections.Generic;
-using Arrbora.Data.BussinessService;
+using Arrbora.BusinessLogic.BussinessService;
 using Arrbora.Data.DataModel;
 
 namespace Arrbora.UI

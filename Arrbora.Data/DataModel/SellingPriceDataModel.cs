@@ -9,6 +9,7 @@ namespace Arrbora.Data.DataModel
     /// </summary>
     public class SellingPriceDataModel
     {
+        private decimal? _totalSelling;
         /// <summary>
         /// Gets or sets selling price ID
         /// </summary>
@@ -37,6 +38,11 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets  total selling
         /// </summary>
-        public decimal? TotalSelling { get; set; }
+        public decimal? TotalSelling
+        {
+            get {
+                _totalSelling = (Price ?? 0) + (Transport ?? 0) + (Other1 ?? 0) + (Other2 ?? 0);
+                return _totalSelling; }
+            set { _totalSelling = value; } }
     }
 }

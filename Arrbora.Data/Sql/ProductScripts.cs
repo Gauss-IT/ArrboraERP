@@ -48,7 +48,7 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlUpdateProduct = "UPDATE Products " +
             " Set [Brand] = @Brand, [Model] = @Model, [VIN] = @VIN, [EnteriourColour] = @EnteriourColour, " +
-            " [ExteriourColour] = @ExteriourColour, [ModelYear] = @ModelYear, [DLPNetto] = @DLPNetto "+
+            " [ExteriourColour] = @ExteriourColour, [ModelYear] = @ModelYear, [DLPNetto] = @DLPNetto, "+
             " [DLPBrutto] = @DLPBrutto  " +
             " WHERE ([ProductID] = @ProductID)";
 

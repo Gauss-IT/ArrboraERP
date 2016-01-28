@@ -8,7 +8,7 @@ using Arrbora.Data.DataAccess;
 using Arrbora.Data.DataAccess.Interfaces;
 using Arrbora.Data.BussinessService.Interfaces;
 
-namespace Arrbora.Data.BussinessService
+namespace Arrbora.BusinessLogic.BussinessService
 {
     public class ProductService : IProductService
     {

@@ -70,13 +70,13 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = PurchasePriceScripts.sqlInsertPurchasePrice;
 
                 // Add the input parameters to the parameter collection                
-                oleDbCommand.Parameters.AddWithValue("@DistributorPrice", purchasePrice.DistributorPrice);
-                oleDbCommand.Parameters.AddWithValue("@Transport", purchasePrice.Transport);
-                oleDbCommand.Parameters.AddWithValue("@InternalTransport", purchasePrice.InternalTransport);
-                oleDbCommand.Parameters.AddWithValue("@KosovoCosts", purchasePrice.KosovoCosts);
-                oleDbCommand.Parameters.AddWithValue("@Other1", purchasePrice.Other1);
-                oleDbCommand.Parameters.AddWithValue("@Other2", purchasePrice.Other2);
-                oleDbCommand.Parameters.AddWithValue("@TotalPurchase", purchasePrice.TotalPurchase);
+                oleDbCommand.Parameters.AddWithValue("@DistributorPrice", purchasePrice.DistributorPrice ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Transport", purchasePrice.Transport ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@InternalTransport", purchasePrice.InternalTransport ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@KosovoCosts", purchasePrice.KosovoCosts ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other1", purchasePrice.Other1 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other2", purchasePrice.Other2 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@TotalPurchase", purchasePrice.TotalPurchase ?? (object)DBNull.Value);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
@@ -200,17 +200,18 @@ namespace Arrbora.Data.DataAccess
                 // Set the command object properties
                 oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
                 oleDbCommand.CommandType = CommandType.Text;
-                oleDbCommand.CommandText = ProductScripts.sqlUpdateProduct;
+                oleDbCommand.CommandText = PurchasePriceScripts.sqlUpdatePurchasePrice;
 
                 // Add the input parameters to the parameter collection
-                oleDbCommand.Parameters.AddWithValue("@DistributorPrice", purchasePrice.DistributorPrice);
-                oleDbCommand.Parameters.AddWithValue("@Transport", purchasePrice.Transport);
-                oleDbCommand.Parameters.AddWithValue("@InternalTransport", purchasePrice.InternalTransport);
-                oleDbCommand.Parameters.AddWithValue("@KosovoCosts", purchasePrice.KosovoCosts);
-                oleDbCommand.Parameters.AddWithValue("@Other1", purchasePrice.Other1);
-                oleDbCommand.Parameters.AddWithValue("@Other2", purchasePrice.Other2);
-                oleDbCommand.Parameters.AddWithValue("@TotalPurchase", purchasePrice.TotalPurchase);
-
+                oleDbCommand.Parameters.AddWithValue("@DistributorPrice", purchasePrice.DistributorPrice ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Transport", purchasePrice.Transport ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@InternalTransport", purchasePrice.InternalTransport ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@KosovoCosts", purchasePrice.KosovoCosts ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other1", purchasePrice.Other1 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Other2", purchasePrice.Other2 ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@TotalPurchase", purchasePrice.TotalPurchase ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PurchasePriceID", purchasePrice.PurchasePriceID);
+                
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
                 var rowsAffected = oleDbCommand.ExecuteNonQuery();

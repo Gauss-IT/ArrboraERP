@@ -21,7 +21,7 @@ namespace Arrbora.Data.Sql
         /// Sql command to get all purchase prices
         /// </summary>
         public static readonly string sqlGetAllPurchasePrices = "SELECT" +
-            " DistributorPrice, Transport, InternalTransport,KosovoCosts, Other1, Other2, TotalPurchase" +
+            " PurchasePriceID, DistributorPrice, Transport, InternalTransport,KosovoCosts, Other1, Other2, TotalPurchase" +
             " FROM PurchasePrice";
 
         /// <summary>

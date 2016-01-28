@@ -9,7 +9,7 @@ using Arrbora.Data.BussinessService.Interfaces;
 using Arrbora.Data.DataAccess.Interfaces;
 using Arrbora.Data.DataAccess;
 
-namespace Arrbora.Data.BussinessService
+namespace Arrbora.BusinessLogic.BussinessService
 {
     public class PaymentUnitService : IPaymentUnitService
     {
