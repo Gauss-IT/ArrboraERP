@@ -104,7 +104,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblPaymentsTotal = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -128,8 +128,6 @@
             // 
             // saleManagementTabControl
             // 
-            this.saleManagementTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.saleManagementTabControl.Controls.Add(this.productTabPage);
             this.saleManagementTabControl.Controls.Add(this.productDeliveryTabPage);
             this.saleManagementTabControl.Controls.Add(this.purchasePriceTabPage);
@@ -139,7 +137,7 @@
             this.saleManagementTabControl.Location = new System.Drawing.Point(17, 96);
             this.saleManagementTabControl.Name = "saleManagementTabControl";
             this.saleManagementTabControl.SelectedIndex = 0;
-            this.saleManagementTabControl.Size = new System.Drawing.Size(870, 288);
+            this.saleManagementTabControl.Size = new System.Drawing.Size(599, 288);
             this.saleManagementTabControl.TabIndex = 0;
             // 
             // productTabPage
@@ -166,7 +164,7 @@
             this.productTabPage.Location = new System.Drawing.Point(4, 26);
             this.productTabPage.Name = "productTabPage";
             this.productTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.productTabPage.Size = new System.Drawing.Size(862, 258);
+            this.productTabPage.Size = new System.Drawing.Size(591, 258);
             this.productTabPage.TabIndex = 0;
             this.productTabPage.Text = "Product";
             // 
@@ -344,7 +342,7 @@
             this.productDeliveryTabPage.Location = new System.Drawing.Point(4, 26);
             this.productDeliveryTabPage.Name = "productDeliveryTabPage";
             this.productDeliveryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.productDeliveryTabPage.Size = new System.Drawing.Size(862, 258);
+            this.productDeliveryTabPage.Size = new System.Drawing.Size(591, 258);
             this.productDeliveryTabPage.TabIndex = 1;
             this.productDeliveryTabPage.Text = "Product Delivery";
             // 
@@ -563,7 +561,7 @@
             this.purchasePriceTabPage.Location = new System.Drawing.Point(4, 26);
             this.purchasePriceTabPage.Name = "purchasePriceTabPage";
             this.purchasePriceTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.purchasePriceTabPage.Size = new System.Drawing.Size(862, 258);
+            this.purchasePriceTabPage.Size = new System.Drawing.Size(591, 258);
             this.purchasePriceTabPage.TabIndex = 2;
             this.purchasePriceTabPage.Text = "Purchase Price";
             // 
@@ -696,7 +694,7 @@
             this.sellingPriceTabPage.Location = new System.Drawing.Point(4, 26);
             this.sellingPriceTabPage.Name = "sellingPriceTabPage";
             this.sellingPriceTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.sellingPriceTabPage.Size = new System.Drawing.Size(862, 258);
+            this.sellingPriceTabPage.Size = new System.Drawing.Size(591, 258);
             this.sellingPriceTabPage.TabIndex = 3;
             this.sellingPriceTabPage.Text = "Selling Price";
             // 
@@ -792,29 +790,28 @@
             this.paymentsTabPage.Location = new System.Drawing.Point(4, 26);
             this.paymentsTabPage.Name = "paymentsTabPage";
             this.paymentsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.paymentsTabPage.Size = new System.Drawing.Size(862, 258);
+            this.paymentsTabPage.Size = new System.Drawing.Size(591, 258);
             this.paymentsTabPage.TabIndex = 4;
             this.paymentsTabPage.Text = "Payments";
             // 
             // paymenetUnitsDataGridView
             // 
-            this.paymenetUnitsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paymenetUnitsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.paymenetUnitsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymenetUnitsDataGridView.Cursor = System.Windows.Forms.Cursors.Default;
             this.paymenetUnitsDataGridView.Location = new System.Drawing.Point(6, 6);
             this.paymenetUnitsDataGridView.MultiSelect = false;
             this.paymenetUnitsDataGridView.Name = "paymenetUnitsDataGridView";
             this.paymenetUnitsDataGridView.ShowEditingIcon = false;
-            this.paymenetUnitsDataGridView.Size = new System.Drawing.Size(666, 246);
+            this.paymenetUnitsDataGridView.Size = new System.Drawing.Size(568, 191);
             this.paymenetUnitsDataGridView.TabIndex = 1;
             // 
             // lblDueAmount
             // 
             this.lblDueAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDueAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDueAmount.Location = new System.Drawing.Point(676, 148);
+            this.lblDueAmount.Location = new System.Drawing.Point(114, 214);
             this.lblDueAmount.Name = "lblDueAmount";
             this.lblDueAmount.Size = new System.Drawing.Size(165, 20);
             this.lblDueAmount.TabIndex = 89;
@@ -823,7 +820,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(674, 119);
+            this.label11.Location = new System.Drawing.Point(26, 215);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 13);
             this.label11.TabIndex = 91;
@@ -833,7 +830,7 @@
             // 
             this.lblPaymentsTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPaymentsTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblPaymentsTotal.Location = new System.Drawing.Point(676, 206);
+            this.lblPaymentsTotal.Location = new System.Drawing.Point(409, 214);
             this.lblPaymentsTotal.Name = "lblPaymentsTotal";
             this.lblPaymentsTotal.Size = new System.Drawing.Size(165, 20);
             this.lblPaymentsTotal.TabIndex = 90;
@@ -842,27 +839,27 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(676, 184);
+            this.label13.Location = new System.Drawing.Point(343, 215);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(31, 13);
             this.label13.TabIndex = 92;
             this.label13.Text = "Total";
             // 
-            // btnCancel
+            // btnClose
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(808, 390);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(543, 390);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnNew
             // 
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNew.Location = new System.Drawing.Point(448, 390);
+            this.btnNew.Location = new System.Drawing.Point(183, 390);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 2;
@@ -873,7 +870,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(719, 390);
+            this.btnDelete.Location = new System.Drawing.Point(454, 390);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 3;
@@ -884,7 +881,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(630, 390);
+            this.btnSave.Location = new System.Drawing.Point(365, 390);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -963,7 +960,7 @@
             // btnSaveThis
             // 
             this.btnSaveThis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveThis.Location = new System.Drawing.Point(541, 390);
+            this.btnSaveThis.Location = new System.Drawing.Point(276, 390);
             this.btnSaveThis.Name = "btnSaveThis";
             this.btnSaveThis.Size = new System.Drawing.Size(75, 23);
             this.btnSaveThis.TabIndex = 4;
@@ -976,8 +973,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(904, 425);
-            this.Controls.Add(this.btnCancel);
+            this.ClientSize = new System.Drawing.Size(646, 425);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.lblSalesPrice);
             this.Controls.Add(this.label34);
@@ -1037,7 +1034,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblProductIDShow;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;

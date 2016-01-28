@@ -293,7 +293,7 @@ namespace Arrbora.UI
         /// <summary>
         /// Event handler for cancel button click
         /// </summary>
-        private void btnCancel_Click(object sender, System.EventArgs e)
+        private void btnClose_Click(object sender, System.EventArgs e)
         {
             _parentForm.UpdateDataGridView();
             Close();
@@ -328,6 +328,7 @@ namespace Arrbora.UI
             UpdateSalesManagementTab(DataState.ReadFromUI);
             UpdateSalesManagementDataModels();
             _salesManagementService.UpdateSalesManagement(_salesManagementDataModel);
+            UpdateSalesManagementTab(DataState.WriteToUI);
             _parentForm.UpdateDataGridView();
         }
 
@@ -343,22 +344,27 @@ namespace Arrbora.UI
                 case "productTabPage":
                     UpdateProductTabPage(DataState.ReadFromUI);
                     _productService.UpdateProduct(_productDataModel);
+                    UpdateProductTabPage(DataState.WriteToUI);
                     break;
                 case "productDeliveryTabPage":
                     UpdateProductDeliveryTabPage(DataState.ReadFromUI);
                     _productDeliveryService.UpdateProductDelivery(_productDeliveryDataModel);
+                    UpdateProductDeliveryTabPage(DataState.WriteToUI);
                     break;
                 case "purchasePriceTabPage":
                     UpdatePurchasePriceTabPage(DataState.ReadFromUI);
                     _purchasePriceService.UpdatePurchasePrice(_purchasePriceDataModel);
+                    UpdatePurchasePriceTabPage(DataState.WriteToUI);
                     break;
                 case "sellingPriceTabPage":
                     UpdateSellingPriceTabPage(DataState.ReadFromUI);
                     _sellingPriceService.UpdateSellingPrice(_sellingPriceDataModel);
+                    UpdateSellingPriceTabPage(DataState.WriteToUI);
                     break;
                 case "paymentsTabPage":
                     UpdatePaymentsTabPage(DataState.ReadFromUI);
                     _paymentService.UpdatePayment(_paymentDataModel);
+                    UpdatePaymentsTabPage(DataState.WriteToUI);
                     break;
             }
         }
