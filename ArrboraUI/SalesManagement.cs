@@ -60,7 +60,7 @@ namespace Arrbora.UI
             _sellingPriceService = new SellingPriceService();
 
             UpdateDataModels();
-            UpdateSalesManagementTab(DataState.WriteToUI);
+            UpdateSalesManagementForm(DataState.WriteToUI);
 
             saleManagementTabControl.SelectedIndex = selectedTabIndex;
         }
@@ -82,7 +82,7 @@ namespace Arrbora.UI
         /// Updates the tabs of this form 
         /// </summary>
         /// <param name="dataState">An enum variable which is used to read data from or write data to form</param>
-        private void UpdateSalesManagementTab(DataState dataState)
+        private void UpdateSalesManagementForm(DataState dataState)
         {
             lblBrand.Text = _productDataModel.Brand;
             lblModel.Text = _productDataModel.Model;
@@ -257,6 +257,34 @@ namespace Arrbora.UI
             }
         }
 
+        private DataTable ConvertToDataTable(DataGridView dataGrid)
+        {
+            var dtTable = new DataTable();
+            Type t = typeof(PaymentUnitDataModel);
+            foreach (DataGridViewColumn dgvColumn in dataGrid.Columns)
+            {
+                dtTable.Columns.Add(dgvColumn.Name);
+                dtTable.Columns[dgvColumn.Name].DataType = _paymentUnitsTable.Columns[dgvColumn.Name].DataType;
+            }
+
+            DataRow newRow;
+            foreach (DataGridViewRow dRow in dataGrid.Rows)
+            {
+                if (dRow.Index == dataGrid.Rows.Count - 1) continue;
+                newRow = dtTable.NewRow();
+                foreach (DataGridViewColumn dgvColumn in dataGrid.Columns)
+                {
+                    
+                    newRow[dgvColumn.Name] = dRow.Cells[dgvColumn.Name].Value??DBNull.Value;
+                    //always set the PaymentID value to current sales management value
+                    if (dgvColumn.Name == "PaymentID")
+                        newRow[dgvColumn.Name] = _salesManagementDataModel.PaymentID;
+                }
+
+                dtTable.Rows.Add(newRow);
+            }
+            return dtTable;
+        }
         /// <summary>
         /// Update payments tab
         /// </summary>
@@ -266,10 +294,18 @@ namespace Arrbora.UI
             switch (dataState)
             {
                 case DataState.ReadFromUI:
+                    decimal decimalValue;
+                    _paymentUnitsTable = ConvertToDataTable(paymenetUnitsDataGridView);                    
+                    _paymentDataModel.PaymentTotal = CalculateTotalPayments();
+                    //_paymentDataModel.PaymentTotal = null;
+                    //if (decimal.TryParse(lblPaymentsTotal.Text, out decimalValue))
+                    //    _paymentDataModel.PaymentTotal = decimalValue;
                     break;
                 case DataState.WriteToUI:
                     lblPaymentsTotal.Text = _paymentDataModel.PaymentTotal.ToString();
-                    // Data grid view column setting            
+                    lblDueAmount.Text = CalculateDueAmount().ToString();
+                    // Data grid view column setting 
+                    _paymentUnitsTable = _paymentUnitService.GetAllPaymentUnitsForPayment(_paymentDataModel.PaymentID);           
                     paymenetUnitsDataGridView.DataSource = _paymentUnitsTable;
                     paymenetUnitsDataGridView.DataMember = _paymentUnitsTable.TableName;
                     paymenetUnitsDataGridView.Columns[0].Visible = false;
@@ -286,8 +322,26 @@ namespace Arrbora.UI
             _salesManagementService.ProductDeliveryDataModel = _productDeliveryDataModel;
             _salesManagementService.PurchasePriceDataModel = _purchasePriceDataModel;
             _salesManagementService.SellingPriceDataModel = _sellingPriceDataModel;
-            //_salesManagementService.PaymentUnitsTable = _paymentUnitsTable;
+            _salesManagementService.PaymentUnitsTable = _paymentUnitsTable;
 
+        }
+
+        private decimal CalculateTotalPayments()
+        {
+            decimal result = 0;
+            if (_paymentUnitsTable.Rows.Count == 0) return 0;
+            foreach (DataRow row in _paymentUnitsTable.Rows)
+            {
+                if(row["Amount"] != null)
+                    result += (decimal)row["Amount"];
+            }
+
+            return result;
+        }
+
+        private decimal CalculateDueAmount()
+        {
+            return (_sellingPriceDataModel.TotalSelling ?? 0) - (_paymentDataModel.PaymentTotal ?? 0);
         }
 
         /// <summary>
@@ -316,7 +370,7 @@ namespace Arrbora.UI
         {
            _salesManagementDataModel = _salesManagementService.AddEmptySalesManagement();
             UpdateDataModels();
-            UpdateSalesManagementTab(DataState.WriteToUI);
+            UpdateSalesManagementForm(DataState.WriteToUI);
             _parentForm.UpdateDataGridView();
         }
 
@@ -325,10 +379,10 @@ namespace Arrbora.UI
         /// </summary>
         private void btnSaveAll_Click(object sender, System.EventArgs e)
         {
-            UpdateSalesManagementTab(DataState.ReadFromUI);
+            UpdateSalesManagementForm(DataState.ReadFromUI);
             UpdateSalesManagementDataModels();
             _salesManagementService.UpdateSalesManagement(_salesManagementDataModel);
-            UpdateSalesManagementTab(DataState.WriteToUI);
+            UpdateSalesManagementForm(DataState.WriteToUI);
             _parentForm.UpdateDataGridView();
         }
 
@@ -364,9 +418,27 @@ namespace Arrbora.UI
                 case "paymentsTabPage":
                     UpdatePaymentsTabPage(DataState.ReadFromUI);
                     _paymentService.UpdatePayment(_paymentDataModel);
+                    _paymentUnitService.UpdatePaymentUnitDataTable(_paymentUnitsTable);
                     UpdatePaymentsTabPage(DataState.WriteToUI);
                     break;
             }
+        }
+
+        private void paymenetUnitsDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            var selectedRowID = e.Row.Cells["PaymentUnitID"].Value;
+            if (selectedRowID == DBNull.Value) return;
+            _paymentUnitService.DeletePaymentUnitByID((int)selectedRowID);
+            _paymentUnitsTable = _paymentUnitService.GetAllPaymentUnits();
+            _paymentDataModel.PaymentTotal = CalculateTotalPayments();
+            //UpdatePaymentsTabPage(DataState.WriteToUI);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            _salesManagementService.PopulateDataModels();
+            UpdateDataModels();
+            UpdateSalesManagementForm(DataState.WriteToUI);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Arrbora.Data.DataModel
         /// <summary>
         /// Gets or sets payment unit ID
         /// </summary>
-        public int PaymentUnitID { get; set; }
+        public int? PaymentUnitID { get; set; }
 
         /// <summary>
         /// Gets or sets payment ID

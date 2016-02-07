@@ -171,6 +171,7 @@ namespace Arrbora.BusinessLogic.BussinessService
             success = _productService.UpdateProduct(ProductDataModel) && success;
             success = _purchasePriceService.UpdatePurchasePrice(PurchasePriceDataModel) && success;
             success = _sellingPriceService.UpdateSellingPrice(SellingPriceDataModel) && success;
+            success = _paymentUnitService.UpdatePaymentUnitDataTable(PaymentUnitsTable) && success;
             //success = _salesManagementAccess.UpdateSalesManagement(SalesManagementDataModel) && success;
              return success;
         }
@@ -185,7 +186,7 @@ namespace Arrbora.BusinessLogic.BussinessService
             return _salesManagementAccess.ConvertToDataModel(salesManagementRow);
         }
 
-        private void PopulateDataModels()
+        public void PopulateDataModels()
         {
             PaymentDataModel = _paymentService.ConvertToDataModel(
                                 _paymentService.GetPaymentById(

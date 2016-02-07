@@ -117,6 +117,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.lblSalesPrice = new System.Windows.Forms.Label();
             this.btnSaveThis = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.saleManagementTabControl.SuspendLayout();
             this.productTabPage.SuspendLayout();
             this.productDeliveryTabPage.SuspendLayout();
@@ -806,12 +807,13 @@
             this.paymenetUnitsDataGridView.ShowEditingIcon = false;
             this.paymenetUnitsDataGridView.Size = new System.Drawing.Size(568, 191);
             this.paymenetUnitsDataGridView.TabIndex = 1;
+            this.paymenetUnitsDataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.paymenetUnitsDataGridView_UserDeletingRow);
             // 
             // lblDueAmount
             // 
             this.lblDueAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDueAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDueAmount.Location = new System.Drawing.Point(114, 214);
+            this.lblDueAmount.Location = new System.Drawing.Point(172, 214);
             this.lblDueAmount.Name = "lblDueAmount";
             this.lblDueAmount.Size = new System.Drawing.Size(165, 20);
             this.lblDueAmount.TabIndex = 89;
@@ -820,7 +822,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(26, 215);
+            this.label11.Location = new System.Drawing.Point(100, 215);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 13);
             this.label11.TabIndex = 91;
@@ -839,7 +841,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(343, 215);
+            this.label13.Location = new System.Drawing.Point(355, 215);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(31, 13);
             this.label13.TabIndex = 92;
@@ -859,7 +861,7 @@
             // btnNew
             // 
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNew.Location = new System.Drawing.Point(183, 390);
+            this.btnNew.Location = new System.Drawing.Point(373, 390);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 2;
@@ -870,7 +872,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(454, 390);
+            this.btnDelete.Location = new System.Drawing.Point(458, 390);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 3;
@@ -881,7 +883,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(365, 390);
+            this.btnSave.Location = new System.Drawing.Point(183, 390);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -960,13 +962,24 @@
             // btnSaveThis
             // 
             this.btnSaveThis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveThis.Location = new System.Drawing.Point(276, 390);
+            this.btnSaveThis.Location = new System.Drawing.Point(100, 390);
             this.btnSaveThis.Name = "btnSaveThis";
             this.btnSaveThis.Size = new System.Drawing.Size(75, 23);
             this.btnSaveThis.TabIndex = 4;
             this.btnSaveThis.Text = "Save This";
             this.btnSaveThis.UseVisualStyleBackColor = true;
             this.btnSaveThis.Click += new System.EventHandler(this.btnSaveThis_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Location = new System.Drawing.Point(17, 390);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmSalesManagement
             // 
@@ -975,6 +988,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(646, 425);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.lblSalesPrice);
             this.Controls.Add(this.label34);
@@ -1099,5 +1113,6 @@
         private System.Windows.Forms.TextBox txtAttachment;
         private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.Button btnSaveThis;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

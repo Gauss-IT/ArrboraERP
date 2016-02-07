@@ -61,6 +61,18 @@ namespace Arrbora.BusinessLogic.BussinessService
             return paymentUnitAccess.UpdatePaymentUnit(paymentUnit);
         }
 
+        public bool UpdatePaymentUnitDataTable(DataTable paymentUnitTable)
+        {
+            bool value = true;
+            foreach (DataRow row in paymentUnitTable.Rows)
+            {
+                if (row["PaymentUnitID"] == DBNull.Value)
+                   value = AddPaymentUnit(ConvertToDataModel(row)) && value;
+                else
+                    value = UpdatePaymentUnit(ConvertToDataModel(row)) && value;
+            }
+            return value;
+        }
         /// <summary>
         /// Converts a Data row from the database table to sales management model
         /// </summary>

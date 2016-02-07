@@ -68,12 +68,12 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = PaymentUnitScripts.sqlInsertPaymentUnit;
 
                 // Add the input parameters to the parameter collection                
-                oleDbCommand.Parameters.AddWithValue("@PaymentID", paymentUnit.PaymentID);
-                oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", paymentUnit.PaymentUnitDate);
-                oleDbCommand.Parameters.AddWithValue("@Amount", paymentUnit.Amount);
-                oleDbCommand.Parameters.AddWithValue("@PaymentType", paymentUnit.PaymentType); 
-                oleDbCommand.Parameters.AddWithValue("@PayedBy", paymentUnit.PayedBy);
-                oleDbCommand.Parameters.AddWithValue("@Note", paymentUnit.Note);
+                oleDbCommand.Parameters.AddWithValue("@PaymentID", paymentUnit.PaymentID ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", paymentUnit.PaymentUnitDate ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Amount", paymentUnit.Amount ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PaymentType", paymentUnit.PaymentType ?? (object)DBNull.Value); 
+                oleDbCommand.Parameters.AddWithValue("@PayedBy", paymentUnit.PayedBy ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Note", paymentUnit.Note ?? (object)DBNull.Value);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
@@ -206,14 +206,14 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandType = CommandType.Text;
                 oleDbCommand.CommandText = PaymentUnitScripts.sqlUpdatePaymentUnit;
 
-                // Add the input parameters to the parameter collection   
-                oleDbCommand.Parameters.AddWithValue("@PaymentUnitID", paymentUnit.PaymentUnitID);
-                oleDbCommand.Parameters.AddWithValue("@PaymentID", paymentUnit.PaymentID);
-                oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", paymentUnit.PaymentUnitDate);
-                oleDbCommand.Parameters.AddWithValue("@Amount", paymentUnit.Amount);
-                oleDbCommand.Parameters.AddWithValue("@PaymentType", paymentUnit.PaymentType);
-                oleDbCommand.Parameters.AddWithValue("@PayedBy", paymentUnit.PayedBy);
-                oleDbCommand.Parameters.AddWithValue("@Note", paymentUnit.Note);
+                // Add the input parameters to the parameter collection                   
+                oleDbCommand.Parameters.AddWithValue("@PaymentID", paymentUnit.PaymentID ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", paymentUnit.PaymentUnitDate ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Amount", paymentUnit.Amount ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PaymentType", paymentUnit.PaymentType ?? (object)DBNull.Value); 
+                oleDbCommand.Parameters.AddWithValue("@PayedBy", paymentUnit.PayedBy ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@Note", paymentUnit.Note ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PaymentUnitID", paymentUnit.PaymentUnitID ?? (object)DBNull.Value);
 
                 // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
@@ -233,8 +233,8 @@ namespace Arrbora.Data.DataAccess
         public PaymentUnitDataModel ConvertToDataModel(DataRow paymentUnitRow)
         {
             var result = new PaymentUnitDataModel();
-            result.PaymentUnitID = paymentUnitRow.Field<int>("PaymentUnitID");
-            result.PaymentID= paymentUnitRow.Field<int>("PaymentID");
+            result.PaymentUnitID = paymentUnitRow.Field<int?>("PaymentUnitID");
+            result.PaymentID= paymentUnitRow.Field<int?>("PaymentID");
             result.PaymentUnitDate = paymentUnitRow.Field<DateTime?>("PaymentUnitDate");
             result.Amount = paymentUnitRow.Field<decimal?>("Amount");
             result.PaymentType = paymentUnitRow.Field<string>("PaymentType");

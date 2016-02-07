@@ -24,6 +24,8 @@ namespace Arrbora.UI
         //An instance of a sales management class
         private DataTable _dataGridTable;
 
+        private bool _dataGridControlSizeReduced = false;
+
         int _selectedRowID;
         string _selectedColumnName;
         private Dictionary<string, int> _columnNameToTabIndex;
@@ -40,8 +42,16 @@ namespace Arrbora.UI
             _productOverviewService = new ProductOverviewService();
 
             _dataGridTable = productOverviewService.GetAllProductOverview();
+
+
             InitializeDataGridViewStyle();
             InitializeColumsToTabsMapping();
+
+            //grpBxSearchButtons.Visible = true;
+            _dataGridControlSizeReduced = true;
+            //chkbxSearch.Checked = false;
+            
+
             LoadDataGridView(_dataGridTable);
 
             Show();
@@ -131,15 +141,12 @@ namespace Arrbora.UI
             frmSalesManagement.Show();
         }
 
-        private void dataGridViewProductOverview_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
-        {
-            _selectedRowID = (int) dataGridViewProductOverview.Rows[e.RowIndex].Cells["SalesManagementID"].Value;
-            _selectedColumnName = dataGridViewProductOverview.Columns[e.ColumnIndex].HeaderText;
-        }
-
         private void productOverviewContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            if (_selectedRowID == -1) return;
+           // if (_selectedRowID == -1) return;
+            if (dataGridViewProductOverview.CurrentCell == null) return;
+            _selectedRowID = (int)dataGridViewProductOverview.CurrentCell.OwningRow.Cells["SalesManagementID"].Value;
+            _selectedColumnName = dataGridViewProductOverview.CurrentCell.OwningColumn.HeaderText;
             var salesManagementDataRow = _salesManagementService.GetSalesManagementById(_selectedRowID);
             var salesManagementDataModel = _salesManagementService.ConvertToDataModel(salesManagementDataRow);
             switch (e.ClickedItem.Name)
@@ -158,6 +165,21 @@ namespace Arrbora.UI
                     UpdateDataGridView();
                     break;
             } 
+        }
+
+        private void chkbxSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            grpBxSearchButtons.Visible = chkbxSearch.Checked;
+            if (grpBxSearchButtons.Visible && !_dataGridControlSizeReduced)
+            {
+                dataGridViewProductOverview.Width -= grpBxSearchButtons.Width;
+                _dataGridControlSizeReduced = true;
+            }
+            else if (!grpBxSearchButtons.Visible && _dataGridControlSizeReduced)
+            {
+                dataGridViewProductOverview.Width += grpBxSearchButtons.Width;
+                _dataGridControlSizeReduced = false;
+            }
         }
     }
 }
