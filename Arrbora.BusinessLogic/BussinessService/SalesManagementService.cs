@@ -116,6 +116,7 @@ namespace Arrbora.BusinessLogic.BussinessService
             //TODO : implement necessary logic
             var success = true;
             SalesManagementDataModel = ConvertToDataModel( GetSalesManagementById(salesManagementID));
+            success = _paymentUnitService.DeleteAllPaymentUnitsForPaymentID(SalesManagementDataModel.PaymentID);
             success =_paymentService.DeletePaymentByID(SalesManagementDataModel.PaymentID) && success;
             success =_productDeliveryService.DeleteProductDeliveryByID(SalesManagementDataModel.ProductDeliveryID) && success;
             success =_productService.DeleteProductByID(SalesManagementDataModel.ProductID) && success;

@@ -144,30 +144,28 @@ namespace Arrbora.UI
             switch (dataState)
             {
                 case DataState.ReadFromUI:
-                    DateTime dateTime;
-
                     _productDeliveryDataModel.DateOfPurchase  = null;
-                    if (DateTime.TryParse(txtDateOfPurchase.Text, out dateTime))
-                        _productDeliveryDataModel.DateOfPurchase = dateTime;
+                    _productDeliveryDataModel.DateOfPurchase = dtpDateOfPurchase.Value;
                     _productDeliveryDataModel.CurrentLocation = txtCurentLocation.Text;
                     _productDeliveryDataModel.LandOfDestination = txtLandOfDestination.Text;
                     _productDeliveryDataModel.Seller = txtSeller.Text;
                     _productDeliveryDataModel.ProductWebsite = txtWebsite.Text;
                     _productDeliveryDataModel.LandOfOrigin = txtLandOfOrigin.Text;
                     _productDeliveryDataModel.DateOfSale = null;
-                    if (DateTime.TryParse(txtDateOfSale.Text, out dateTime))
-                        _productDeliveryDataModel.DateOfSale = dateTime;
+                    _productDeliveryDataModel.DateOfSale = dtpDateOfSale.Value;
                     _productDeliveryDataModel.Buyer = txtBuyer.Text;
                     _productDeliveryDataModel.ProductAttachment = txtAttachment.Text;
                     break;
                 case DataState.WriteToUI:
-                    txtDateOfPurchase.Text = _productDeliveryDataModel.DateOfPurchase.GetValueOrDefault().ToShortDateString();
+                    dtpDateOfPurchase.Value = _productDeliveryDataModel.DateOfPurchase == null ? DateTime.Now.Date :
+                        _productDeliveryDataModel.DateOfPurchase.GetValueOrDefault().Date;
                     txtCurentLocation.Text = _productDeliveryDataModel.CurrentLocation;
                     txtLandOfDestination.Text = _productDeliveryDataModel.LandOfDestination;
                     txtSeller.Text = _productDeliveryDataModel.Seller;
                     txtWebsite.Text = _productDeliveryDataModel.ProductWebsite;
                     txtLandOfOrigin.Text = _productDeliveryDataModel.LandOfOrigin;
-                    txtDateOfSale.Text = _productDeliveryDataModel.DateOfSale.GetValueOrDefault().ToShortDateString();
+                    dtpDateOfSale.Value = _productDeliveryDataModel.DateOfSale == null ? DateTime.Now.Date :
+                        _productDeliveryDataModel.DateOfSale.GetValueOrDefault().Date;
                     txtBuyer.Text = _productDeliveryDataModel.Buyer;
                     txtAttachment.Text = _productDeliveryDataModel.ProductAttachment;
                     break;

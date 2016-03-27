@@ -43,7 +43,7 @@ namespace Arrbora.Data.DataAccess
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        public DataTable SearchProductOverview(object SalesManagementID, object brand, object model)
+        public DataTable SearchProductOverview(object brand, object model)
         {
             DataTable dataTable = new DataTable();
 
@@ -58,8 +58,8 @@ namespace Arrbora.Data.DataAccess
                 oleDbDataAdapter.SelectCommand.CommandText = ProductOverviewScripts.sqlSearchProductOverview;
 
                 // Add the input parameters to the parameter collection
-                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Brand", brand == null ? DBNull.Value : brand);
-                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Model", model == null ? DBNull.Value : model);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Brand", (brand == null || (string)brand == "") ? DBNull.Value : brand);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Model", (model == null || (string)model == "") ? DBNull.Value : model);
 
                 // Fill the table from adapter
                 oleDbDataAdapter.Fill(dataTable);

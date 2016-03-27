@@ -36,19 +36,19 @@
             this.addProductOverviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editProductOverviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteProductOverviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtSearchString = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbModel = new System.Windows.Forms.ComboBox();
+            this.cmbBrand = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtmDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtmDateTo = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbPriceRange = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +68,7 @@
             this.grpBxSearchButtons = new System.Windows.Forms.GroupBox();
             this.flwLytPnlToggleControls = new System.Windows.Forms.FlowLayoutPanel();
             this.chkbxSearch = new System.Windows.Forms.CheckBox();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductOverview)).BeginInit();
             this.productOverviewContextMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -91,7 +92,7 @@
             this.dataGridViewProductOverview.ReadOnly = true;
             this.dataGridViewProductOverview.RowTemplate.ContextMenuStrip = this.productOverviewContextMenuStrip;
             this.dataGridViewProductOverview.Size = new System.Drawing.Size(951, 325);
-            this.dataGridViewProductOverview.TabIndex = 0;            
+            this.dataGridViewProductOverview.TabIndex = 0;
             this.dataGridViewProductOverview.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProductOverview_CellDoubleClick);
             // 
             // productOverviewContextMenuStrip
@@ -138,15 +139,16 @@
             this.deleteProductOverviewToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.deleteProductOverviewToolStripMenuItem.Text = "Delete... ";
             // 
-            // button1
+            // btnFind
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(14, 291);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Find";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFind.Location = new System.Drawing.Point(14, 291);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 2;
+            this.btnFind.Text = "Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // label1
             // 
@@ -168,13 +170,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Model";
             // 
-            // textBox3
+            // txtSearchString
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(14, 33);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(183, 20);
-            this.textBox3.TabIndex = 1;
+            this.txtSearchString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchString.Location = new System.Drawing.Point(14, 33);
+            this.txtSearchString.Name = "txtSearchString";
+            this.txtSearchString.Size = new System.Drawing.Size(183, 20);
+            this.txtSearchString.TabIndex = 1;
             // 
             // label12
             // 
@@ -186,23 +188,24 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Reference nr.";
             // 
-            // comboBox1
+            // cmbModel
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(14, 136);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(183, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cmbModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbModel.FormattingEnabled = true;
+            this.cmbModel.Location = new System.Drawing.Point(14, 136);
+            this.cmbModel.Name = "cmbModel";
+            this.cmbModel.Size = new System.Drawing.Size(183, 21);
+            this.cmbModel.TabIndex = 4;
             // 
-            // comboBox2
+            // cmbBrand
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(14, 84);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(183, 21);
-            this.comboBox2.TabIndex = 4;
+            this.cmbBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbBrand.FormattingEnabled = true;
+            this.cmbBrand.Location = new System.Drawing.Point(14, 84);
+            this.cmbBrand.Name = "cmbBrand";
+            this.cmbBrand.Size = new System.Drawing.Size(183, 21);
+            this.cmbBrand.TabIndex = 4;
+            this.cmbBrand.SelectedValueChanged += new System.EventHandler(this.cmbBrand_SelectedValueChanged);
             // 
             // label3
             // 
@@ -224,23 +227,23 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "To";
             // 
-            // dateTimePicker1
+            // dtmDateFrom
             // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(14, 188);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(80, 20);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dtmDateFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtmDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtmDateFrom.Location = new System.Drawing.Point(14, 188);
+            this.dtmDateFrom.Name = "dtmDateFrom";
+            this.dtmDateFrom.Size = new System.Drawing.Size(80, 20);
+            this.dtmDateFrom.TabIndex = 5;
             // 
-            // dateTimePicker2
+            // dtmDateTo
             // 
-            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(111, 188);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(86, 20);
-            this.dateTimePicker2.TabIndex = 5;
+            this.dtmDateTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtmDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtmDateTo.Location = new System.Drawing.Point(111, 188);
+            this.dtmDateTo.Name = "dtmDateTo";
+            this.dtmDateTo.Size = new System.Drawing.Size(86, 20);
+            this.dtmDateTo.TabIndex = 5;
             // 
             // label6
             // 
@@ -252,14 +255,14 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Price range";
             // 
-            // comboBox3
+            // cmbPriceRange
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(14, 239);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(183, 21);
-            this.comboBox3.TabIndex = 4;
+            this.cmbPriceRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbPriceRange.FormattingEnabled = true;
+            this.cmbPriceRange.Location = new System.Drawing.Point(14, 239);
+            this.cmbPriceRange.Name = "cmbPriceRange";
+            this.cmbPriceRange.Size = new System.Drawing.Size(183, 21);
+            this.cmbPriceRange.TabIndex = 4;
             // 
             // menuStrip1
             // 
@@ -384,17 +387,18 @@
             // grpBxSearchButtons
             // 
             this.grpBxSearchButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBxSearchButtons.Controls.Add(this.button1);
-            this.grpBxSearchButtons.Controls.Add(this.textBox3);
-            this.grpBxSearchButtons.Controls.Add(this.dateTimePicker2);
+            this.grpBxSearchButtons.Controls.Add(this.btnReset);
+            this.grpBxSearchButtons.Controls.Add(this.btnFind);
+            this.grpBxSearchButtons.Controls.Add(this.txtSearchString);
+            this.grpBxSearchButtons.Controls.Add(this.dtmDateTo);
             this.grpBxSearchButtons.Controls.Add(this.label1);
-            this.grpBxSearchButtons.Controls.Add(this.dateTimePicker1);
+            this.grpBxSearchButtons.Controls.Add(this.dtmDateFrom);
             this.grpBxSearchButtons.Controls.Add(this.label5);
-            this.grpBxSearchButtons.Controls.Add(this.comboBox2);
+            this.grpBxSearchButtons.Controls.Add(this.cmbBrand);
             this.grpBxSearchButtons.Controls.Add(this.label6);
-            this.grpBxSearchButtons.Controls.Add(this.comboBox3);
+            this.grpBxSearchButtons.Controls.Add(this.cmbPriceRange);
             this.grpBxSearchButtons.Controls.Add(this.label2);
-            this.grpBxSearchButtons.Controls.Add(this.comboBox1);
+            this.grpBxSearchButtons.Controls.Add(this.cmbModel);
             this.grpBxSearchButtons.Controls.Add(this.label3);
             this.grpBxSearchButtons.Controls.Add(this.label4);
             this.grpBxSearchButtons.Location = new System.Drawing.Point(984, 28);
@@ -430,6 +434,17 @@
             this.chkbxSearch.UseVisualStyleBackColor = true;
             this.chkbxSearch.CheckedChanged += new System.EventHandler(this.chkbxSearch_CheckedChanged);
             // 
+            // btnReset
+            // 
+            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReset.Location = new System.Drawing.Point(122, 291);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // frmProductsOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,10 +474,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewProductOverview;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtSearchString;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ContextMenuStrip productOverviewContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem addProductOverviewToolStripMenuItem;
@@ -470,14 +485,14 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripMenuItem editProductOverviewToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbModel;
+        private System.Windows.Forms.ComboBox cmbBrand;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtmDateFrom;
+        private System.Windows.Forms.DateTimePicker dtmDateTo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbPriceRange;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveDatabaseToolStripMenuItem;
@@ -497,5 +512,6 @@
         private System.Windows.Forms.GroupBox grpBxSearchButtons;
         private System.Windows.Forms.FlowLayoutPanel flwLytPnlToggleControls;
         private System.Windows.Forms.CheckBox chkbxSearch;
+        private System.Windows.Forms.Button btnReset;
     }
 }

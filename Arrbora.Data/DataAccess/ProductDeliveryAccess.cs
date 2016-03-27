@@ -72,10 +72,12 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.CommandText = ProductDeliveryScripts.sqlInsertProductDelivery;
                
                 // Add the input parameters to the parameter collection                
-                oleDbCommand.Parameters.AddWithValue("@DateOfPurchase", productDelivery.DateOfPurchase ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DateOfPurchase", productDelivery.DateOfPurchase == null ? (object)DBNull.Value :
+                    productDelivery.DateOfPurchase.Value.ToOADate());                
                 oleDbCommand.Parameters.AddWithValue("@LandOfOrigin", productDelivery.LandOfOrigin ?? (object)DBNull.Value);
                 oleDbCommand.Parameters.AddWithValue("@CurrentLocation", productDelivery.CurrentLocation ?? (object)DBNull.Value);
-                oleDbCommand.Parameters.AddWithValue("@DateOfSale", productDelivery.DateOfSale ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@DateOfSale", productDelivery.DateOfSale == null ? (object)DBNull.Value :
+                    productDelivery.DateOfSale.Value.ToOADate());
                 oleDbCommand.Parameters.AddWithValue("@LandOfDestination", productDelivery.LandOfDestination ?? (object)DBNull.Value);
                 oleDbCommand.Parameters.AddWithValue("@ProductStatus", productDelivery.ProductStatus ?? (object)DBNull.Value);
                 oleDbCommand.Parameters.AddWithValue("@Seller", productDelivery.Seller ?? (object)DBNull.Value);
@@ -212,10 +214,12 @@ namespace Arrbora.Data.DataAccess
 
                 // Add the input parameters to the parameter collection
                
-                oleDbCommand.Parameters.Add(new OleDbParameter("@DateOfPurchase", productDelivery.DateOfPurchase ?? (object)DBNull.Value));
+                oleDbCommand.Parameters.Add(new OleDbParameter("@DateOfPurchase", productDelivery.DateOfPurchase == null ? (object)DBNull.Value :
+                    productDelivery.DateOfPurchase.Value.ToOADate()));
                 oleDbCommand.Parameters.Add(new OleDbParameter("@LandOfOrigin", productDelivery.LandOfOrigin ?? (object)DBNull.Value));
                 oleDbCommand.Parameters.Add(new OleDbParameter("@CurrentLocation", productDelivery.CurrentLocation ?? (object)DBNull.Value));
-                oleDbCommand.Parameters.Add(new OleDbParameter("@DateOfSale", productDelivery.DateOfSale ?? (object)DBNull.Value));
+                oleDbCommand.Parameters.Add(new OleDbParameter("@DateOfSale", productDelivery.DateOfSale == null ? (object)DBNull.Value :
+                    productDelivery.DateOfSale.Value.ToOADate()));
                 oleDbCommand.Parameters.Add(new OleDbParameter("@LandOfDestination", productDelivery.LandOfDestination ?? (object)DBNull.Value));
                 oleDbCommand.Parameters.Add(new OleDbParameter("@ProductStatus", productDelivery.ProductStatus ?? (object)DBNull.Value));
                 oleDbCommand.Parameters.Add(new OleDbParameter("@Seller", productDelivery.Seller ?? (object)DBNull.Value));
@@ -224,20 +228,8 @@ namespace Arrbora.Data.DataAccess
                 oleDbCommand.Parameters.Add(new OleDbParameter("@ProductAttachment", productDelivery.ProductAttachment ?? (object)DBNull.Value));
                 oleDbCommand.Parameters.Add(new OleDbParameter("@ProductDeliveryID", productDelivery.ProductDeliveryID));
 
-                //oleDbCommand.Parameters.AddWithValue("@ProductDeliveryID", productDelivery.ProductDeliveryID);
-                //oleDbCommand.Parameters.AddWithValue("@DateOfPurchase", productDelivery.DateOfPurchase ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@LandOfOrigin", productDelivery.LandOfOrigin ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@CurrentLocation", productDelivery.CurrentLocation ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@DateOfSale", productDelivery.DateOfSale ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@LandOfDestination", productDelivery.LandOfDestination ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@ProductStatus", productDelivery.ProductStatus ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@Seller", productDelivery.Seller ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@Buyer", productDelivery.Buyer ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@ProductWebsite", productDelivery.ProductWebsite ?? (object)DBNull.Value);
-                //oleDbCommand.Parameters.AddWithValue("@ProductAttachment", productDelivery.ProductAttachment ?? (object)DBNull.Value);
-
                 
-                // Open the connection, execute the q"@ProductAttachment", productDelivery.ProductAttachment);uery and close the connection
+                // Open the connection, execute the query and close the connection
                 oleDbCommand.Connection.Open();
                 var rowsAffected = oleDbCommand.ExecuteNonQuery();
                 oleDbCommand.Connection.Close();

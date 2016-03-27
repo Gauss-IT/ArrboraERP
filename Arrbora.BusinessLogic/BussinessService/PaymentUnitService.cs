@@ -41,6 +41,20 @@ namespace Arrbora.BusinessLogic.BussinessService
             return paymentUnitAccess.DeletePaymentUnitByID(paymentUnitID);
         }
 
+        public bool DeleteAllPaymentUnitsForPaymentID(int paymentID)
+        {
+            int paymentUnitID;
+            var success = true;
+            var paymentUnits = paymentUnitAccess.GetAllPaymentUnitsForPayment(paymentID);
+            for (var i=0; i< paymentUnits.Rows.Count; i++)
+            {
+                paymentUnitID = paymentUnits.Rows[i].Field<int>("PaymentUnitID");
+                success = success && paymentUnitAccess.DeletePaymentUnitByID(paymentUnitID);
+            }
+
+            return success;
+        }
+
         public DataTable GetAllPaymentUnits()
         {
             return paymentUnitAccess.GetAllPaymentUnits();

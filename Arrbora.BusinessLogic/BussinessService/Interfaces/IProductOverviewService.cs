@@ -19,6 +19,6 @@ namespace Arrbora.Data.BussinessService.Interfaces
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable SearchProductOverview(object SalesManagementID, object brand, object model);
+        DataTable SearchProductOverview(object brand, object model);
     }
 }

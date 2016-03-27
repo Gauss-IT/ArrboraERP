@@ -52,7 +52,7 @@ namespace Arrbora.UI
             //chkbxSearch.Checked = false;
             
 
-            LoadDataGridView(_dataGridTable);
+            UpdateDataGridView();
 
             Show();
         }
@@ -93,10 +93,48 @@ namespace Arrbora.UI
         public void UpdateDataGridView()
         {
             var data = _productOverviewService.GetAllProductOverview();
+            UpdateBrandCombo(data);
+            UpdateModelCombo(data, "");
             // Data grid view column setting            
             dataGridViewProductOverview.DataSource = data;
             dataGridViewProductOverview.DataMember = data.TableName;
             dataGridViewProductOverview.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+
+        private void UpdateBrandCombo(DataTable data)
+        {
+            var brandsList = new List<string>();
+            string brand;
+            foreach (DataRow row in data.Rows)
+            {
+                brand = row.Field<string>("Brand");
+
+                if (!brandsList.Contains(brand) && brand != "")
+                    brandsList.Add(brand);             
+            }
+
+            cmbBrand.DataSource = brandsList;
+        }
+
+        private void UpdateModelCombo(DataTable data, string Brand)
+        {
+
+            var modelsList = new List<string>();
+            string brand, model;
+            foreach (DataRow row in data.Rows)
+            {
+                //if (Brand == "") break;
+                brand = row.Field<string>("Brand");
+
+                if (brand == Brand)
+                {
+                    model = row.Field<string>("Model");
+                    if (!modelsList.Contains(model) && model != "")
+                        modelsList.Add(model);
+                }
+            }
+
+            cmbModel.DataSource = modelsList;
         }
         private void InitializeColumsToTabsMapping()
         {
@@ -180,6 +218,29 @@ namespace Arrbora.UI
                 dataGridViewProductOverview.Width += grpBxSearchButtons.Width;
                 _dataGridControlSizeReduced = false;
             }
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            var data = _productOverviewService.SearchProductOverview(cmbBrand.SelectedValue,cmbModel.SelectedValue);            
+            LoadDataGridView(data);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            var data = _productOverviewService.GetAllProductOverview();
+            UpdateDataGridView();
+            UpdateBrandCombo(data);
+            UpdateModelCombo(data, "");
+        }
+
+        private void cmbBrand_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var selectedBrand = (string)cmbBrand.SelectedValue;
+            var data = _productOverviewService.GetAllProductOverview();
+            UpdateModelCombo(data, (string)cmbBrand.SelectedValue);
+            //if(cmbBrand.ValueMember != "")
+                //cmbBrand.SelectedText = selectedBrand;
         }
     }
 }

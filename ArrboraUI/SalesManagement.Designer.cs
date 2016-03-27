@@ -49,13 +49,14 @@
             this.lblProductIDShow = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.productDeliveryTabPage = new System.Windows.Forms.TabPage();
+            this.dtpDateOfSale = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateOfPurchase = new System.Windows.Forms.DateTimePicker();
             this.lnkAttachment = new System.Windows.Forms.LinkLabel();
             this.lnkWebsite = new System.Windows.Forms.LinkLabel();
             this.radbtnNotSold = new System.Windows.Forms.RadioButton();
             this.radbtnSold = new System.Windows.Forms.RadioButton();
             this.txtAttachment = new System.Windows.Forms.TextBox();
             this.txtBuyer = new System.Windows.Forms.TextBox();
-            this.txtDateOfSale = new System.Windows.Forms.TextBox();
             this.txtLandOfOrigin = new System.Windows.Forms.TextBox();
             this.txtWebsite = new System.Windows.Forms.TextBox();
             this.txtSeller = new System.Windows.Forms.TextBox();
@@ -65,7 +66,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.txtCurentLocation = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.txtDateOfPurchase = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
@@ -143,7 +143,7 @@
             // 
             // productTabPage
             // 
-            this.productTabPage.BackColor = System.Drawing.Color.Gainsboro;
+            this.productTabPage.BackColor = System.Drawing.Color.Lavender;
             this.productTabPage.Controls.Add(this.txtDLPBrutto);
             this.productTabPage.Controls.Add(this.txtDLPNetto);
             this.productTabPage.Controls.Add(this.txtModelYear);
@@ -316,14 +316,15 @@
             // 
             // productDeliveryTabPage
             // 
-            this.productDeliveryTabPage.BackColor = System.Drawing.Color.Gainsboro;
+            this.productDeliveryTabPage.BackColor = System.Drawing.Color.Lavender;
+            this.productDeliveryTabPage.Controls.Add(this.dtpDateOfSale);
+            this.productDeliveryTabPage.Controls.Add(this.dtpDateOfPurchase);
             this.productDeliveryTabPage.Controls.Add(this.lnkAttachment);
             this.productDeliveryTabPage.Controls.Add(this.lnkWebsite);
             this.productDeliveryTabPage.Controls.Add(this.radbtnNotSold);
             this.productDeliveryTabPage.Controls.Add(this.radbtnSold);
             this.productDeliveryTabPage.Controls.Add(this.txtAttachment);
             this.productDeliveryTabPage.Controls.Add(this.txtBuyer);
-            this.productDeliveryTabPage.Controls.Add(this.txtDateOfSale);
             this.productDeliveryTabPage.Controls.Add(this.txtLandOfOrigin);
             this.productDeliveryTabPage.Controls.Add(this.txtWebsite);
             this.productDeliveryTabPage.Controls.Add(this.txtSeller);
@@ -333,7 +334,6 @@
             this.productDeliveryTabPage.Controls.Add(this.label37);
             this.productDeliveryTabPage.Controls.Add(this.txtCurentLocation);
             this.productDeliveryTabPage.Controls.Add(this.label38);
-            this.productDeliveryTabPage.Controls.Add(this.txtDateOfPurchase);
             this.productDeliveryTabPage.Controls.Add(this.label39);
             this.productDeliveryTabPage.Controls.Add(this.label44);
             this.productDeliveryTabPage.Controls.Add(this.label40);
@@ -346,6 +346,22 @@
             this.productDeliveryTabPage.Size = new System.Drawing.Size(591, 258);
             this.productDeliveryTabPage.TabIndex = 1;
             this.productDeliveryTabPage.Text = "Product Delivery";
+            // 
+            // dtpDateOfSale
+            // 
+            this.dtpDateOfSale.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateOfSale.Location = new System.Drawing.Point(384, 68);
+            this.dtpDateOfSale.Name = "dtpDateOfSale";
+            this.dtpDateOfSale.Size = new System.Drawing.Size(136, 20);
+            this.dtpDateOfSale.TabIndex = 47;
+            // 
+            // dtpDateOfPurchase
+            // 
+            this.dtpDateOfPurchase.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateOfPurchase.Location = new System.Drawing.Point(136, 34);
+            this.dtpDateOfPurchase.Name = "dtpDateOfPurchase";
+            this.dtpDateOfPurchase.Size = new System.Drawing.Size(136, 20);
+            this.dtpDateOfPurchase.TabIndex = 47;
             // 
             // lnkAttachment
             // 
@@ -402,13 +418,6 @@
             this.txtBuyer.Name = "txtBuyer";
             this.txtBuyer.Size = new System.Drawing.Size(135, 20);
             this.txtBuyer.TabIndex = 9;
-            // 
-            // txtDateOfSale
-            // 
-            this.txtDateOfSale.Location = new System.Drawing.Point(384, 64);
-            this.txtDateOfSale.Name = "txtDateOfSale";
-            this.txtDateOfSale.Size = new System.Drawing.Size(135, 20);
-            this.txtDateOfSale.TabIndex = 6;
             // 
             // txtLandOfOrigin
             // 
@@ -481,13 +490,6 @@
             this.label38.TabIndex = 36;
             this.label38.Text = "Date of sale";
             // 
-            // txtDateOfPurchase
-            // 
-            this.txtDateOfPurchase.Location = new System.Drawing.Point(137, 35);
-            this.txtDateOfPurchase.Name = "txtDateOfPurchase";
-            this.txtDateOfPurchase.Size = new System.Drawing.Size(135, 20);
-            this.txtDateOfPurchase.TabIndex = 1;
-            // 
             // label39
             // 
             this.label39.AutoSize = true;
@@ -544,7 +546,7 @@
             // 
             // purchasePriceTabPage
             // 
-            this.purchasePriceTabPage.BackColor = System.Drawing.Color.Gainsboro;
+            this.purchasePriceTabPage.BackColor = System.Drawing.Color.Lavender;
             this.purchasePriceTabPage.Controls.Add(this.txtPurchaseOther2);
             this.purchasePriceTabPage.Controls.Add(this.txtPurchaseOther1);
             this.purchasePriceTabPage.Controls.Add(this.txtKosovoCosts);
@@ -596,6 +598,7 @@
             // 
             // lblPurchaseTotal
             // 
+            this.lblPurchaseTotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblPurchaseTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPurchaseTotal.Location = new System.Drawing.Point(397, 188);
             this.lblPurchaseTotal.Name = "lblPurchaseTotal";
@@ -681,7 +684,7 @@
             // 
             // sellingPriceTabPage
             // 
-            this.sellingPriceTabPage.BackColor = System.Drawing.Color.Gainsboro;
+            this.sellingPriceTabPage.BackColor = System.Drawing.Color.Lavender;
             this.sellingPriceTabPage.Controls.Add(this.txtSellingOther2);
             this.sellingPriceTabPage.Controls.Add(this.txtSellingOther1);
             this.sellingPriceTabPage.Controls.Add(this.lblSellingTotal);
@@ -715,6 +718,7 @@
             // 
             // lblSellingTotal
             // 
+            this.lblSellingTotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblSellingTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSellingTotal.Location = new System.Drawing.Point(357, 158);
             this.lblSellingTotal.Name = "lblSellingTotal";
@@ -782,7 +786,7 @@
             // 
             // paymentsTabPage
             // 
-            this.paymentsTabPage.BackColor = System.Drawing.Color.Gainsboro;
+            this.paymentsTabPage.BackColor = System.Drawing.Color.Lavender;
             this.paymentsTabPage.Controls.Add(this.paymenetUnitsDataGridView);
             this.paymentsTabPage.Controls.Add(this.lblDueAmount);
             this.paymentsTabPage.Controls.Add(this.label11);
@@ -799,6 +803,7 @@
             // 
             this.paymenetUnitsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.paymenetUnitsDataGridView.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.paymenetUnitsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymenetUnitsDataGridView.Cursor = System.Windows.Forms.Cursors.Default;
             this.paymenetUnitsDataGridView.Location = new System.Drawing.Point(6, 6);
@@ -812,6 +817,7 @@
             // lblDueAmount
             // 
             this.lblDueAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDueAmount.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblDueAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDueAmount.Location = new System.Drawing.Point(172, 214);
             this.lblDueAmount.Name = "lblDueAmount";
@@ -831,6 +837,7 @@
             // lblPaymentsTotal
             // 
             this.lblPaymentsTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPaymentsTotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblPaymentsTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPaymentsTotal.Location = new System.Drawing.Point(409, 214);
             this.lblPaymentsTotal.Name = "lblPaymentsTotal";
@@ -902,6 +909,7 @@
             // 
             // lblBrand
             // 
+            this.lblBrand.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblBrand.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblBrand.Location = new System.Drawing.Point(17, 60);
             this.lblBrand.Name = "lblBrand";
@@ -919,6 +927,7 @@
             // 
             // lblModel
             // 
+            this.lblModel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblModel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblModel.Location = new System.Drawing.Point(174, 60);
             this.lblModel.Name = "lblModel";
@@ -936,6 +945,7 @@
             // 
             // lblPurchaseDate
             // 
+            this.lblPurchaseDate.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblPurchaseDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPurchaseDate.Location = new System.Drawing.Point(329, 60);
             this.lblPurchaseDate.Name = "lblPurchaseDate";
@@ -953,6 +963,7 @@
             // 
             // lblSalesPrice
             // 
+            this.lblSalesPrice.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblSalesPrice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSalesPrice.Location = new System.Drawing.Point(481, 60);
             this.lblSalesPrice.Name = "lblSalesPrice";
@@ -985,7 +996,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(646, 425);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRefresh);
@@ -1092,7 +1103,6 @@
         private System.Windows.Forms.RadioButton radbtnNotSold;
         private System.Windows.Forms.RadioButton radbtnSold;
         private System.Windows.Forms.TextBox txtBuyer;
-        private System.Windows.Forms.TextBox txtDateOfSale;
         private System.Windows.Forms.TextBox txtLandOfOrigin;
         private System.Windows.Forms.TextBox txtSeller;
         private System.Windows.Forms.TextBox txtLandOfDestination;
@@ -1100,7 +1110,6 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox txtCurentLocation;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox txtDateOfPurchase;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
@@ -1114,5 +1123,7 @@
         private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.Button btnSaveThis;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.DateTimePicker dtpDateOfSale;
+        private System.Windows.Forms.DateTimePicker dtpDateOfPurchase;
     }
 }

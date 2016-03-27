@@ -69,7 +69,8 @@ namespace Arrbora.Data.DataAccess
 
                 // Add the input parameters to the parameter collection                
                 oleDbCommand.Parameters.AddWithValue("@PaymentID", paymentUnit.PaymentID ?? (object)DBNull.Value);
-                oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", paymentUnit.PaymentUnitDate ?? (object)DBNull.Value);
+                oleDbCommand.Parameters.AddWithValue("@PaymentUnitDate", paymentUnit.PaymentUnitDate ==null ? 
+                    (object)DBNull.Value: paymentUnit.PaymentUnitDate.Value.ToOADate());
                 oleDbCommand.Parameters.AddWithValue("@Amount", paymentUnit.Amount ?? (object)DBNull.Value);
                 oleDbCommand.Parameters.AddWithValue("@PaymentType", paymentUnit.PaymentType ?? (object)DBNull.Value); 
                 oleDbCommand.Parameters.AddWithValue("@PayedBy", paymentUnit.PayedBy ?? (object)DBNull.Value);

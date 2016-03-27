@@ -31,9 +31,9 @@ namespace Arrbora.BusinessLogic.BussinessService
             return productOverviewAccess.GetAllProductOverview();
         }
 
-        public DataTable SearchProductOverview(object SalesManagementID, object brand, object model)
+        public DataTable SearchProductOverview(object brand, object model)
         {
-            return productOverviewAccess.SearchProductOverview(SalesManagementID, brand, model);
+            return productOverviewAccess.SearchProductOverview(brand, model);
         }
     }
 }
