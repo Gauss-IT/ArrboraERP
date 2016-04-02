@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Collections.Generic;
 using Arrbora.BusinessLogic.BussinessService;
-using Arrbora.Data.DataModel;
+using Arrbora.Data.SQLLite; 
 
 namespace Arrbora.UI
 {
@@ -35,8 +35,9 @@ namespace Arrbora.UI
         /// </summary>
         public frmProductsOverview()
         {
-            InitializeComponent();           
-
+            InitializeComponent();
+            //DatabaseController.CheckDatabase();           
+            //DatabaseController.ConnectToDatabase();
             var productOverviewService = new ProductOverviewService();
             _salesManagementService = new SalesManagementService();
             _productOverviewService = new ProductOverviewService();
@@ -53,6 +54,7 @@ namespace Arrbora.UI
             
 
             UpdateDataGridView();
+            LoadPriceCombo();
 
             Show();
         }
@@ -85,7 +87,16 @@ namespace Arrbora.UI
             dataGridViewProductOverview.DataMember = data.TableName;
             dataGridViewProductOverview.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
-        
+
+        private void LoadPriceCombo()
+        {
+            var priceComboList = new List<string>() {""};
+
+            for (decimal i = 10000; i < 150000; i += 10000)
+                priceComboList.Add(i.ToString("0,0"));
+            cmbPriceFrom.DataSource = priceComboList;
+            cmbPriceTo.DataSource = new List<string>(priceComboList);
+        }
         /// <summary>
         /// Load data into the Grid view
         /// </summary>
@@ -103,8 +114,9 @@ namespace Arrbora.UI
 
         private void UpdateBrandCombo(DataTable data)
         {
-            var brandsList = new List<string>();
+            var brandsList = new List<string>() { "" };
             string brand;
+
             foreach (DataRow row in data.Rows)
             {
                 brand = row.Field<string>("Brand");
@@ -119,7 +131,7 @@ namespace Arrbora.UI
         private void UpdateModelCombo(DataTable data, string Brand)
         {
 
-            var modelsList = new List<string>();
+            var modelsList = new List<string>() { "" };
             string brand, model;
             foreach (DataRow row in data.Rows)
             {
@@ -136,6 +148,8 @@ namespace Arrbora.UI
 
             cmbModel.DataSource = modelsList;
         }
+
+
         private void InitializeColumsToTabsMapping()
         {
             _columnNameToTabIndex = new Dictionary<string, int>();
@@ -222,12 +236,26 @@ namespace Arrbora.UI
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            var data = _productOverviewService.SearchProductOverview(cmbBrand.SelectedValue,cmbModel.SelectedValue);            
+            var dateFrom = DateTime.MinValue;
+            var dateTo = DateTime.MaxValue;
+            if (dtmDateFrom.Checked)
+                dateFrom = dtmDateFrom.Value;
+            if (dtmDateTo.Checked)
+                dateTo = dtmDateTo.Value;
+            decimal priceFrom, priceTo;
+            decimal.TryParse((string)cmbPriceFrom.SelectedValue, out priceFrom);
+            decimal.TryParse((string)cmbPriceTo.SelectedValue, out priceTo);
+            var data = _productOverviewService.SearchProductOverview(
+                            cmbBrand.SelectedValue,cmbModel.SelectedValue, dateFrom, dateTo, priceFrom, priceTo);            
             LoadDataGridView(data);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            dtmDateFrom.Checked = false;
+            dtmDateTo.Checked = false;
+            cmbPriceFrom.ResetText();
+            cmbPriceTo.ResetText();
             var data = _productOverviewService.GetAllProductOverview();
             UpdateDataGridView();
             UpdateBrandCombo(data);

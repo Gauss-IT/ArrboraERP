@@ -25,6 +25,8 @@ namespace Arrbora.Data.Sql
         /// </summary>
         public static readonly string sqlSearchProductOverview = "SELECT " +
             " SalesManagementID, Brand, Model, VIN, DateOfPurchase, DateOfSale, TotalPurchase, TotalSelling, PaymentTotal" +
-            " FROM ProductOverview WHERE (@Brand Is NULL OR @Brand = Brand) AND (@Model Is NULL OR @Model = Model)";
+            " FROM ProductOverview WHERE (@Brand Is NULL OR @Brand = Brand) AND (@Model Is NULL OR @Model = Model)" +
+            " AND (@MinDate Is NULL OR @MinDate < DateOfPurchase) AND (@MaxDate Is NULL OR @MaxDate > DateOfPurchase)" +
+            " AND (@PriceFrom Is NULL OR @PriceFrom < TotalPurchase) AND (@PriceTo Is NULL OR @PriceTo > TotalPurchase)";
     }
 }

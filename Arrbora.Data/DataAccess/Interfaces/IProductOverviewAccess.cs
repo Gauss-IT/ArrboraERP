@@ -2,7 +2,7 @@
 /// Copyright Arrbora DOO
 /// </summary>
 
-using Arrbora.Data.DataModel;
+using System;
 using System.Data;
 
 namespace Arrbora.Data.DataAccess.Interfaces
@@ -19,6 +19,7 @@ namespace Arrbora.Data.DataAccess.Interfaces
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        DataTable SearchProductOverview(object brand, object model);
+        DataTable SearchProductOverview(object brand, object model,
+                    DateTime minDate, DateTime maxDate, decimal priceFrom, decimal priceTo);
     }
 }

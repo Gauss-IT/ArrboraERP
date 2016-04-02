@@ -5,7 +5,7 @@
 using Arrbora.Data.BussinessService.Interfaces;
 using Arrbora.Data.DataAccess;
 using Arrbora.Data.DataAccess.Interfaces;
-using Arrbora.Data.DataModel;
+using System;
 using System.Data;
 
 namespace Arrbora.BusinessLogic.BussinessService
@@ -31,9 +31,10 @@ namespace Arrbora.BusinessLogic.BussinessService
             return productOverviewAccess.GetAllProductOverview();
         }
 
-        public DataTable SearchProductOverview(object brand, object model)
+        public DataTable SearchProductOverview(object brand, object model, 
+                    DateTime minDate, DateTime maxDate, decimal priceFrom, decimal priceTo)
         {
-            return productOverviewAccess.SearchProductOverview(brand, model);
+            return productOverviewAccess.SearchProductOverview(brand, model, minDate,maxDate, priceFrom, priceTo);
         }
     }
 }

@@ -4,7 +4,6 @@
 
 using System;
 using System.Data;
-using Arrbora.Data.DataModel;
 using System.Data.OleDb;
 using Arrbora.Data.Sql;
 using Arrbora.Data.DataAccess.Interfaces;
@@ -43,7 +42,8 @@ namespace Arrbora.Data.DataAccess
         /// Method to search products overview by parameters
         /// </summary>
         /// <returns>Data table</returns>
-        public DataTable SearchProductOverview(object brand, object model)
+        public DataTable SearchProductOverview(object brand, object model,
+                    DateTime minDate, DateTime maxDate, decimal priceFrom, decimal priceTo)
         {
             DataTable dataTable = new DataTable();
 
@@ -60,6 +60,10 @@ namespace Arrbora.Data.DataAccess
                 // Add the input parameters to the parameter collection
                 oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Brand", (brand == null || (string)brand == "") ? DBNull.Value : brand);
                 oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@Model", (model == null || (string)model == "") ? DBNull.Value : model);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@MinDate", (minDate == null) ? DBNull.Value : (object)minDate.ToOADate());
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@MaxDate", (maxDate == null) ? DBNull.Value : (object)maxDate.ToOADate());
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@PriceFrom", (priceFrom == 0) ? DBNull.Value : (object)priceFrom);
+                oleDbDataAdapter.SelectCommand.Parameters.AddWithValue("@PriceTo", (priceTo == 0) ? DBNull.Value : (object)priceTo);
 
                 // Fill the table from adapter
                 oleDbDataAdapter.Fill(dataTable);
